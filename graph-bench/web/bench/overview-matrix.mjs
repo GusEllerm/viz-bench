@@ -120,6 +120,16 @@ async function runCell(browser, ds, tool, prov) {
     contRuns.sort((a, b) => a.fps - b.fps);
     const mCont = contRuns[1]; // median
 
+    // THROTTLE GUARD: macOS drops OCCLUDED windows to 30 Hz — a headed cell measured while
+    // another window covers Chrome reads a bit-exact ~30 that is indistinguishable from real
+    // performance after the fact. If the warmed-up display runs fast but this cell landed on
+    // ~30, fail loud instead of publishing a plausible-looking artifact.
+    if (typeof DISPLAY_HZ === 'number' && DISPLAY_HZ >= 100) {
+      for (const [label, v] of [['pan', m.fps], ['continuous', mCont.fps]]) {
+        if (Math.abs(v - 30) <= 0.6) throw new Error(`display-throttle suspect: ${label} fps=${v} while display=${DISPLAY_HZ.toFixed(0)}Hz (occluded window?) — re-run with the screen unoccluded`);
+      }
+    }
+
     // Input-honesty gate
     const inputHonesty = inputHonestyGate({ driver: 'pan' });
 
@@ -161,7 +171,13 @@ async function warmupDisplay(browser) {
     await p.goto(`${BASE}/deck.html?g=arxiv_2015`, { waitUntil: 'load' });
     await p.waitForFunction(() => window.__bench && (window.__bench.ready || window.__bench.error), null, { timeout: 60000 }).catch(() => {});
     await coalescedPan(p, { durationMs: 8000, selector: '#graph' });
-  } catch {} finally {
+    // measure the ramped refresh — the throttle guard below compares cell fps against it
+    return await p.evaluate(() => new Promise((res) => {
+      let f = 0; const t0 = performance.now();
+      const step = () => { f++; const dt = performance.now() - t0; if (dt < 1000) requestAnimationFrame(step); else res(f / (dt / 1000)); };
+      requestAnimationFrame(step);
+    }));
+  } catch { return null; } finally {
     await p.close().catch(() => {});
   }
 }
@@ -170,8 +186,8 @@ const prov = provenance();
 const server = await startServer({ base: BASE, args: ['preview'] });
 const browser = await launchBrowser({ headless: false });
 process.stdout.write('warming up display refresh … ');
-await warmupDisplay(browser);
-console.log('done\n');
+const DISPLAY_HZ = await warmupDisplay(browser);
+console.log(`done (${DISPLAY_HZ ? DISPLAY_HZ.toFixed(0) + ' Hz' : 'unmeasured'})\n`);
 const results = [];
 try {
   for (const ds of datasets) {
