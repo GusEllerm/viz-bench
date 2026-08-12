@@ -641,77 +641,6 @@
   {
     "schemaVersion": "result/1",
     "domain": "manifold",
-    "tool": "deck",
-    "engine": {
-      "library": "deck.gl"
-    },
-    "dataset": {
-      "name": "swiss_roll_10000000",
-      "descriptor": "manifold-bench/data/manifest.json",
-      "hash": "sha256:7680f843346ff144",
-      "expectedLoaded": {
-        "points": 10000000
-      }
-    },
-    "primitives": [
-      "points"
-    ],
-    "scale": {
-      "points": 10000000
-    },
-    "coverage": {
-      "engine": {
-        "points": 10000000
-      },
-      "edgePolicy": "points",
-      "ok": true
-    },
-    "protocol": {
-      "driver": "orbit",
-      "cameraState": "overview",
-      "motion": "continuous-orbit",
-      "durationMs": 5000,
-      "pixelRatio": 1,
-      "headed": false
-    },
-    "metrics": {
-      "fps": 15.4,
-      "frames": 77,
-      "p50ms": 66.7,
-      "p95ms": 75.8,
-      "memMB": 167
-    },
-    "presentation": {
-      "surface": "onscreen",
-      "method": "pixelDiff",
-      "presented": true,
-      "detail": "presented changedFraction=0.9927 (>0.02)"
-    },
-    "gpu": {
-      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
-      "software": false
-    },
-    "gates": {
-      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
-      "coverage": "pass: points 10000000/10000000",
-      "presentation": "pass: presented changedFraction=0.9927 (>0.02)",
-      "cameraState": "pass: state=overview supports=overview|mid|deep",
-      "inputHonesty": "pass: driver=orbit"
-    },
-    "ok": true,
-    "gateFailures": [],
-    "provenance": {
-      "timestamp": "2026-08-12T19:30:01.490Z",
-      "gitCommit": "c4b7186",
-      "machine": "Apple-Silicon (Metal)",
-      "os": "darwin",
-      "node": "v22",
-      "harness": "@viz-bench/bench-core/1"
-    }
-  },
-  {
-    "schemaVersion": "result/1",
-    "domain": "manifold",
     "tool": "three",
     "engine": {
       "library": "three.js"
@@ -746,17 +675,17 @@
       "headed": false
     },
     "metrics": {
-      "fps": 34.5,
-      "frames": 172,
-      "p50ms": 27.2,
-      "p95ms": 38.2,
+      "fps": 33.5,
+      "frames": 168,
+      "p50ms": 33.3,
+      "p95ms": 34.1,
       "memMB": 188
     },
     "presentation": {
       "surface": "onscreen",
       "method": "pixelDiff",
       "presented": true,
-      "detail": "presented changedFraction=0.8448 (>0.02)"
+      "detail": "presented changedFraction=0.8433 (>0.02)"
     },
     "gpu": {
       "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
@@ -765,15 +694,86 @@
     "gates": {
       "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
       "coverage": "pass: points 10000000/10000000",
-      "presentation": "pass: presented changedFraction=0.8448 (>0.02)",
+      "presentation": "pass: presented changedFraction=0.8433 (>0.02)",
       "cameraState": "pass: state=overview supports=overview|mid|deep",
       "inputHonesty": "pass: driver=orbit"
     },
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:30:01.490Z",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-12T19:57:47.311Z",
+      "gitCommit": "f71d297",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "deck",
+    "engine": {
+      "library": "deck.gl"
+    },
+    "dataset": {
+      "name": "swiss_roll_10000000",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "hash": "sha256:7680f843346ff144",
+      "expectedLoaded": {
+        "points": 10000000
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 10000000
+    },
+    "coverage": {
+      "engine": {
+        "points": 10000000
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "orbit",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "durationMs": 5000,
+      "pixelRatio": 1,
+      "headed": false
+    },
+    "metrics": {
+      "fps": 15.1,
+      "frames": 76,
+      "p50ms": 66.7,
+      "p95ms": 75.1,
+      "memMB": 167
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.9927 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: points 10000000/10000000",
+      "presentation": "pass: presented changedFraction=0.9927 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=orbit"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:57:56.738Z",
+      "gitCommit": "f71d297",
       "machine": "Apple-Silicon (Metal)",
       "os": "darwin",
       "node": "v22",
@@ -817,9 +817,9 @@
       "headed": false
     },
     "metrics": {
-      "fps": 23.2,
-      "frames": 116,
-      "p50ms": 41.7,
+      "fps": 21.9,
+      "frames": 110,
+      "p50ms": 49.9,
       "p95ms": 58.3,
       "memMB": 1200
     },
@@ -827,7 +827,7 @@
       "surface": "onscreen",
       "method": "pixelDiff",
       "presented": true,
-      "detail": "presented changedFraction=0.9289 (>0.02)"
+      "detail": "presented changedFraction=0.9255 (>0.02)"
     },
     "gpu": {
       "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
@@ -836,15 +836,86 @@
     "gates": {
       "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
       "coverage": "pass: points 10000000/10000000",
-      "presentation": "pass: presented changedFraction=0.9289 (>0.02)",
+      "presentation": "pass: presented changedFraction=0.9255 (>0.02)",
       "cameraState": "pass: state=overview supports=overview|mid|deep",
       "inputHonesty": "pass: driver=orbit"
     },
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:30:01.490Z",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-12T19:58:05.879Z",
+      "gitCommit": "f71d297",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "three",
+    "engine": {
+      "library": "three.js"
+    },
+    "dataset": {
+      "name": "swiss_roll_20000000",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "hash": "sha256:36a20af943ee058e",
+      "expectedLoaded": {
+        "points": 20000000
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 20000000
+    },
+    "coverage": {
+      "engine": {
+        "points": 20000000
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "orbit",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "durationMs": 5000,
+      "pixelRatio": 1,
+      "headed": false
+    },
+    "metrics": {
+      "fps": 15.6,
+      "frames": 78,
+      "p50ms": 64.8,
+      "p95ms": 81.5,
+      "memMB": 386
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8435 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: points 20000000/20000000",
+      "presentation": "pass: presented changedFraction=0.8435 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=orbit"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:58:15.715Z",
+      "gitCommit": "f71d297",
       "machine": "Apple-Silicon (Metal)",
       "os": "darwin",
       "node": "v22",
@@ -889,16 +960,16 @@
     },
     "metrics": {
       "fps": 8.6,
-      "frames": 43,
-      "p50ms": 125,
-      "p95ms": 141.7,
+      "frames": 44,
+      "p50ms": 124.9,
+      "p95ms": 150,
       "memMB": 322
     },
     "presentation": {
       "surface": "onscreen",
       "method": "pixelDiff",
       "presented": true,
-      "detail": "presented changedFraction=0.9926 (>0.02)"
+      "detail": "presented changedFraction=0.9934 (>0.02)"
     },
     "gpu": {
       "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
@@ -907,86 +978,15 @@
     "gates": {
       "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
       "coverage": "pass: points 20000000/20000000",
-      "presentation": "pass: presented changedFraction=0.9926 (>0.02)",
+      "presentation": "pass: presented changedFraction=0.9934 (>0.02)",
       "cameraState": "pass: state=overview supports=overview|mid|deep",
       "inputHonesty": "pass: driver=orbit"
     },
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:30:01.490Z",
-      "gitCommit": "c4b7186",
-      "machine": "Apple-Silicon (Metal)",
-      "os": "darwin",
-      "node": "v22",
-      "harness": "@viz-bench/bench-core/1"
-    }
-  },
-  {
-    "schemaVersion": "result/1",
-    "domain": "manifold",
-    "tool": "three",
-    "engine": {
-      "library": "three.js"
-    },
-    "dataset": {
-      "name": "swiss_roll_20000000",
-      "descriptor": "manifold-bench/data/manifest.json",
-      "hash": "sha256:36a20af943ee058e",
-      "expectedLoaded": {
-        "points": 20000000
-      }
-    },
-    "primitives": [
-      "points"
-    ],
-    "scale": {
-      "points": 20000000
-    },
-    "coverage": {
-      "engine": {
-        "points": 20000000
-      },
-      "edgePolicy": "points",
-      "ok": true
-    },
-    "protocol": {
-      "driver": "orbit",
-      "cameraState": "overview",
-      "motion": "continuous-orbit",
-      "durationMs": 5000,
-      "pixelRatio": 1,
-      "headed": false
-    },
-    "metrics": {
-      "fps": 16.1,
-      "frames": 80,
-      "p50ms": 62.3,
-      "p95ms": 80.1,
-      "memMB": 386
-    },
-    "presentation": {
-      "surface": "onscreen",
-      "method": "pixelDiff",
-      "presented": true,
-      "detail": "presented changedFraction=0.8439 (>0.02)"
-    },
-    "gpu": {
-      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
-      "software": false
-    },
-    "gates": {
-      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
-      "coverage": "pass: points 20000000/20000000",
-      "presentation": "pass: presented changedFraction=0.8439 (>0.02)",
-      "cameraState": "pass: state=overview supports=overview|mid|deep",
-      "inputHonesty": "pass: driver=orbit"
-    },
-    "ok": true,
-    "gateFailures": [],
-    "provenance": {
-      "timestamp": "2026-08-12T19:30:01.490Z",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-12T19:58:26.139Z",
+      "gitCommit": "f71d297",
       "machine": "Apple-Silicon (Metal)",
       "os": "darwin",
       "node": "v22",
@@ -1030,17 +1030,17 @@
       "headed": false
     },
     "metrics": {
-      "fps": 10.3,
+      "fps": 10.4,
       "frames": 52,
-      "p50ms": 106.9,
-      "p95ms": 120.2,
+      "p50ms": 101.1,
+      "p95ms": 129,
       "memMB": 2470
     },
     "presentation": {
       "surface": "onscreen",
       "method": "pixelDiff",
       "presented": true,
-      "detail": "presented changedFraction=0.9035 (>0.02)"
+      "detail": "presented changedFraction=0.9034 (>0.02)"
     },
     "gpu": {
       "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
@@ -1049,15 +1049,86 @@
     "gates": {
       "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
       "coverage": "pass: points 20000000/20000000",
-      "presentation": "pass: presented changedFraction=0.9035 (>0.02)",
+      "presentation": "pass: presented changedFraction=0.9034 (>0.02)",
       "cameraState": "pass: state=overview supports=overview|mid|deep",
       "inputHonesty": "pass: driver=orbit"
     },
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:30:01.490Z",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-12T19:58:36.227Z",
+      "gitCommit": "f71d297",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "three",
+    "engine": {
+      "library": "three.js"
+    },
+    "dataset": {
+      "name": "swiss_roll_50000000",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "hash": "sha256:790a296b1dbf942c",
+      "expectedLoaded": {
+        "points": 50000000
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 50000000
+    },
+    "coverage": {
+      "engine": {
+        "points": 50000000
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "orbit",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "durationMs": 5000,
+      "pixelRatio": 1,
+      "headed": false
+    },
+    "metrics": {
+      "fps": 8,
+      "frames": 41,
+      "p50ms": 125.2,
+      "p95ms": 152.1,
+      "memMB": 949
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8354 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: points 50000000/50000000",
+      "presentation": "pass: presented changedFraction=0.8354 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=orbit"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:58:47.392Z",
+      "gitCommit": "f71d297",
       "machine": "Apple-Silicon (Metal)",
       "os": "darwin",
       "node": "v22",
@@ -1101,9 +1172,9 @@
       "headed": false
     },
     "metrics": {
-      "fps": 3.1,
-      "frames": 16,
-      "p50ms": 433.4,
+      "fps": 3.3,
+      "frames": 17,
+      "p50ms": 430.4,
       "p95ms": 445.9,
       "memMB": 793
     },
@@ -1127,79 +1198,8 @@
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:30:01.490Z",
-      "gitCommit": "c4b7186",
-      "machine": "Apple-Silicon (Metal)",
-      "os": "darwin",
-      "node": "v22",
-      "harness": "@viz-bench/bench-core/1"
-    }
-  },
-  {
-    "schemaVersion": "result/1",
-    "domain": "manifold",
-    "tool": "three",
-    "engine": {
-      "library": "three.js"
-    },
-    "dataset": {
-      "name": "swiss_roll_50000000",
-      "descriptor": "manifold-bench/data/manifest.json",
-      "hash": "sha256:790a296b1dbf942c",
-      "expectedLoaded": {
-        "points": 50000000
-      }
-    },
-    "primitives": [
-      "points"
-    ],
-    "scale": {
-      "points": 50000000
-    },
-    "coverage": {
-      "engine": {
-        "points": 50000000
-      },
-      "edgePolicy": "points",
-      "ok": true
-    },
-    "protocol": {
-      "driver": "orbit",
-      "cameraState": "overview",
-      "motion": "continuous-orbit",
-      "durationMs": 5000,
-      "pixelRatio": 1,
-      "headed": false
-    },
-    "metrics": {
-      "fps": 7.5,
-      "frames": 38,
-      "p50ms": 131.2,
-      "p95ms": 153.1,
-      "memMB": 949
-    },
-    "presentation": {
-      "surface": "onscreen",
-      "method": "pixelDiff",
-      "presented": true,
-      "detail": "presented changedFraction=0.8335 (>0.02)"
-    },
-    "gpu": {
-      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
-      "software": false
-    },
-    "gates": {
-      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
-      "coverage": "pass: points 50000000/50000000",
-      "presentation": "pass: presented changedFraction=0.8335 (>0.02)",
-      "cameraState": "pass: state=overview supports=overview|mid|deep",
-      "inputHonesty": "pass: driver=orbit"
-    },
-    "ok": true,
-    "gateFailures": [],
-    "provenance": {
-      "timestamp": "2026-08-12T19:30:01.490Z",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-12T19:58:59.673Z",
+      "gitCommit": "f71d297",
       "machine": "Apple-Silicon (Metal)",
       "os": "darwin",
       "node": "v22",
@@ -1243,10 +1243,10 @@
       "headed": false
     },
     "metrics": {
-      "fps": 6.9,
+      "fps": 6.8,
       "frames": 35,
-      "p50ms": 162.1,
-      "p95ms": 191.1,
+      "p50ms": 162.7,
+      "p95ms": 178.9,
       "memMB": 3760
     },
     "presentation": {
@@ -1269,8 +1269,8 @@
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:30:01.490Z",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-12T19:59:14.443Z",
+      "gitCommit": "f71d297",
       "machine": "Apple-Silicon (Metal)",
       "os": "darwin",
       "node": "v22",
