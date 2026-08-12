@@ -9,14 +9,14 @@ export const ROW_LABELS = {
   manifold: { datoviz: 'Datoviz · windowed', deck: 'deck.gl', three: 'three.js', cosmos3d: 'cosmos.gl · 3D fork' },
 };
 export const COL_LABELS = {
-  graph: { medical_device: '156K e', drug: '363K e', semiconductor: '604K e', combined: '1.1M e' },
-  manifold: { swiss_roll_100000: '100K', swiss_roll_1000000: '1M', graph_combined_umap3: 'graph 139K', swiss_roll_10000000: '10M', swiss_roll_20000000: '20M', swiss_roll_50000000: '50M' },
+  graph: { arxiv_2015: '148K e', arxiv_2017: '369K e', arxiv_2018: '615K e', arxiv_full: '1.16M e' },
+  manifold: { swiss_roll_100000: '100K', swiss_roll_1000000: '1M', arxiv_umap3: 'arXiv 169K', swiss_roll_10000000: '10M', swiss_roll_20000000: '20M', swiss_roll_50000000: '50M' },
 };
 const GRAPH_TOOLS = ['sigmapre', 'helios', 'deck', 'cosmographpre', 'cosmographnoblend']; // Cosmograph shown default + opaque (bare cosmos.gl engine rows collapsed away)
 const GRAPH_MATRIX_TOOLS = GRAPH_TOOLS;
-const GRAPH_DATASETS = ['medical_device', 'drug', 'semiconductor', 'combined'];
+const GRAPH_DATASETS = ['arxiv_2015', 'arxiv_2017', 'arxiv_2018', 'arxiv_full'];
 const M_RENDERERS = ['datoviz', 'deck', 'three', 'cosmos3d'];
-const M_CLOUDS = ['swiss_roll_100000', 'swiss_roll_1000000', 'graph_combined_umap3', 'swiss_roll_10000000', 'swiss_roll_20000000', 'swiss_roll_50000000'];
+const M_CLOUDS = ['swiss_roll_100000', 'swiss_roll_1000000', 'arxiv_umap3', 'swiss_roll_10000000', 'swiss_roll_20000000', 'swiss_roll_50000000'];
 const M_WALL = ['swiss_roll_100000', 'swiss_roll_1000000', 'swiss_roll_10000000', 'swiss_roll_20000000', 'swiss_roll_50000000']; // swiss_roll only on the line
 
 const METHODOLOGY = {
@@ -74,7 +74,7 @@ export const PAGES = [
         lead: 'Choosing a library to render a lot of data interactively? It comes down to your data&rsquo;s shape. These are the two problems this benchmark covers — the fastest library measured for each, and the wall it eventually hits:',
         cards: [
           { tag: 'Large graphs & networks', title: 'Sigma.js',
-            metric: { domain: 'graph', tool: 'sigmapre', dataset: 'combined', field: 'fpsCont', fmt: 'fps' }, suffix: ' rendering the 1.1M overview every frame',
+            metric: { domain: 'graph', tool: 'sigmapre', dataset: 'arxiv_full', field: 'fpsCont', fmt: 'fps' }, suffix: ' rendering the 1.1M overview every frame',
             body: 'Nodes joined by edges — the costly primitive — so the whole-graph overview is the stress test. Sigma leads: buttery under light interaction, and still fastest when forced to render every frame (~53 fps at 1.1M, hairline edges). The field tightens under that continuous test — Cosmograph&rsquo;s opaque-link mode is 2nd (~33), then deck.gl (~17) and Helios (~15). (Two metrics because on-demand renderers idle between frames — see Graph.)' },
           { tag: 'Large 3D point clouds', title: 'deck.gl ≈ three.js',
             prefix: '~', metric: { domain: 'manifold', tool: 'deck', dataset: 'swiss_roll_1000000', field: 'fps', fmt: 'fps' }, suffix: ' to 1M points',
@@ -89,7 +89,7 @@ export const PAGES = [
       { type: 'chart', id: 'idx-wall', chart: 'logline', tall: true,
         title: 'The 3D wall — interactive fps vs point count (log scale)',
         series: M_RENDERERS, clouds: M_WALL, domain: 'manifold',
-        caption: 'Swiss-roll point clouds; the real-graph 139K manifold tracks the 1M column (~120 fps). Past 10M no renderer — web or native — clears 60 fps.' },
+        caption: 'Swiss-roll point clouds; the real arXiv 169K manifold tracks the 1M column (~120 fps). Past 10M no renderer — web or native — clears 60 fps.' },
       { type: 'navcards', items: [
         { href: 'graph.html', title: 'Graph deep-dive →', body: 'Sigma · Helios · deck.gl · Cosmograph across four real knowledge graphs (156K–1.1M edges).' },
         { href: 'manifold.html', title: '3D / manifold deep-dive →', body: 'deck · three · windowed Datoviz · the cosmos.gl 3D fork across 100K–50M points.' },
@@ -122,9 +122,9 @@ export const PAGES = [
         caption: 'Force-layout iterations/sec (synthetic graphs, ~4 edges/node); higher = faster. At 10K nodes all three are pegged at the display refresh (~120), so the chart starts at 100K. A missing bar = not measured (CPU force-atlas past 500K is minutes per iteration) or did not sustain live layout (Helios past 100K). cosmos figures draw points but not links, so the rate reflects the GPU sim step rather than link overdraw.' },
       { type: 'note', html: 'Running the force simulation on the GPU computes the layout roughly <b>30–40× faster</b> than the CPU force-atlas at these scales — 39 vs 1.3 iters/sec at 100K nodes, 10 vs 0.24 at 500K — and continues to 1M, where the CPU approach is impractical (minutes per iteration, blocking the main thread). It is also incremental: the GPU sim renders each step, so the graph settles on screen, where the CPU force-atlas blocks until it finishes. For a graph whose positions are already computed, the render figures above apply instead — a different question with a different answer.' },
       { type: 'takeaways', items: [
-        { bind: { domain: 'graph', tool: 'sigmapre', dataset: 'combined', field: 'fpsCont', fmt: 'fps' },
+        { bind: { domain: 'graph', tool: 'sigmapre', dataset: 'arxiv_full', field: 'fpsCont', fmt: 'fps' },
           text: 'Sigma leads both metrics, but its edge is a real rendering one, not just an idle one: forced to render the 1.1M-edge overview every frame it still holds {} (hairline edges), where deck.gl and Cosmograph·opaque land in the 20s–30s and Helios in the teens.' },
-        { bind: { domain: 'graph', tool: 'deck', dataset: 'combined', field: 'memMB', fmt: 'mb' },
+        { bind: { domain: 'graph', tool: 'deck', dataset: 'arxiv_full', field: 'memMB', fmt: 'mb' },
           text: 'Resource cost still splits the field: deck.gl is featherweight ({} at 1.1M — binary typed-array buffers) while Sigma trades ~586 MB for its speed.' },
       ] },
       { type: 'methodology', summary: 'How each library is configured (and how it repaints)', bullets: [
@@ -148,7 +148,7 @@ export const PAGES = [
         title: 'Interactive fps', caption: 'fps; green ≥60 smooth, amber 30–59, red <30. Per-column best in bold. Swiss-roll clouds + the real-graph 139K manifold.' },
       { type: 'note', html: '<b>cosmos.gl · 3D fork</b> is <code>@cosmograph/cosmos</code>, an experimental 3D mode for the cosmos.gl engine. It is measured like the other web rows — precomputed positions, GPU simulation off, points only — and lands in the WebGL band throughout: level with deck.gl and three.js to 1M, between them at 10–20M, and past the wall at 50M like everything else. Its automatic camera-fit path fails once points &times; dimensions exceeds 2&#178;&#8311; coordinates (~44.7M points in 3D — a JS array limit in the position readback, reported upstream), so the harness frames the camera from the dataset&rsquo;s own bounds (details in the configuration drawer).' },
       { type: 'chart', id: 'man-wall', chart: 'logline', tall: true, series: M_RENDERERS, clouds: M_WALL, domain: 'manifold',
-        title: 'The same data on a log scale — the wall past 10M', caption: 'Swiss-roll clouds (the real-graph 139K manifold tracks the 1M column at ~120 fps). Dashed line = 60 fps; past 10M no renderer, web or native, clears it.' },
+        title: 'The same data on a log scale — the wall past 10M', caption: 'Swiss-roll clouds (the real arXiv 169K manifold tracks the 1M column at ~120 fps). Dashed line = 60 fps; past 10M no renderer, web or native, clears it.' },
       { type: 'takeaways', items: [
         { bind: { domain: 'manifold', tool: 'deck', dataset: 'swiss_roll_1000000', field: 'fps', fmt: 'fps' },
           text: 'To ~1M points everything is GPU-headroom-bound (~{}); deck.gl and three.js are tied and the real-graph manifold is trivially interactive.' },

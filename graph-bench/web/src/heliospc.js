@@ -81,7 +81,7 @@ async function run(base) {
 }
 
 const params = new URLSearchParams(location.search);
-const initial = cloudParam() || 'graph_combined_umap3';
+const initial = cloudParam() || 'arxiv_umap3';
 if (selector) {
   selector.value = initial;
   selector.addEventListener('change', (ev) => {

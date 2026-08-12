@@ -32,10 +32,10 @@ async function run(cloud) {
     const t0 = performance.now();
     const [graphRes, posRes] = await Promise.all([
       fetch('data/arxiv_full.layout.json'),
-      live ? Promise.resolve(null) : fetch(`data/clouds/graph_combined_${cloud}.pos.f32`),
+      live ? Promise.resolve(null) : fetch('data/clouds/arxiv_umap3.pos.f32'),
     ]);
     if (!graphRes.ok) throw new Error(`fetch arxiv_full.layout.json → ${graphRes.status}`);
-    if (posRes && !posRes.ok) throw new Error(`fetch graph_combined_${cloud}.pos.f32 → ${posRes.status}`);
+    if (posRes && !posRes.ok) throw new Error(`fetch arxiv_umap3.pos.f32 → ${posRes.status}`);
     const json = await graphRes.json();
     const pos = posRes ? new Float32Array(await posRes.arrayBuffer()) : null;
     const tFetch = performance.now() - t0;

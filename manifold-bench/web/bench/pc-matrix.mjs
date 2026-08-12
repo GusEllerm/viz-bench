@@ -31,7 +31,7 @@ const TOOLS = [
   { key: 'cosmos3d', page: 'cosmos.html', engine: '@cosmograph/cosmos' }, // the experimental 3D fork of cosmos.gl
 ];
 // the report's columns; 20M/50M are heavy (229/572 MB) — run them explicitly if desired
-const CLOUDS = ['swiss_roll_100000', 'swiss_roll_1000000', 'graph_combined_umap3', 'swiss_roll_10000000', 'swiss_roll_20000000', 'swiss_roll_50000000'];
+const CLOUDS = ['swiss_roll_100000', 'swiss_roll_1000000', 'arxiv_umap3', 'swiss_roll_10000000', 'swiss_roll_20000000', 'swiss_roll_50000000'];
 
 const onlyCloud = process.argv[2];
 const onlyTool = process.argv[3];
