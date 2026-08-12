@@ -9,3 +9,7 @@ __pycache__/
 graph-bench/web/public/data/
 manifold-bench/data/
 manifold-bench/web/public/data/
+
+# prep artifacts (downloaded/generated, never committed)
+graph-bench/prep/raw/
+manifold-bench/prep/.venv/

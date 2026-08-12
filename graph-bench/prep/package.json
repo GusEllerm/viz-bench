@@ -1,0 +1,10 @@
+{
+  "name": "@viz-bench/graph-prep",
+  "private": true,
+  "type": "module",
+  "description": "Builds the public graph benchmark datasets: ogbn-arxiv (ODC-BY) year-sliced tiers with precomputed ForceAtlas2 layouts.",
+  "dependencies": {
+    "graphology": "^0.26.0",
+    "graphology-layout-forceatlas2": "^0.10.1"
+  }
+}
