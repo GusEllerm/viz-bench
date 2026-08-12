@@ -1,0 +1,1433 @@
+[
+  {
+    "schemaVersion": "capability/1",
+    "feature": "density-map",
+    "featureLabel": "Density map / heatmap",
+    "category": "aggregate",
+    "library": "deck.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "density-deck.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 100000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/density-map-deck.png",
+    "dataset": "swiss_roll_100000",
+    "notes": "GPU screen-space aggregation (HeatmapLayer, @deck.gl/aggregation-layers).",
+    "docs": "https://deck.gl/docs/api-reference/aggregation-layers/heatmap-layer",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "curved-edges",
+    "featureLabel": "Curved edges",
+    "category": "structure",
+    "library": "sigma.js",
+    "support": "plugin",
+    "evidence": "verified",
+    "example": "cap-sigma-curvededges.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/curved-edges-sigma.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Curved edge rendering via @sigma/edge-curve (EdgeCurveProgram).",
+    "docs": "https://github.com/jacomyal/sigma.js/tree/main/packages/edge-curve",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "node-images",
+    "featureLabel": "Node images / borders",
+    "category": "annotate",
+    "library": "sigma.js",
+    "support": "plugin",
+    "evidence": "verified",
+    "example": "cap-sigma-nodeimage.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/node-images-sigma.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Per-node images via @sigma/node-image (NodeImageProgram); procedural icons.",
+    "docs": "https://github.com/jacomyal/sigma.js/tree/main/packages/node-image",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "density-map",
+    "featureLabel": "Density map / heatmap",
+    "category": "aggregate",
+    "library": "three.js",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-three-density.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 4000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/density-map-three.png",
+    "dataset": "synthetic_points_4000",
+    "notes": "No built-in aggregation — computes local point density (neighbours in radius) and colour-encodes it (blue→red).",
+    "docs": "https://threejs.org/docs/#api/en/objects/Points",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "lines",
+    "featureLabel": "Lines / edges",
+    "category": "encode",
+    "library": "three.js",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-three-lines.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 50,
+      "fps": 120
+    },
+    "screenshot": "features/assets/lines-three.png",
+    "dataset": "synthetic_points_50",
+    "notes": "THREE.LineSegments (1px hairlines); Line2 is the add-on for width.",
+    "docs": "https://threejs.org/docs/#api/en/objects/LineSegments",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "labels",
+    "featureLabel": "Labels",
+    "category": "annotate",
+    "library": "three.js",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-three-labels.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 20,
+      "fps": 120
+    },
+    "screenshot": "features/assets/labels-three.png",
+    "dataset": "synthetic_points_20",
+    "notes": "Text via THREE.Sprite (CanvasTexture); CSS2DRenderer is the other add-on.",
+    "docs": "https://threejs.org/docs/#api/en/objects/Sprite",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "node-images",
+    "featureLabel": "Node images / borders",
+    "category": "annotate",
+    "library": "three.js",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-three-nodeimage.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 40,
+      "fps": 120
+    },
+    "screenshot": "features/assets/node-images-three.png",
+    "dataset": "synthetic_points_40",
+    "notes": "THREE.Sprite with procedurally-generated CanvasTexture icons.",
+    "docs": "https://threejs.org/docs/#api/en/objects/Sprite",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "pick-tooltip",
+    "featureLabel": "Pick / hover tooltip",
+    "category": "interact",
+    "library": "deck.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-deck-pick.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true,
+      "interaction": true
+    },
+    "scale": {
+      "atPoints": 24,
+      "fps": 120
+    },
+    "screenshot": "features/assets/pick-tooltip-deck.png",
+    "dataset": "synthetic_points_24",
+    "notes": "Native picking — pickable:true + onHover / getTooltip.",
+    "docs": "https://deck.gl/docs/developer-guide/interactivity",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "pick-tooltip",
+    "featureLabel": "Pick / hover tooltip",
+    "category": "interact",
+    "library": "sigma.js",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-sigma-pick.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true,
+      "interaction": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 119.8
+    },
+    "screenshot": "features/assets/pick-tooltip-sigma.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Native enterNode / leaveNode / clickNode events.",
+    "docs": "https://www.sigmajs.org/docs/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "pick-tooltip",
+    "featureLabel": "Pick / hover tooltip",
+    "category": "interact",
+    "library": "three.js",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-three-pick.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true,
+      "interaction": true
+    },
+    "scale": {
+      "atPoints": 30,
+      "fps": 120
+    },
+    "screenshot": "features/assets/pick-tooltip-three.png",
+    "dataset": "synthetic_points_30",
+    "notes": "No built-in picking — a THREE.Raycaster on mousemove intersects the points.",
+    "docs": "https://threejs.org/docs/#api/en/core/Raycaster",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "points",
+    "featureLabel": "Points / scatter",
+    "category": "encode",
+    "library": "three.js",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-three-points.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 3000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/points-three.png",
+    "dataset": "synthetic_points_3000",
+    "notes": "THREE.Points over a BufferGeometry — GPU point sprites.",
+    "docs": "https://threejs.org/docs/#api/en/objects/Points",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "points",
+    "featureLabel": "Points / scatter",
+    "category": "encode",
+    "library": "sigma.js",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-sigma-points.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/points-sigma.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Nodes are the base primitive; edges hidden here for a pure scatter.",
+    "docs": "https://www.sigmajs.org/docs/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "points",
+    "featureLabel": "Points / scatter",
+    "category": "encode",
+    "library": "deck.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-deck-points.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 2000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/points-deck.png",
+    "dataset": "synthetic_points_2000",
+    "notes": "ScatterplotLayer — the base GPU point primitive.",
+    "docs": "https://deck.gl/docs/api-reference/layers/scatterplot-layer",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "lines",
+    "featureLabel": "Lines / edges",
+    "category": "encode",
+    "library": "sigma.js",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-sigma-lines.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/lines-sigma.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Default edge program draws links with per-edge width and colour.",
+    "docs": "https://www.sigmajs.org/docs/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "lines",
+    "featureLabel": "Lines / edges",
+    "category": "encode",
+    "library": "deck.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-deck-lines.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/lines-deck.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "LineLayer — straight GPU segments between node positions.",
+    "docs": "https://deck.gl/docs/api-reference/layers/line-layer",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "labels",
+    "featureLabel": "Labels",
+    "category": "annotate",
+    "library": "sigma.js",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-sigma-labels.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/labels-sigma.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Built-in node labels; the LOD threshold is lowered so every node labels.",
+    "docs": "https://www.sigmajs.org/docs/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "labels",
+    "featureLabel": "Labels",
+    "category": "annotate",
+    "library": "deck.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-deck-labels.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/labels-deck.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "TextLayer — per-node SDF text above each node.",
+    "docs": "https://deck.gl/docs/api-reference/layers/text-layer",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "node-images",
+    "featureLabel": "Node images / borders",
+    "category": "annotate",
+    "library": "deck.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-deck-nodeimage.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/node-images-deck.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "IconLayer — per-node procedural icon (synthetic canvas data-URIs, never real avatars).",
+    "docs": "https://deck.gl/docs/api-reference/layers/icon-layer",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "curved-edges",
+    "featureLabel": "Curved edges",
+    "category": "structure",
+    "library": "deck.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-deck-curvededges.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/curved-edges-deck.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "PathLayer fed quadratic-bezier paths — native 2D curved links (ArcLayer is the 3D-arc alternative).",
+    "docs": "https://deck.gl/docs/api-reference/layers/path-layer",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "points",
+    "featureLabel": "Points / scatter",
+    "category": "encode",
+    "library": "cosmos.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-cosmos-points.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 2000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/points-cosmos.png",
+    "dataset": "synthetic_points_2000",
+    "notes": "GPU point rendering — setPointPositions / setPointColors / setPointSizes.",
+    "docs": "https://github.com/cosmosgl/graph",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "lines",
+    "featureLabel": "Lines / edges",
+    "category": "encode",
+    "library": "cosmos.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-cosmos-lines.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 119.8
+    },
+    "screenshot": "features/assets/lines-cosmos.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "GPU link rendering — setLinks (index pairs).",
+    "docs": "https://github.com/cosmosgl/graph",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "curved-edges",
+    "featureLabel": "Curved edges",
+    "category": "structure",
+    "library": "cosmos.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-cosmos-curvededges.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 119.8
+    },
+    "screenshot": "features/assets/curved-edges-cosmos.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Curved links via the curvedLinks config (GPU-tessellated).",
+    "docs": "https://github.com/cosmosgl/graph",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "pick-tooltip",
+    "featureLabel": "Pick / hover tooltip",
+    "category": "interact",
+    "library": "cosmos.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-cosmos-pick.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true,
+      "interaction": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/pick-tooltip-cosmos.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Native onPointMouseOver / onPointMouseOut hover callbacks.",
+    "docs": "https://github.com/cosmosgl/graph",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "labels",
+    "featureLabel": "Labels",
+    "category": "annotate",
+    "library": "cosmos.gl",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-cosmos-labels.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/labels-cosmos.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "No native text — labels are an HTML overlay via trackPointPositionsByIndices + spaceToScreenPosition (the pattern the Cosmograph wrapper packages as its labels feature).",
+    "docs": "https://github.com/cosmosgl/graph",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "points",
+    "featureLabel": "Points / scatter",
+    "category": "encode",
+    "library": "helios-web",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-helios-points.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 2000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/points-helios.png",
+    "dataset": "synthetic_points_2000",
+    "notes": "Typed-array WebGL node rendering.",
+    "docs": "https://filipinascimento.github.io/helios-web/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "lines",
+    "featureLabel": "Lines / edges",
+    "category": "encode",
+    "library": "helios-web",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-helios-lines.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 119.8
+    },
+    "screenshot": "features/assets/lines-helios.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "WebGL edge rendering.",
+    "docs": "https://filipinascimento.github.io/helios-web/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "pick-tooltip",
+    "featureLabel": "Pick / hover tooltip",
+    "category": "interact",
+    "library": "helios-web",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-helios-pick.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true,
+      "interaction": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120.2
+    },
+    "screenshot": "features/assets/pick-tooltip-helios.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Native onNodeHoverStart / onNodeHoverEnd callbacks; hover target located via Helios pickPoint.",
+    "docs": "https://filipinascimento.github.io/helios-web/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "labels",
+    "featureLabel": "Labels",
+    "category": "annotate",
+    "library": "helios-web",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-helios-labels.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/labels-helios.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Native label tracking — trackAttribute runs a GPU pass that selects nodes to label and returns each one’s on-screen centroid; the onTrack callback places the label DOM.",
+    "docs": "https://filipinascimento.github.io/helios-web/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "density-map",
+    "featureLabel": "Density map / heatmap",
+    "category": "aggregate",
+    "library": "helios-web",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-helios-density.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 4000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/density-map-helios.png",
+    "dataset": "synthetic_points_4000",
+    "notes": "Native density plot — the config.density option runs a DensityGL kernel-density-estimation pass (GPU screen-space aggregation into a smooth field). Corrects the earlier survey that wrongly recorded this as unsupported.",
+    "docs": "https://filipinascimento.github.io/helios-web/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "node-images",
+    "featureLabel": "Node images / borders",
+    "category": "annotate",
+    "library": "cosmos.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-cosmos-nodeimage.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/node-images-cosmos.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Native per-node images — setImageData(ImageData[]) + setPointImageIndices() + setPointImageSizes() (images render above point shapes). Corrects the earlier survey that wrongly recorded this as unsupported. Icons are procedural, never real avatars.",
+    "docs": "https://github.com/cosmosgl/graph",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "curved-edges",
+    "featureLabel": "Curved edges",
+    "category": "structure",
+    "library": "three.js",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-three-curvededges.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 60,
+      "fps": 120
+    },
+    "screenshot": "features/assets/curved-edges-three.png",
+    "dataset": "synthetic_points_60",
+    "notes": "No graph model, but three draws curves — a THREE.QuadraticBezierCurve3 per edge sampled to a Line (TubeGeometry for width). Corrects the earlier survey that wrongly recorded this as not applicable.",
+    "docs": "https://threejs.org/docs/#api/en/extras/curves/QuadraticBezierCurve3",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "density-map",
+    "featureLabel": "Density map / heatmap",
+    "category": "aggregate",
+    "library": "cosmos.gl",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-cosmos-density.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 2500,
+      "fps": 120.4
+    },
+    "screenshot": "features/assets/density-map-cosmos.png",
+    "dataset": "synthetic_points_2500",
+    "notes": "No native density primitive — computes each point’s local density (neighbours in a radius) and colour-encodes it via setPointColors (blue→red), the same approximation three.js uses.",
+    "docs": "https://github.com/cosmosgl/graph",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "density-map",
+    "featureLabel": "Density map / heatmap",
+    "category": "aggregate",
+    "library": "sigma.js",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-sigma-density.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 2000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/density-map-sigma.png",
+    "dataset": "synthetic_points_2000",
+    "notes": "No native density primitive — renders a dense node cloud and colour-encodes each node’s local density (neighbours in a radius) on a blue→red ramp, the same approximation three.js uses.",
+    "docs": "https://www.sigmajs.org/docs/",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "layout",
+    "featureLabel": "Layout / force simulation",
+    "category": "compute",
+    "library": "cosmos.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-cosmos-layout.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/layout-cosmos.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "GPU force simulation (enableSimulation) — scatters the graph to a random start, lets the GPU sim organise it, then freezes the computed layout. Throughput is in the Layout-compute benchmark on the Graph page.",
+    "docs": "https://github.com/cosmosgl/graph",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "layout",
+    "featureLabel": "Layout / force simulation",
+    "category": "compute",
+    "library": "sigma.js",
+    "support": "workaround",
+    "evidence": "verified",
+    "example": "cap-sigma-layout.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "nodes": 54,
+      "edges": 86,
+      "fps": 120
+    },
+    "screenshot": "features/assets/layout-sigma.png",
+    "dataset": "synthetic_graph_54",
+    "notes": "Sigma renders but has no layout of its own — positions come from the graphology-layout-forceatlas2 CPU companion (a fresh force-atlas layout computed from a random start).",
+    "docs": "https://graphology.github.io/standard-library/layout-forceatlas2.html",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "3d",
+    "featureLabel": "3D rendering",
+    "category": "encode",
+    "library": "three.js",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-three-3d.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 3000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/3d-three.png",
+    "dataset": "synthetic_points_3000",
+    "notes": "A 3D engine outright — perspective camera, OrbitControls, depth-sorted scene; size-attenuated point sprites.",
+    "docs": "https://threejs.org/docs/#api/en/cameras/PerspectiveCamera",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "3d",
+    "featureLabel": "3D rendering",
+    "category": "encode",
+    "library": "deck.gl",
+    "support": "native",
+    "evidence": "verified",
+    "example": "cap-deck-3d.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 3000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/3d-deck.png",
+    "dataset": "synthetic_points_3000",
+    "notes": "OrbitView + PointCloudLayer — deck's native 3D camera over binary typed-array attributes (the same pattern as the 3D benchmark).",
+    "docs": "https://deck.gl/docs/api-reference/core/orbit-view",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  },
+  {
+    "schemaVersion": "capability/1",
+    "feature": "3d",
+    "featureLabel": "3D rendering",
+    "category": "encode",
+    "library": "cosmos.gl",
+    "support": "plugin",
+    "evidence": "verified",
+    "example": "cap-cosmos-3d.html",
+    "verified": {
+      "renders": true,
+      "gpu": true,
+      "presentation": true
+    },
+    "scale": {
+      "atPoints": 3000,
+      "fps": 120
+    },
+    "screenshot": "features/assets/3d-cosmos.png",
+    "dataset": "synthetic_points_3000",
+    "notes": "Via the author's experimental 3D fork @cosmograph/cosmos (spaceDimensions: 3 — perspective orbit camera, sphere-shaded points), not in mainline @cosmos.gl/graph. Benchmarked on the 3D / manifold page.",
+    "docs": "https://www.npmjs.com/package/@cosmograph/cosmos",
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "provenance": {
+      "timestamp": "2026-08-12T19:32:51.162Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    },
+    "ok": true,
+    "gateFailures": []
+  }
+]

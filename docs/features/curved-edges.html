@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curved edges</title>
+<link rel="stylesheet" href="../assets/report.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Curved edges</h1>
+  <div class="sub">Structure · part of the <a href="../features.html">feature / capability registry</a>.</div>
+  <nav class="nav"><a href="../index.html">Overview</a><a href="../graph.html">Graph</a><a href="../manifold.html">3D / manifold</a><a href="../features.html" aria-current="page">Features</a></nav>
+</header>
+
+<p class="lead">Arced edges to separate parallel or bidirectional links. A Sigma plugin (@sigma/edge-curve); native in cosmos.gl and deck.gl (ArcLayer).</p>
+<figure class="chart" id="deck"><figcaption>Verified example — deck.gl · synthetic data</figcaption><img class="cap-shot" src="assets/curved-edges-deck.png" alt="Curved edges — deck.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<figure class="chart" id="sigma"><figcaption>Verified example — Sigma.js · plugin · synthetic data</figcaption><img class="cap-shot" src="assets/curved-edges-sigma.png" alt="Curved edges — sigma.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<figure class="chart" id="cosmos"><figcaption>Verified example — cosmos.gl · synthetic data</figcaption><img class="cap-shot" src="assets/curved-edges-cosmos.png" alt="Curved edges — cosmos.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<figure class="chart" id="three"><figcaption>Verified example — three.js · workaround · synthetic data</figcaption><img class="cap-shot" src="assets/curved-edges-three.png" alt="Curved edges — three.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 60 points.</p></figure>
+<h3>Support by library</h3>
+<table class="capdetail"><thead><tr><th>Library</th><th>Support</th><th>Notes</th></tr></thead><tbody>
+    <tr><td>deck.gl</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">PathLayer fed quadratic-bezier paths — native 2D curved links (ArcLayer is the 3D-arc alternative).</td></tr>
+    <tr><td>Sigma.js</td><td class="cap-verified">◑ plugin · verified</td><td class="cap-word">Curved edge rendering via @sigma/edge-curve (EdgeCurveProgram).</td></tr>
+    <tr><td>cosmos.gl</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">Curved links via the curvedLinks config (GPU-tessellated).</td></tr>
+    <tr><td>three.js</td><td class="cap-verified">◑ workaround · verified</td><td class="cap-word">No graph model, but three draws curves — a THREE.QuadraticBezierCurve3 per edge sampled to a Line (TubeGeometry for width). Corrects the earlier survey that wrongly recorded this as not applicable.</td></tr>
+    <tr><td>Helios-Web</td><td class="cap-none">— none</td><td class="cap-word">Straight edges only (source-audited: no curve / bezier / bundling option in the edge renderer).</td></tr>
+  </tbody></table>
+
+
+<footer>Procedurally generated from gate-verified benchmark data — rebuild with the bench-core report build. Aggregate figures only; raw data and provenance are never published.</footer>
+</div>
+<script type="application/json" id="bench-charts">[]</script>
+<script src="../assets/chart.umd.js"></script>
+<script src="../assets/report-client.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+[
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "datoviz",
+    "engine": {
+      "library": "datoviz",
+      "version": "0.3.5"
+    },
+    "dataset": {
+      "name": "swiss_roll_100000",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "expectedLoaded": {
+        "points": 100000
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 100000
+    },
+    "coverage": {
+      "engine": {
+        "points": 100000
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "arcball",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "frames": 300,
+      "windowed": true,
+      "headed": true,
+      "refreshHz": 120.0
+    },
+    "metrics": {
+      "fps": 156.3,
+      "frames": 300,
+      "p50ms": 5.0,
+      "p95ms": 17.7
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "windowed-vsync",
+      "presented": true
+    },
+    "gpu": {
+      "renderer": "Datoviz/Vulkan via MoltenVK on Metal",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
+      "coverage": "pass: points 100000/100000",
+      "presentation": "pass: windowed 156.3 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "cameraState": "pass: state=overview supports=overview",
+      "inputHonesty": "pass: driver=arcball"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:36:42.888332+00:00",
+      "gitCommit": "c4b7186",
+      "machine": "Apple M5 Pro",
+      "os": "darwin 25.5.0",
+      "python": "3.13.12",
+      "harness": "@viz-bench/bench-core/1-py"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "datoviz",
+    "engine": {
+      "library": "datoviz",
+      "version": "0.3.5"
+    },
+    "dataset": {
+      "name": "swiss_roll_1000000",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "expectedLoaded": {
+        "points": 1000000
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 1000000
+    },
+    "coverage": {
+      "engine": {
+        "points": 1000000
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "arcball",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "frames": 300,
+      "windowed": true,
+      "headed": true,
+      "refreshHz": 120.0
+    },
+    "metrics": {
+      "fps": 154.8,
+      "frames": 300,
+      "p50ms": 4.9,
+      "p95ms": 17.6
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "windowed-vsync",
+      "presented": true
+    },
+    "gpu": {
+      "renderer": "Datoviz/Vulkan via MoltenVK on Metal",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
+      "coverage": "pass: points 1000000/1000000",
+      "presentation": "pass: windowed 154.8 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "cameraState": "pass: state=overview supports=overview",
+      "inputHonesty": "pass: driver=arcball"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:36:45.648344+00:00",
+      "gitCommit": "c4b7186",
+      "machine": "Apple M5 Pro",
+      "os": "darwin 25.5.0",
+      "python": "3.13.12",
+      "harness": "@viz-bench/bench-core/1-py"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "datoviz",
+    "engine": {
+      "library": "datoviz",
+      "version": "0.3.5"
+    },
+    "dataset": {
+      "name": "arxiv_umap3",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "expectedLoaded": {
+        "points": 169343
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 169343
+    },
+    "coverage": {
+      "engine": {
+        "points": 169343
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "arcball",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "frames": 300,
+      "windowed": true,
+      "headed": true,
+      "refreshHz": 120.0
+    },
+    "metrics": {
+      "fps": 159.2,
+      "frames": 300,
+      "p50ms": 4.9,
+      "p95ms": 17.9
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "windowed-vsync",
+      "presented": true
+    },
+    "gpu": {
+      "renderer": "Datoviz/Vulkan via MoltenVK on Metal",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
+      "coverage": "pass: points 169343/169343",
+      "presentation": "pass: windowed 159.2 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "cameraState": "pass: state=overview supports=overview",
+      "inputHonesty": "pass: driver=arcball"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:36:47.825053+00:00",
+      "gitCommit": "c4b7186",
+      "machine": "Apple M5 Pro",
+      "os": "darwin 25.5.0",
+      "python": "3.13.12",
+      "harness": "@viz-bench/bench-core/1-py"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "datoviz",
+    "engine": {
+      "library": "datoviz",
+      "version": "0.3.5"
+    },
+    "dataset": {
+      "name": "swiss_roll_10000000",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "expectedLoaded": {
+        "points": 10000000
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 10000000
+    },
+    "coverage": {
+      "engine": {
+        "points": 10000000
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "arcball",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "frames": 300,
+      "windowed": true,
+      "headed": true,
+      "refreshHz": 120.0
+    },
+    "metrics": {
+      "fps": 21.8,
+      "frames": 300,
+      "p50ms": 45.1,
+      "p95ms": 59.1
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "windowed-vsync",
+      "presented": true
+    },
+    "gpu": {
+      "renderer": "Datoviz/Vulkan via MoltenVK on Metal",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
+      "coverage": "pass: points 10000000/10000000",
+      "presentation": "pass: windowed 21.8 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "cameraState": "pass: state=overview supports=overview",
+      "inputHonesty": "pass: driver=arcball"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:36:50.102747+00:00",
+      "gitCommit": "c4b7186",
+      "machine": "Apple M5 Pro",
+      "os": "darwin 25.5.0",
+      "python": "3.13.12",
+      "harness": "@viz-bench/bench-core/1-py"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "datoviz",
+    "engine": {
+      "library": "datoviz",
+      "version": "0.3.5"
+    },
+    "dataset": {
+      "name": "swiss_roll_20000000",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "expectedLoaded": {
+        "points": 20000000
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 20000000
+    },
+    "coverage": {
+      "engine": {
+        "points": 20000000
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "arcball",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "frames": 300,
+      "windowed": true,
+      "headed": true,
+      "refreshHz": 120.0
+    },
+    "metrics": {
+      "fps": 9.8,
+      "frames": 300,
+      "p50ms": 101.6,
+      "p95ms": 127.2
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "windowed-vsync",
+      "presented": true
+    },
+    "gpu": {
+      "renderer": "Datoviz/Vulkan via MoltenVK on Metal",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
+      "coverage": "pass: points 20000000/20000000",
+      "presentation": "pass: windowed 9.8 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "cameraState": "pass: state=overview supports=overview",
+      "inputHonesty": "pass: driver=arcball"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:37:04.586968+00:00",
+      "gitCommit": "c4b7186",
+      "machine": "Apple M5 Pro",
+      "os": "darwin 25.5.0",
+      "python": "3.13.12",
+      "harness": "@viz-bench/bench-core/1-py"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "datoviz",
+    "engine": {
+      "library": "datoviz",
+      "version": "0.3.5"
+    },
+    "dataset": {
+      "name": "swiss_roll_50000000",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "expectedLoaded": {
+        "points": 50000000
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 50000000
+    },
+    "coverage": {
+      "engine": {
+        "points": 50000000
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "arcball",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "frames": 300,
+      "windowed": true,
+      "headed": true,
+      "refreshHz": 120.0
+    },
+    "metrics": {
+      "fps": 5.2,
+      "frames": 300,
+      "p50ms": 192.9,
+      "p95ms": 200.9
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "windowed-vsync",
+      "presented": true
+    },
+    "gpu": {
+      "renderer": "Datoviz/Vulkan via MoltenVK on Metal",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
+      "coverage": "pass: points 50000000/50000000",
+      "presentation": "pass: windowed 5.2 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "cameraState": "pass: state=overview supports=overview",
+      "inputHonesty": "pass: driver=arcball"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:37:36.566754+00:00",
+      "gitCommit": "c4b7186",
+      "machine": "Apple M5 Pro",
+      "os": "darwin 25.5.0",
+      "python": "3.13.12",
+      "harness": "@viz-bench/bench-core/1-py"
+    }
+  }
+]

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Points / scatter</title>
+<link rel="stylesheet" href="../assets/report.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Points / scatter</h1>
+  <div class="sub">Encode · part of the <a href="../features.html">feature / capability registry</a>.</div>
+  <nav class="nav"><a href="../index.html">Overview</a><a href="../graph.html">Graph</a><a href="../manifold.html">3D / manifold</a><a href="../features.html" aria-current="page">Features</a></nav>
+</header>
+
+<p class="lead">The base primitive — every benchmarked renderer draws points / nodes on the GPU. This is the row the whole speed benchmark stands on.</p>
+<figure class="chart" id="deck"><figcaption>Verified example — deck.gl · synthetic data</figcaption><img class="cap-shot" src="assets/points-deck.png" alt="Points / scatter — deck.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 2,000 points.</p></figure>
+<figure class="chart" id="sigma"><figcaption>Verified example — Sigma.js · synthetic data</figcaption><img class="cap-shot" src="assets/points-sigma.png" alt="Points / scatter — sigma.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<figure class="chart" id="cosmos"><figcaption>Verified example — cosmos.gl · synthetic data</figcaption><img class="cap-shot" src="assets/points-cosmos.png" alt="Points / scatter — cosmos.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 2,000 points.</p></figure>
+<figure class="chart" id="three"><figcaption>Verified example — three.js · synthetic data</figcaption><img class="cap-shot" src="assets/points-three.png" alt="Points / scatter — three.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 3,000 points.</p></figure>
+<figure class="chart" id="helios"><figcaption>Verified example — Helios-Web · synthetic data</figcaption><img class="cap-shot" src="assets/points-helios.png" alt="Points / scatter — helios-web" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 2,000 points.</p></figure>
+<h3>Support by library</h3>
+<table class="capdetail"><thead><tr><th>Library</th><th>Support</th><th>Notes</th></tr></thead><tbody>
+    <tr><td>deck.gl</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">ScatterplotLayer — the base GPU point primitive.</td></tr>
+    <tr><td>Sigma.js</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">Nodes are the base primitive; edges hidden here for a pure scatter.</td></tr>
+    <tr><td>cosmos.gl</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">GPU point rendering — setPointPositions / setPointColors / setPointSizes.</td></tr>
+    <tr><td>three.js</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">THREE.Points over a BufferGeometry — GPU point sprites.</td></tr>
+    <tr><td>Helios-Web</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">Typed-array WebGL node rendering.</td></tr>
+  </tbody></table>
+
+
+<footer>Procedurally generated from gate-verified benchmark data — rebuild with the bench-core report build. Aggregate figures only; raw data and provenance are never published.</footer>
+</div>
+<script type="application/json" id="bench-charts">[]</script>
+<script src="../assets/chart.umd.js"></script>
+<script src="../assets/report-client.js" defer></script>
+</body>
+</html>

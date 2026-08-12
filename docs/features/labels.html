@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Labels</title>
+<link rel="stylesheet" href="../assets/report.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Labels</h1>
+  <div class="sub">Annotate · part of the <a href="../features.html">feature / capability registry</a>.</div>
+  <nav class="nav"><a href="../index.html">Overview</a><a href="../graph.html">Graph</a><a href="../manifold.html">3D / manifold</a><a href="../features.html" aria-current="page">Features</a></nav>
+</header>
+
+<p class="lead">Text on nodes / points, usually with a level-of-detail threshold so labels don’t overwhelm the overview.</p>
+<figure class="chart" id="deck"><figcaption>Verified example — deck.gl · synthetic data</figcaption><img class="cap-shot" src="assets/labels-deck.png" alt="Labels — deck.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<figure class="chart" id="sigma"><figcaption>Verified example — Sigma.js · synthetic data</figcaption><img class="cap-shot" src="assets/labels-sigma.png" alt="Labels — sigma.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<figure class="chart" id="cosmos"><figcaption>Verified example — cosmos.gl · workaround · synthetic data</figcaption><img class="cap-shot" src="assets/labels-cosmos.png" alt="Labels — cosmos.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<figure class="chart" id="three"><figcaption>Verified example — three.js · workaround · synthetic data</figcaption><img class="cap-shot" src="assets/labels-three.png" alt="Labels — three.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 20 points.</p></figure>
+<figure class="chart" id="helios"><figcaption>Verified example — Helios-Web · synthetic data</figcaption><img class="cap-shot" src="assets/labels-helios.png" alt="Labels — helios-web" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<h3>Support by library</h3>
+<table class="capdetail"><thead><tr><th>Library</th><th>Support</th><th>Notes</th></tr></thead><tbody>
+    <tr><td>deck.gl</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">TextLayer — per-node SDF text above each node.</td></tr>
+    <tr><td>Sigma.js</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">Built-in node labels; the LOD threshold is lowered so every node labels.</td></tr>
+    <tr><td>cosmos.gl</td><td class="cap-verified">◑ workaround · verified</td><td class="cap-word">No native text — labels are an HTML overlay via trackPointPositionsByIndices + spaceToScreenPosition (the pattern the Cosmograph wrapper packages as its labels feature).</td></tr>
+    <tr><td>three.js</td><td class="cap-verified">◑ workaround · verified</td><td class="cap-word">Text via THREE.Sprite (CanvasTexture); CSS2DRenderer is the other add-on.</td></tr>
+    <tr><td>Helios-Web</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">Native label tracking — trackAttribute runs a GPU pass that selects nodes to label and returns each one’s on-screen centroid; the onTrack callback places the label DOM.</td></tr>
+  </tbody></table>
+
+
+<footer>Procedurally generated from gate-verified benchmark data — rebuild with the bench-core report build. Aggregate figures only; raw data and provenance are never published.</footer>
+</div>
+<script type="application/json" id="bench-charts">[]</script>
+<script src="../assets/chart.umd.js"></script>
+<script src="../assets/report-client.js" defer></script>
+</body>
+</html>

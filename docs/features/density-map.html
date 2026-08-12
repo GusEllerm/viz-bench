@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Density map / heatmap</title>
+<link rel="stylesheet" href="../assets/report.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Density map / heatmap</h1>
+  <div class="sub">Aggregate / derive · part of the <a href="../features.html">feature / capability registry</a>.</div>
+  <nav class="nav"><a href="../index.html">Overview</a><a href="../graph.html">Graph</a><a href="../manifold.html">3D / manifold</a><a href="../features.html" aria-current="page">Features</a></nav>
+</header>
+
+<p class="lead">Screen-space aggregation of many points into a smooth density field — the “where is it dense” view. GPU-aggregated in deck.gl (HeatmapLayer); other renderers need a custom shader or don’t offer it.</p>
+<figure class="chart" id="deck"><figcaption>Verified example — deck.gl · synthetic data</figcaption><img class="cap-shot" src="assets/density-map-deck.png" alt="Density map / heatmap — deck.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 100,000 points.</p></figure>
+<figure class="chart" id="sigma"><figcaption>Verified example — Sigma.js · workaround · synthetic data</figcaption><img class="cap-shot" src="assets/density-map-sigma.png" alt="Density map / heatmap — sigma.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 2,000 points.</p></figure>
+<figure class="chart" id="cosmos"><figcaption>Verified example — cosmos.gl · workaround · synthetic data</figcaption><img class="cap-shot" src="assets/density-map-cosmos.png" alt="Density map / heatmap — cosmos.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 2,500 points.</p></figure>
+<figure class="chart" id="three"><figcaption>Verified example — three.js · workaround · synthetic data</figcaption><img class="cap-shot" src="assets/density-map-three.png" alt="Density map / heatmap — three.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 4,000 points.</p></figure>
+<figure class="chart" id="helios"><figcaption>Verified example — Helios-Web · synthetic data</figcaption><img class="cap-shot" src="assets/density-map-helios.png" alt="Density map / heatmap — helios-web" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 4,000 points.</p></figure>
+<h3>Support by library</h3>
+<table class="capdetail"><thead><tr><th>Library</th><th>Support</th><th>Notes</th></tr></thead><tbody>
+    <tr><td>deck.gl</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">GPU screen-space aggregation (HeatmapLayer, @deck.gl/aggregation-layers).</td></tr>
+    <tr><td>Sigma.js</td><td class="cap-verified">◑ workaround · verified</td><td class="cap-word">No native density primitive — renders a dense node cloud and colour-encodes each node’s local density (neighbours in a radius) on a blue→red ramp, the same approximation three.js uses.</td></tr>
+    <tr><td>cosmos.gl</td><td class="cap-verified">◑ workaround · verified</td><td class="cap-word">No native density primitive — computes each point’s local density (neighbours in a radius) and colour-encodes it via setPointColors (blue→red), the same approximation three.js uses.</td></tr>
+    <tr><td>three.js</td><td class="cap-verified">◑ workaround · verified</td><td class="cap-word">No built-in aggregation — computes local point density (neighbours in radius) and colour-encodes it (blue→red).</td></tr>
+    <tr><td>Helios-Web</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">Native density plot — the config.density option runs a DensityGL kernel-density-estimation pass (GPU screen-space aggregation into a smooth field). Corrects the earlier survey that wrongly recorded this as unsupported.</td></tr>
+  </tbody></table>
+<p class="fine">Reference: <a href="https://deck.gl/docs/api-reference/aggregation-layers/heatmap-layer" rel="noopener">https://deck.gl/docs/api-reference/aggregation-layers/heatmap-layer</a></p>
+
+<footer>Procedurally generated from gate-verified benchmark data — rebuild with the bench-core report build. Aggregate figures only; raw data and provenance are never published.</footer>
+</div>
+<script type="application/json" id="bench-charts">[]</script>
+<script src="../assets/chart.umd.js"></script>
+<script src="../assets/report-client.js" defer></script>
+</body>
+</html>

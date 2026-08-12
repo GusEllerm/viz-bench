@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D rendering</title>
+<link rel="stylesheet" href="../assets/report.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>3D rendering</h1>
+  <div class="sub">Encode · part of the <a href="../features.html">feature / capability registry</a>.</div>
+  <nav class="nav"><a href="../index.html">Overview</a><a href="../graph.html">Graph</a><a href="../manifold.html">3D / manifold</a><a href="../features.html" aria-current="page">Features</a></nav>
+</header>
+
+<p class="lead">A true 3D scene — perspective camera, orbit interaction, depth. Native in three.js and deck.gl (OrbitView) and in Helios (2D is its default mode); Sigma is 2D by design. The cosmos.gl engine gains 3D in the author’s experimental @cosmograph/cosmos fork, measured on the 3D / manifold page.</p>
+<figure class="chart" id="deck"><figcaption>Verified example — deck.gl · synthetic data</figcaption><img class="cap-shot" src="assets/3d-deck.png" alt="3D rendering — deck.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 3,000 points.</p></figure>
+<figure class="chart" id="cosmos"><figcaption>Verified example — cosmos.gl · plugin · synthetic data</figcaption><img class="cap-shot" src="assets/3d-cosmos.png" alt="3D rendering — cosmos.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 3,000 points.</p></figure>
+<figure class="chart" id="three"><figcaption>Verified example — three.js · synthetic data</figcaption><img class="cap-shot" src="assets/3d-three.png" alt="3D rendering — three.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 3,000 points.</p></figure>
+<h3>Support by library</h3>
+<table class="capdetail"><thead><tr><th>Library</th><th>Support</th><th>Notes</th></tr></thead><tbody>
+    <tr><td>deck.gl</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">OrbitView + PointCloudLayer — deck's native 3D camera over binary typed-array attributes (the same pattern as the 3D benchmark).</td></tr>
+    <tr><td>Sigma.js</td><td class="cap-none">— none</td><td class="cap-word">2D by design — the camera is a 2D pan/zoom transform over an x/y graph; no perspective or z axis.</td></tr>
+    <tr><td>cosmos.gl</td><td class="cap-verified">◑ plugin · verified</td><td class="cap-word">Via the author's experimental 3D fork @cosmograph/cosmos (spaceDimensions: 3 — perspective orbit camera, sphere-shaded points), not in mainline @cosmos.gl/graph. Benchmarked on the 3D / manifold page.</td></tr>
+    <tr><td>three.js</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">A 3D engine outright — perspective camera, OrbitControls, depth-sorted scene; size-attenuated point sprites.</td></tr>
+    <tr><td>Helios-Web</td><td class="cap-surveyed">✓ native</td><td class="cap-word">Renders 3D natively (use2D: false; xyz node positions and a 3D camera). The 2D mode used in the graph benchmark is the same engine flattened.</td></tr>
+  </tbody></table>
+
+
+<footer>Procedurally generated from gate-verified benchmark data — rebuild with the bench-core report build. Aggregate figures only; raw data and provenance are never published.</footer>
+</div>
+<script type="application/json" id="bench-charts">[]</script>
+<script src="../assets/chart.umd.js"></script>
+<script src="../assets/report-client.js" defer></script>
+</body>
+</html>

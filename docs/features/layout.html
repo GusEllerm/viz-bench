@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout / force simulation</title>
+<link rel="stylesheet" href="../assets/report.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Layout / force simulation</h1>
+  <div class="sub">Compute / layout · part of the <a href="../features.html">feature / capability registry</a>.</div>
+  <nav class="nav"><a href="../index.html">Overview</a><a href="../graph.html">Graph</a><a href="../manifold.html">3D / manifold</a><a href="../features.html" aria-current="page">Features</a></nav>
+</header>
+
+<p class="lead">Compute node positions from graph structure (force-directed simulation) — the step before anything can be rendered. cosmos.gl runs the simulation on the GPU; Helios has a native force layout; Sigma uses the graphology-layout CPU companion; deck.gl and three.js expect positions you bring. Throughput is measured in the Layout-compute benchmark on the Graph page (GPU simulation vs CPU force-atlas).</p>
+<figure class="chart" id="sigma"><figcaption>Verified example — Sigma.js · workaround · synthetic data</figcaption><img class="cap-shot" src="assets/layout-sigma.png" alt="Layout / force simulation — sigma.js" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<figure class="chart" id="cosmos"><figcaption>Verified example — cosmos.gl · synthetic data</figcaption><img class="cap-shot" src="assets/layout-cosmos.png" alt="Layout / force simulation — cosmos.gl" loading="lazy"><p class="fine">Rendered on the real GPU and gate-verified — it draws, and the pixels change when the camera moves (not a frozen frame). Held <b>120 fps</b> at 54 nodes / 86 edges.</p></figure>
+<h3>Support by library</h3>
+<table class="capdetail"><thead><tr><th>Library</th><th>Support</th><th>Notes</th></tr></thead><tbody>
+    <tr><td>deck.gl</td><td class="cap-none">— none</td><td class="cap-word">A rendering layer — expects node positions computed elsewhere. No graph layout.</td></tr>
+    <tr><td>Sigma.js</td><td class="cap-verified">◑ workaround · verified</td><td class="cap-word">Sigma renders but has no layout of its own — positions come from the graphology-layout-forceatlas2 CPU companion (a fresh force-atlas layout computed from a random start).</td></tr>
+    <tr><td>cosmos.gl</td><td class="cap-verified">✓ native · verified</td><td class="cap-word">GPU force simulation (enableSimulation) — scatters the graph to a random start, lets the GPU sim organise it, then freezes the computed layout. Throughput is in the Layout-compute benchmark on the Graph page.</td></tr>
+    <tr><td>three.js</td><td class="cap-none">— none</td><td class="cap-word">A general 3D engine — no graph layout; external libraries (d3-force, 3d-force-graph) supply positions.</td></tr>
+    <tr><td>Helios-Web</td><td class="cap-surveyed">✓ native</td><td class="cap-word">Native force-directed layout (autoStartLayout). Measured interactive to ~100K nodes (~26 iters/sec); did not sustain live layout past ~100K in this test.</td></tr>
+  </tbody></table>
+<p class="fine">Reference: <a href="https://cosmograph.app/" rel="noopener">https://cosmograph.app/</a></p>
+
+<footer>Procedurally generated from gate-verified benchmark data — rebuild with the bench-core report build. Aggregate figures only; raw data and provenance are never published.</footer>
+</div>
+<script type="application/json" id="bench-charts">[]</script>
+<script src="../assets/chart.umd.js"></script>
+<script src="../assets/report-client.js" defer></script>
+</body>
+</html>

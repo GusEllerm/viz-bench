@@ -1,0 +1,2270 @@
+[
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "sigmapre",
+    "engine": {
+      "library": "sigma"
+    },
+    "dataset": {
+      "name": "arxiv_2015",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:8de6888b6b87503a",
+      "expectedRaw": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "expectedLoaded": {
+        "nodes": 53160,
+        "edges": 148458
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 53160,
+      "edges": 148458
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "edgePolicy": "graphology",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 120,
+      "frames": 601,
+      "p50ms": 8.3,
+      "p95ms": 9.2,
+      "memMB": 99,
+      "fpsCont": 120,
+      "p95Cont": 8.6
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8098 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 53160/53160, edges 148458 ≥ 141035 (95% of 148458)",
+      "presentation": "pass: presented changedFraction=0.8098 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmographpre",
+    "engine": {
+      "library": "cosmograph"
+    },
+    "dataset": {
+      "name": "arxiv_2015",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:8de6888b6b87503a",
+      "expectedRaw": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "expectedLoaded": {
+        "nodes": 53160,
+        "edges": 148458
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 53160,
+      "edges": 148458
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 119.8,
+      "frames": 600,
+      "p50ms": 8.3,
+      "p95ms": 8.5,
+      "memMB": 138,
+      "fpsCont": 85.3,
+      "p95Cont": 25
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8706 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 53160/53160, edges 148458/148458",
+      "presentation": "pass: presented changedFraction=0.8706 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmographnoblend",
+    "engine": {
+      "library": "cosmograph"
+    },
+    "dataset": {
+      "name": "arxiv_2015",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:8de6888b6b87503a",
+      "expectedRaw": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "expectedLoaded": {
+        "nodes": 53160,
+        "edges": 148458
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 53160,
+      "edges": 148458
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 120,
+      "frames": 601,
+      "p50ms": 8.3,
+      "p95ms": 9,
+      "memMB": 129,
+      "fpsCont": 95,
+      "p95Cont": 16.7
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8353 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 53160/53160, edges 148458/148458",
+      "presentation": "pass: presented changedFraction=0.8353 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmosbare",
+    "engine": {
+      "library": "cosmos.gl"
+    },
+    "dataset": {
+      "name": "arxiv_2015",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:8de6888b6b87503a",
+      "expectedRaw": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "expectedLoaded": {
+        "nodes": 53160,
+        "edges": 148458
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 53160,
+      "edges": 148458
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 120,
+      "frames": 601,
+      "p50ms": 8.3,
+      "p95ms": 8.4,
+      "memMB": 45,
+      "fpsCont": 88.7,
+      "p95Cont": 25
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8313 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 53160/53160, edges 148458/148458",
+      "presentation": "pass: presented changedFraction=0.8313 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmosnoblend",
+    "engine": {
+      "library": "cosmos.gl"
+    },
+    "dataset": {
+      "name": "arxiv_2015",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:8de6888b6b87503a",
+      "expectedRaw": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "expectedLoaded": {
+        "nodes": 53160,
+        "edges": 148458
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 53160,
+      "edges": 148458
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 120,
+      "frames": 601,
+      "p50ms": 8.3,
+      "p95ms": 9.3,
+      "memMB": 43,
+      "fpsCont": 94.7,
+      "p95Cont": 16.7
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8417 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 53160/53160, edges 148458/148458",
+      "presentation": "pass: presented changedFraction=0.8417 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "deck",
+    "engine": {
+      "library": "deck.gl"
+    },
+    "dataset": {
+      "name": "arxiv_2015",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:8de6888b6b87503a",
+      "expectedRaw": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "expectedLoaded": {
+        "nodes": 53160,
+        "edges": 148458
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 53160,
+      "edges": 148458
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 120,
+      "frames": 601,
+      "p50ms": 8.3,
+      "p95ms": 9.3,
+      "memMB": 13,
+      "fpsCont": 120,
+      "p95Cont": 9
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.9398 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 53160/53160, edges 148458/148458",
+      "presentation": "pass: presented changedFraction=0.9398 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "helios",
+    "engine": {
+      "library": "helios-web"
+    },
+    "dataset": {
+      "name": "arxiv_2015",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:8de6888b6b87503a",
+      "expectedRaw": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "expectedLoaded": {
+        "nodes": 53160,
+        "edges": 148458
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 53160,
+      "edges": 148458
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 53160,
+        "edges": 148458
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 120,
+      "frames": 602,
+      "p50ms": 8.3,
+      "p95ms": 9.2,
+      "memMB": 52,
+      "fpsCont": 120,
+      "p95Cont": 9
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.7885 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 53160/53160, edges 148458/148458",
+      "presentation": "pass: presented changedFraction=0.7885 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "sigmapre",
+    "engine": {
+      "library": "sigma"
+    },
+    "dataset": {
+      "name": "arxiv_2017",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:643cde1547940c73",
+      "expectedRaw": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "expectedLoaded": {
+        "nodes": 90941,
+        "edges": 369033
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 90941,
+      "edges": 369033
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "edgePolicy": "graphology",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 120,
+      "frames": 601,
+      "p50ms": 8.3,
+      "p95ms": 9.1,
+      "memMB": 282,
+      "fpsCont": 87.4,
+      "p95Cont": 16.7
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8668 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 90941/90941, edges 369033 ≥ 350581 (95% of 369033)",
+      "presentation": "pass: presented changedFraction=0.8668 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmographpre",
+    "engine": {
+      "library": "cosmograph"
+    },
+    "dataset": {
+      "name": "arxiv_2017",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:643cde1547940c73",
+      "expectedRaw": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "expectedLoaded": {
+        "nodes": 90941,
+        "edges": 369033
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 90941,
+      "edges": 369033
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 32.7,
+      "frames": 165,
+      "p50ms": 33.3,
+      "p95ms": 41.6,
+      "memMB": 177,
+      "fpsCont": 27,
+      "p95Cont": 75
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8618 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 90941/90941, edges 369033/369033",
+      "presentation": "pass: presented changedFraction=0.8618 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmographnoblend",
+    "engine": {
+      "library": "cosmograph"
+    },
+    "dataset": {
+      "name": "arxiv_2017",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:643cde1547940c73",
+      "expectedRaw": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "expectedLoaded": {
+        "nodes": 90941,
+        "edges": 369033
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 90941,
+      "edges": 369033
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 81.8,
+      "frames": 410,
+      "p50ms": 8.3,
+      "p95ms": 41.6,
+      "memMB": 205,
+      "fpsCont": 34.6,
+      "p95Cont": 50
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8554 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 90941/90941, edges 369033/369033",
+      "presentation": "pass: presented changedFraction=0.8554 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmosbare",
+    "engine": {
+      "library": "cosmos.gl"
+    },
+    "dataset": {
+      "name": "arxiv_2017",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:643cde1547940c73",
+      "expectedRaw": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "expectedLoaded": {
+        "nodes": 90941,
+        "edges": 369033
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 90941,
+      "edges": 369033
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 40.8,
+      "frames": 205,
+      "p50ms": 9.4,
+      "p95ms": 75.2,
+      "memMB": 108,
+      "fpsCont": 31.1,
+      "p95Cont": 66.2
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8073 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 90941/90941, edges 369033/369033",
+      "presentation": "pass: presented changedFraction=0.8073 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmosnoblend",
+    "engine": {
+      "library": "cosmos.gl"
+    },
+    "dataset": {
+      "name": "arxiv_2017",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:643cde1547940c73",
+      "expectedRaw": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "expectedLoaded": {
+        "nodes": 90941,
+        "edges": 369033
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 90941,
+      "edges": 369033
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 103,
+      "frames": 516,
+      "p50ms": 8.3,
+      "p95ms": 16.7,
+      "memMB": 101,
+      "fpsCont": 39.8,
+      "p95Cont": 41.7
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.9282 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 90941/90941, edges 369033/369033",
+      "presentation": "pass: presented changedFraction=0.9282 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "deck",
+    "engine": {
+      "library": "deck.gl"
+    },
+    "dataset": {
+      "name": "arxiv_2017",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:643cde1547940c73",
+      "expectedRaw": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "expectedLoaded": {
+        "nodes": 90941,
+        "edges": 369033
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 90941,
+      "edges": 369033
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 120,
+      "frames": 601,
+      "p50ms": 8.3,
+      "p95ms": 9.2,
+      "memMB": 24,
+      "fpsCont": 48.7,
+      "p95Cont": 25.4
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.9745 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 90941/90941, edges 369033/369033",
+      "presentation": "pass: presented changedFraction=0.9745 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "helios",
+    "engine": {
+      "library": "helios-web"
+    },
+    "dataset": {
+      "name": "arxiv_2017",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:643cde1547940c73",
+      "expectedRaw": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "expectedLoaded": {
+        "nodes": 90941,
+        "edges": 369033
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 90941,
+      "edges": 369033
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 90941,
+        "edges": 369033
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 119.4,
+      "frames": 598,
+      "p50ms": 8.3,
+      "p95ms": 9.1,
+      "memMB": 97,
+      "fpsCont": 70.3,
+      "p95Cont": 17.4
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.7529 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 90941/90941, edges 369033/369033",
+      "presentation": "pass: presented changedFraction=0.7529 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "sigmapre",
+    "engine": {
+      "library": "sigma"
+    },
+    "dataset": {
+      "name": "arxiv_2018",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:d0fc0bf4a71f2799",
+      "expectedRaw": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "expectedLoaded": {
+        "nodes": 120740,
+        "edges": 615415
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 120740,
+      "edges": 615415
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "edgePolicy": "graphology",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 120,
+      "frames": 601,
+      "p50ms": 8.3,
+      "p95ms": 9.1,
+      "memMB": 385,
+      "fpsCont": 74.5,
+      "p95Cont": 16.7
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8153 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 120740/120740, edges 615415 ≥ 584644 (95% of 615415)",
+      "presentation": "pass: presented changedFraction=0.8153 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmographpre",
+    "engine": {
+      "library": "cosmograph"
+    },
+    "dataset": {
+      "name": "arxiv_2018",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:d0fc0bf4a71f2799",
+      "expectedRaw": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "expectedLoaded": {
+        "nodes": 120740,
+        "edges": 615415
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 120740,
+      "edges": 615415
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 23.7,
+      "frames": 119,
+      "p50ms": 16.7,
+      "p95ms": 126.5,
+      "memMB": 367,
+      "fpsCont": 19,
+      "p95Cont": 117.1
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.9461 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 120740/120740, edges 615415/615415",
+      "presentation": "pass: presented changedFraction=0.9461 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmographnoblend",
+    "engine": {
+      "library": "cosmograph"
+    },
+    "dataset": {
+      "name": "arxiv_2018",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:d0fc0bf4a71f2799",
+      "expectedRaw": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "expectedLoaded": {
+        "nodes": 120740,
+        "edges": 615415
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 120740,
+      "edges": 615415
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 75.5,
+      "frames": 378,
+      "p50ms": 8.3,
+      "p95ms": 41.7,
+      "memMB": 450,
+      "fpsCont": 25.4,
+      "p95Cont": 58.3
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8630 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 120740/120740, edges 615415/615415",
+      "presentation": "pass: presented changedFraction=0.8630 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmosbare",
+    "engine": {
+      "library": "cosmos.gl"
+    },
+    "dataset": {
+      "name": "arxiv_2018",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:d0fc0bf4a71f2799",
+      "expectedRaw": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "expectedLoaded": {
+        "nodes": 120740,
+        "edges": 615415
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 120740,
+      "edges": 615415
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 23.7,
+      "frames": 120,
+      "p50ms": 24.3,
+      "p95ms": 133.7,
+      "memMB": 142,
+      "fpsCont": 18.8,
+      "p95Cont": 133.1
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8570 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 120740/120740, edges 615415/615415",
+      "presentation": "pass: presented changedFraction=0.8570 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmosnoblend",
+    "engine": {
+      "library": "cosmos.gl"
+    },
+    "dataset": {
+      "name": "arxiv_2018",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:d0fc0bf4a71f2799",
+      "expectedRaw": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "expectedLoaded": {
+        "nodes": 120740,
+        "edges": 615415
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 120740,
+      "edges": 615415
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 64.7,
+      "frames": 327,
+      "p50ms": 8.3,
+      "p95ms": 43.5,
+      "memMB": 131,
+      "fpsCont": 20.5,
+      "p95Cont": 66.7
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8367 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 120740/120740, edges 615415/615415",
+      "presentation": "pass: presented changedFraction=0.8367 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "deck",
+    "engine": {
+      "library": "deck.gl"
+    },
+    "dataset": {
+      "name": "arxiv_2018",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:d0fc0bf4a71f2799",
+      "expectedRaw": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "expectedLoaded": {
+        "nodes": 120740,
+        "edges": 615415
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 120740,
+      "edges": 615415
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 30,
+      "frames": 151,
+      "p50ms": 33.3,
+      "p95ms": 34,
+      "memMB": 26,
+      "fpsCont": 26.8,
+      "p95Cont": 42
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.9716 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 120740/120740, edges 615415/615415",
+      "presentation": "pass: presented changedFraction=0.9716 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "helios",
+    "engine": {
+      "library": "helios-web"
+    },
+    "dataset": {
+      "name": "arxiv_2018",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:d0fc0bf4a71f2799",
+      "expectedRaw": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "expectedLoaded": {
+        "nodes": 120740,
+        "edges": 615415
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 120740,
+      "edges": 615415
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 120740,
+        "edges": 615415
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 30,
+      "frames": 151,
+      "p50ms": 33.3,
+      "p95ms": 34.1,
+      "memMB": 139,
+      "fpsCont": 30,
+      "p95Cont": 34.1
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.7368 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 120740/120740, edges 615415/615415",
+      "presentation": "pass: presented changedFraction=0.7368 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "sigmapre",
+    "engine": {
+      "library": "sigma"
+    },
+    "dataset": {
+      "name": "arxiv_full",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:fc379515cf035138",
+      "expectedRaw": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "expectedLoaded": {
+        "nodes": 169343,
+        "edges": 1157799
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 169343,
+      "edges": 1157799
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "edgePolicy": "graphology",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 30,
+      "frames": 151,
+      "p50ms": 33.3,
+      "p95ms": 34.2,
+      "memMB": 711,
+      "fpsCont": 30,
+      "p95Cont": 33.9
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8169 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 169343/169343, edges 1157799 ≥ 1099909 (95% of 1157799)",
+      "presentation": "pass: presented changedFraction=0.8169 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmographpre",
+    "engine": {
+      "library": "cosmograph"
+    },
+    "dataset": {
+      "name": "arxiv_full",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:fc379515cf035138",
+      "expectedRaw": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "expectedLoaded": {
+        "nodes": 169343,
+        "edges": 1157799
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 169343,
+      "edges": 1157799
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 10,
+      "frames": 53,
+      "p50ms": 75.4,
+      "p95ms": 208.2,
+      "memMB": 491,
+      "fpsCont": 6.3,
+      "p95Cont": 304.2
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.7734 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 169343/169343, edges 1157799/1157799",
+      "presentation": "pass: presented changedFraction=0.7734 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmographnoblend",
+    "engine": {
+      "library": "cosmograph"
+    },
+    "dataset": {
+      "name": "arxiv_full",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:fc379515cf035138",
+      "expectedRaw": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "expectedLoaded": {
+        "nodes": 169343,
+        "edges": 1157799
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 169343,
+      "edges": 1157799
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 30,
+      "frames": 151,
+      "p50ms": 33.3,
+      "p95ms": 33.4,
+      "memMB": 664,
+      "fpsCont": 7,
+      "p95Cont": 233.3
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8707 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 169343/169343, edges 1157799/1157799",
+      "presentation": "pass: presented changedFraction=0.8707 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmosbare",
+    "engine": {
+      "library": "cosmos.gl"
+    },
+    "dataset": {
+      "name": "arxiv_full",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:fc379515cf035138",
+      "expectedRaw": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "expectedLoaded": {
+        "nodes": 169343,
+        "edges": 1157799
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 169343,
+      "edges": 1157799
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 11.1,
+      "frames": 57,
+      "p50ms": 83.4,
+      "p95ms": 195.9,
+      "memMB": 245,
+      "fpsCont": 7.3,
+      "p95Cont": 233.3
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.9413 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 169343/169343, edges 1157799/1157799",
+      "presentation": "pass: presented changedFraction=0.9413 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "cosmosnoblend",
+    "engine": {
+      "library": "cosmos.gl"
+    },
+    "dataset": {
+      "name": "arxiv_full",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:fc379515cf035138",
+      "expectedRaw": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "expectedLoaded": {
+        "nodes": 169343,
+        "edges": 1157799
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 169343,
+      "edges": 1157799
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 30,
+      "frames": 151,
+      "p50ms": 33.3,
+      "p95ms": 33.7,
+      "memMB": 320,
+      "fpsCont": 3.9,
+      "p95Cont": 300
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.8350 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 169343/169343, edges 1157799/1157799",
+      "presentation": "pass: presented changedFraction=0.8350 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "deck",
+    "engine": {
+      "library": "deck.gl"
+    },
+    "dataset": {
+      "name": "arxiv_full",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:fc379515cf035138",
+      "expectedRaw": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "expectedLoaded": {
+        "nodes": 169343,
+        "edges": 1157799
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 169343,
+      "edges": 1157799
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 11.5,
+      "frames": 59,
+      "p50ms": 91.7,
+      "p95ms": 108.3,
+      "memMB": 43,
+      "fpsCont": 11.2,
+      "p95Cont": 104.3
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.9451 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 169343/169343, edges 1157799/1157799",
+      "presentation": "pass: presented changedFraction=0.9451 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "graph",
+    "tool": "helios",
+    "engine": {
+      "library": "helios-web"
+    },
+    "dataset": {
+      "name": "arxiv_full",
+      "descriptor": "graph-bench/data/summary.json",
+      "hash": "sha256:fc379515cf035138",
+      "expectedRaw": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "expectedLoaded": {
+        "nodes": 169343,
+        "edges": 1157799
+      }
+    },
+    "primitives": [
+      "points",
+      "lines"
+    ],
+    "scale": {
+      "nodes": 169343,
+      "edges": 1157799
+    },
+    "coverage": {
+      "engine": {
+        "nodes": 169343,
+        "edges": 1157799
+      },
+      "edgePolicy": "exact",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "pan",
+      "cameraState": "overview",
+      "motion": "coalesced-pan",
+      "durationMs": 5000,
+      "pixelRatio": 2,
+      "headed": true
+    },
+    "metrics": {
+      "fps": 27.3,
+      "frames": 138,
+      "p50ms": 33.3,
+      "p95ms": 66.7,
+      "memMB": 287,
+      "fpsCont": 12.5,
+      "p95Cont": 104.4
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "pixelDiff",
+      "presented": true,
+      "detail": "presented changedFraction=0.7472 (>0.02)"
+    },
+    "gpu": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "coverage": "pass: nodes 169343/169343, edges 1157799/1157799",
+      "presentation": "pass: presented changedFraction=0.7472 (>0.02)",
+      "cameraState": "pass: state=overview supports=overview|mid|deep",
+      "inputHonesty": "pass: driver=pan"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-12T19:17:02.495Z",
+      "gitCommit": "c4b7186",
+      "machine": "Apple-Silicon (Metal)",
+      "os": "darwin",
+      "node": "v22",
+      "harness": "@viz-bench/bench-core/1"
+    }
+  }
+]

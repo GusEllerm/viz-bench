@@ -1,0 +1,112 @@
+[
+  {
+    "engine": "fa2",
+    "label": "graphology FA2 (CPU)",
+    "nodes": 10000,
+    "edges": 20000,
+    "itersPerSec": 32.4,
+    "iters": 195,
+    "seconds": 6.02,
+    "software": false
+  },
+  {
+    "engine": "fa2",
+    "label": "graphology FA2 (CPU)",
+    "nodes": 100000,
+    "edges": 200000,
+    "itersPerSec": 1.61,
+    "iters": 10,
+    "seconds": 6.21,
+    "software": false
+  },
+  {
+    "engine": "fa2",
+    "label": "graphology FA2 (CPU)",
+    "nodes": 500000,
+    "edges": 1000000,
+    "itersPerSec": 0.23,
+    "iters": 2,
+    "seconds": 8.79,
+    "software": false
+  },
+  {
+    "engine": "helios",
+    "label": "Helios-Web (native)",
+    "nodes": 10000,
+    "edges": 20000,
+    "itersPerSec": 120,
+    "iters": 361,
+    "seconds": 3.01,
+    "software": false
+  },
+  {
+    "engine": "helios",
+    "label": "Helios-Web (native)",
+    "nodes": 100000,
+    "edges": 200000,
+    "itersPerSec": 26.5,
+    "iters": 80,
+    "seconds": 3.02,
+    "software": false
+  },
+  {
+    "engine": "helios",
+    "label": "Helios-Web (native)",
+    "nodes": 500000,
+    "edges": 1000000,
+    "itersPerSec": 120,
+    "iters": 360,
+    "seconds": 3,
+    "software": false
+  },
+  {
+    "engine": "helios",
+    "label": "Helios-Web (native)",
+    "nodes": 1000000,
+    "edges": 2000000,
+    "itersPerSec": 120,
+    "iters": 361,
+    "seconds": 3.01,
+    "software": false
+  },
+  {
+    "engine": "cosmos",
+    "label": "cosmos.gl (GPU)",
+    "nodes": 10000,
+    "edges": 20000,
+    "itersPerSec": 120,
+    "iters": 360,
+    "seconds": 3,
+    "software": false
+  },
+  {
+    "engine": "cosmos",
+    "label": "cosmos.gl (GPU)",
+    "nodes": 100000,
+    "edges": 200000,
+    "itersPerSec": 38.6,
+    "iters": 116,
+    "seconds": 3,
+    "software": false
+  },
+  {
+    "engine": "cosmos",
+    "label": "cosmos.gl (GPU)",
+    "nodes": 500000,
+    "edges": 1000000,
+    "itersPerSec": 9.7,
+    "iters": 29,
+    "seconds": 3,
+    "software": false
+  },
+  {
+    "engine": "cosmos",
+    "label": "cosmos.gl (GPU)",
+    "nodes": 1000000,
+    "edges": 2000000,
+    "itersPerSec": 5.2,
+    "iters": 16,
+    "seconds": 3.05,
+    "software": false
+  }
+]

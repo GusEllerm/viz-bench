@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graph / network visualisation</title>
+<link rel="stylesheet" href="assets/report.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Graph / network visualisation</h1>
+  <div class="sub">An interactive view of the <b>ogbn-arxiv</b> citation graph — year-sliced snapshots from <b>53K nodes / 148K edges</b> up to <b>169,343 nodes / 1.16M edges</b>, precomputed ForceAtlas2 layouts. Edges are the expensive primitive, so this is the harder rendering problem.</div>
+  <nav class="nav"><a href="index.html">Overview</a><a href="graph.html" aria-current="page">Graph</a><a href="manifold.html">3D / manifold</a><a href="features.html">Features</a></nav>
+</header>
+
+<div class="note">Headline = the <b>overview</b>: the full graph on screen at the fit view (a renderer can look fast zoomed-in when most edges are off-screen). We report <b>two</b> fps numbers for it — both render the same <b>precomputed</b> graph, but under different demand: a gentle pan (which leaves idle frames between movements) versus a repaint forced <i>every</i> frame. The note under the tables explains why they diverge.</div>
+
+<table><thead><tr><th>Gentle pan · fps</th><th>148K e</th><th>369K e</th><th>615K e</th><th>1.16M e</th></tr></thead><tbody>
+    <tr data-librow="sigmapre"><td>Sigma.js</td><td class="g win">120</td><td class="g win">120</td><td class="g win">120</td><td class="a win">30</td></tr>
+    <tr data-librow="helios"><td>Helios-Web</td><td class="g win">120</td><td class="g">119</td><td class="a">30</td><td class="r">27</td></tr>
+    <tr data-librow="deck"><td>deck.gl</td><td class="g win">120</td><td class="g win">120</td><td class="a">30</td><td class="r">12</td></tr>
+    <tr data-librow="cosmographpre"><td>Cosmograph</td><td class="g">120</td><td class="a">33</td><td class="r">24</td><td class="r">10</td></tr>
+    <tr data-librow="cosmographnoblend"><td>Cosmograph · opaque</td><td class="g win">120</td><td class="g">82</td><td class="g">76</td><td class="a win">30</td></tr>
+  </tbody><caption>fps under a gentle human-rate pan — how smooth light exploration feels. Green ≥60, amber 30–59, red <30; per-column best in bold. A pan leaves idle frames between movements; renderers that repaint only on change skip them and sit at the display refresh (why several stay at ~120).</caption></table>
+
+<table><thead><tr><th>Continuous render · fps</th><th>148K e</th><th>369K e</th><th>615K e</th><th>1.16M e</th></tr></thead><tbody>
+    <tr data-librow="sigmapre"><td>Sigma.js</td><td class="g win">120</td><td class="g win">87</td><td class="g win">75</td><td class="a win">30</td></tr>
+    <tr data-librow="helios"><td>Helios-Web</td><td class="g win">120</td><td class="g">70</td><td class="a">30</td><td class="r">13</td></tr>
+    <tr data-librow="deck"><td>deck.gl</td><td class="g win">120</td><td class="a">49</td><td class="r">27</td><td class="r">11</td></tr>
+    <tr data-librow="cosmographpre"><td>Cosmograph</td><td class="g">85</td><td class="r">27</td><td class="r">19</td><td class="r">6.3</td></tr>
+    <tr data-librow="cosmographnoblend"><td>Cosmograph · opaque</td><td class="g">95</td><td class="a">35</td><td class="r">25</td><td class="r">7</td></tr>
+  </tbody><caption>fps when every frame is repainted, no idle frames — raw render throughput, and what you get during an animation or a continuous drag. Median of 3; same colour bands.</caption></table>
+
+<div class="note"><b>Two numbers, because a gentle pan leaves idle frames and a continuous render doesn&rsquo;t.</b> Both tables render the same fixed graph and both are interactive — the difference is cadence. Renderers that repaint <i>only when the view changes</i> — Sigma, Helios, deck.gl — skip the idle frames a gentle pan leaves, so they sit at the display refresh: that number is smoothness plus a free idle (a real advantage for a mostly-static graph), not render throughput. Forced to repaint every frame at 369K edges, <b>Sigma drops 120→87</b>, <b>Helios 119→70</b> and <b>deck.gl 120→49</b>, while <b>Cosmograph barely moves</b> (33→27 — it already repaints every frame, so it never got the idle discount). At the full 1.16M-edge tier the graph is dense enough that the pan itself falls below the refresh for every engine, and the two numbers converge (Sigma reads 30 on both).</div>
+
+<div class="note"><b>The linkBlending lift is strongest where it matters — the dense-overview pan:</b> turning link alpha-blending off (<b>Cosmograph · opaque</b>) lifts the gentle-pan overview ~3× — <b>24→76 fps at 615K edges</b> and <b>10→30 at 1.16M</b> (<code>linkBlending:false</code>, a cosmos.gl 3.1 engine setting). Under forced every-frame rendering the lift shows at the mid tiers (27→35 at 369K, 19→25 at 615K) and washes out at 1.16M, where both configurations sit at ~6–7 fps. The trade-off: overlapping links no longer darken (no density shading).</div>
+
+<figure class="chart" data-chart="graph-bars"><figcaption>Continuous render throughput, charted (the fair, render-every-frame fps)</figcaption><div class="canvas-wrap"><canvas></canvas></div><p class="fine">Hover any bar for fps · p95 · gate-pass.</p><noscript><span class="nojs">Interactive chart needs JavaScript.</span></noscript></figure>
+
+<div class="note">A separate axis from rendering. Everything above uses <b>precomputed</b> node positions, to isolate <i>rendering</i> — but computing that force-directed layout is itself a cost, and where it runs (GPU or CPU) determines how it scales. The render benchmark sets this aside, so it is measured here. Below: force-layout throughput on synthetic graphs — the GPU force simulations (cosmos.gl, Helios) against the CPU force-atlas (graphology FA2) that produces the &ldquo;precomputed&rdquo; positions in the first place.</div>
+
+<figure class="chart" data-chart="layout-bars"><figcaption>Layout compute — force-layout throughput (iterations/sec)</figcaption><div class="canvas-wrap"><canvas></canvas></div><p class="fine">Force-layout iterations/sec (synthetic graphs, ~4 edges/node); higher = faster. At 10K nodes all three are pegged at the display refresh (~120), so the chart starts at 100K. A missing bar = not measured (CPU force-atlas past 500K is minutes per iteration) or did not sustain live layout (Helios past 100K). cosmos figures draw points but not links, so the rate reflects the GPU sim step rather than link overdraw.</p><noscript><span class="nojs">Interactive chart needs JavaScript.</span></noscript></figure>
+
+<div class="note">Running the force simulation on the GPU computes the layout roughly <b>25–40× faster</b> than the CPU force-atlas at these scales — 39 vs 1.6 iters/sec at 100K nodes, 9.7 vs 0.23 at 500K — and continues to 1M, where the CPU approach is impractical (minutes per iteration, blocking the main thread). It is also incremental: the GPU sim renders each step, so the graph settles on screen, where the CPU force-atlas blocks until it finishes. For a graph whose positions are already computed, the render figures above apply instead — a different question with a different answer.</div>
+
+<h3>Key findings</h3>
+<ul>
+    <li>Sigma leads both metrics, and its edge is a real rendering one, not just an idle one: forced to render the 1.16M-edge overview every frame it still holds <b>30 fps</b> (hairline edges) — ~2.4× Helios (12.5) and deck.gl (11), with Cosmograph at ~6–7.</li>
+    <li>Resource cost splits the field: deck.gl is featherweight (<b>43 MB</b> at 1.16M edges — binary typed-array buffers) while Sigma trades ~711 MB for its speed.</li>
+  </ul>
+
+<details class="method"><summary>How each library is configured (and how it repaints)</summary><ul><li><b>Sigma.js</b> — 1px hairline edges, <b>repaint-on-demand</b> (idle frames cost nothing), precomputed FA2 layout.</li><li><b>Helios-Web</b> — WebGL 1px fast-edge mode, <b>repaint-on-demand</b>, precomputed layout.</li><li><b>deck.gl</b> — LineLayer over binary typed-array buffers, <b>repaint-on-demand</b>, precomputed layout.</li><li><b>Cosmograph</b> — the product (duckdb-wasm data prep, labels, hover / link-picking) on the cosmos.gl engine, GPU simulation disabled (precomputed layout); <b>redraws every frame</b> (continuous), default alpha-blended links.</li><li><b>Cosmograph · opaque</b> — the same, with link alpha-blending turned off (<code>linkBlending:false</code>, a cosmos.gl 3.1 engine setting) — a ~3× lift on the dense-overview pan; the cost is losing the density shading of overlapping links.</li><li>The two fps columns: <b>gentle pan</b> = a ~30 events/s pan (renderers that repaint only on change idle at the display refresh between events); <b>continuous</b> = force-repaint the fixed overview every frame via each engine&rsquo;s own render call (median of 3), so every engine renders every frame.</li></ul></details>
+
+<details class="method"><summary>How it was measured — the five gates</summary><ul><li>Real GPU, verified: every run checks it ran on Apple-Silicon hardware (Metal GPU), never a software fallback.</li><li>Coverage: the engine must actually load the whole dataset (engine-reported counts vs the loaded file).</li><li>Presentation: the surface must actually present — a pixel-diff under a camera delta (web) or a windowed swapchain, not an offscreen loop (native). This is what corrected the "200 fps @50M" Datoviz figure to its real windowed 5 fps.</li><li>Camera-state: every number records the camera state it was measured in (here: the full-graph overview / orbit).</li><li>Input-honesty: motion is engine-API driven, not a synthetic uncoalesced event stream (the artifact that once mis-scored Cosmograph at 5 fps).</li><li>A cell is published only if all five gates pass; a failure quarantines the number, it is never silently shown.</li></ul></details>
+
+<footer>Procedurally generated from gate-verified benchmark data — rebuild with the bench-core report build. Aggregate figures only; raw data and provenance are never published.</footer>
+</div>
+<script type="application/json" id="bench-charts">[{"id":"graph-bars","kind":"bars","yMax":130,"refLine":60,"yLabel":"fps","categories":["148K e","369K e","615K e","1.16M e"],"series":[{"label":"Sigma.js","values":[120,87,75,30],"meta":[{"p95":8.6,"gates":"pass"},{"p95":16.7,"gates":"pass"},{"p95":16.7,"gates":"pass"},{"p95":33.9,"gates":"pass"}]},{"label":"Helios-Web","values":[120,70,30,13],"meta":[{"p95":9,"gates":"pass"},{"p95":17.4,"gates":"pass"},{"p95":34.1,"gates":"pass"},{"p95":104.4,"gates":"pass"}]},{"label":"deck.gl","values":[120,49,27,11],"meta":[{"p95":9,"gates":"pass"},{"p95":25.4,"gates":"pass"},{"p95":42,"gates":"pass"},{"p95":104.3,"gates":"pass"}]},{"label":"Cosmograph","color":"#0e8a6e","values":[85,27,19,6.3],"meta":[{"p95":25,"gates":"pass"},{"p95":75,"gates":"pass"},{"p95":117.1,"gates":"pass"},{"p95":304.2,"gates":"pass"}]},{"label":"Cosmograph · opaque","color":"#5cc4a6","values":[95,35,25,7],"meta":[{"p95":16.7,"gates":"pass"},{"p95":50,"gates":"pass"},{"p95":58.3,"gates":"pass"},{"p95":233.3,"gates":"pass"}]}]},{"id":"layout-bars","kind":"bars","yMax":45,"unit":"iters/s","yLabel":"iterations / sec","categories":["100K nodes","500K","1M"],"series":[{"label":"cosmos.gl · GPU","color":"#0e8a6e","values":[39,9.7,5.2]},{"label":"Helios-Web · native","color":"#8250df","values":[27,null,null]},{"label":"graphology FA2 · CPU","color":"#656d76","values":[1.6,0.2,null]}]}]</script>
+<script src="assets/chart.umd.js"></script>
+<script src="assets/report-client.js" defer></script>
+</body>
+</html>

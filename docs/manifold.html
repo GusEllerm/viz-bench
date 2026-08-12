@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D / manifold (point-cloud) visualisation</title>
+<link rel="stylesheet" href="assets/report.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>3D / manifold (point-cloud) visualisation</h1>
+  <div class="sub">Point clouds — a real citation-graph embedding (<b>arXiv, 169K points</b>: UMAP of ogbn-arxiv&rsquo;s paper features) plus synthetic manifolds scaled to <b>50M points</b>. Far cheaper to render than edge-dense graphs, until the scale wall.</div>
+  <nav class="nav"><a href="index.html">Overview</a><a href="graph.html">Graph</a><a href="manifold.html" aria-current="page">3D / manifold</a><a href="features.html">Features</a></nav>
+</header>
+
+<div class="note">The interaction is sustained <b>orbit</b>, measured in a real window (swapchain present) — Datoviz&rsquo;s famous offscreen/batch throughput is a different, non-interactive number and is excluded. Point clouds are cheap to render to ~1M points; the whole story is the wall past 10M.</div>
+
+<table><thead><tr><th>Interactive fps</th><th>100K</th><th>1M</th><th>arXiv 169K</th><th>10M</th><th>20M</th><th>50M</th></tr></thead><tbody>
+    <tr data-librow="datoviz"><td>Datoviz · windowed</td><td class="g win">156</td><td class="g win">155</td><td class="g win">159</td><td class="r">22</td><td class="r">9.8</td><td class="r">5.2</td></tr>
+    <tr data-librow="deck"><td>deck.gl</td><td class="g">120</td><td class="g">120</td><td class="g">120</td><td class="r">15</td><td class="r">8.6</td><td class="r">3.1</td></tr>
+    <tr data-librow="three"><td>three.js</td><td class="g">120</td><td class="g">120</td><td class="g">120</td><td class="a win">35</td><td class="r win">16</td><td class="r win">7.5</td></tr>
+    <tr data-librow="cosmos3d"><td>cosmos.gl · 3D fork</td><td class="g">120</td><td class="g">120</td><td class="g">120</td><td class="r">23</td><td class="r">10</td><td class="r">6.9</td></tr>
+  </tbody><caption>fps; green ≥60 smooth, amber 30–59, red <30. Per-column best in bold. Swiss-roll clouds + the real arXiv 169K manifold. Datoviz reads above the 120 Hz display refresh at the light tiers — this Datoviz build presents without vsync locking, so its ceiling is not clamped like the browsers&rsquo;.</caption></table>
+
+<div class="note"><b>cosmos.gl · 3D fork</b> is <code>@cosmograph/cosmos</code>, an experimental 3D mode for the cosmos.gl engine. It is measured like the other web rows — precomputed positions, GPU simulation off, points only — and lands in the WebGL band throughout: level with deck.gl and three.js to 1M, and between three.js and deck.gl at every heavier tier (23 vs 35/15 at 10M, 10 vs 16/9 at 20M, 7 vs 7.5/3 at 50M) — past the wall at 50M like everything else. Its automatic camera-fit path fails once points &times; dimensions exceeds 2&#178;&#8311; coordinates (~44.7M points in 3D — a JS array limit in the position readback, reported upstream), so the harness frames the camera from the dataset&rsquo;s own bounds (details in the configuration drawer).</div>
+
+<figure class="chart tall" data-chart="man-wall"><figcaption>The same data on a log scale — the wall past 10M</figcaption><div class="canvas-wrap"><canvas></canvas></div><p class="fine">Swiss-roll clouds (the real arXiv 169K manifold tracks the 1M column at ~120 fps). Dashed line = 60 fps; past 10M no renderer, web or native, clears it.</p><noscript><span class="nojs">Interactive chart needs JavaScript.</span></noscript></figure>
+
+<h3>Key findings</h3>
+<ul>
+    <li>To ~1M points everything is GPU-headroom-bound (~<b>120 fps</b>); deck.gl and three.js are tied and the real arXiv manifold is trivially interactive.</li>
+    <li>No interactive escape past ~10M: windowed Datoviz reads <b>5.2 fps</b> at 50M — the same band as the WebGL renderers. Its famous ~200 fps @50M was offscreen-only (no swapchain present). The only lever past 10M is LOD / tiling.</li>
+  </ul>
+
+<details class="method"><summary>How each library is configured</summary><ul><li><b>deck.gl</b> — PointCloudLayer (1.5 px points) over binary typed-array attributes, OrbitView, repaint-on-demand driven every frame by the sustained orbit.</li><li><b>three.js</b> — THREE.Points (1.5 px, no size attenuation), OrbitControls auto-rotate, continuous render loop.</li><li><b>Datoviz · windowed</b> — native Vulkan in a real window (swapchain present), sustained orbit; its offscreen/batch mode is excluded.</li><li><b>Point-size parity (measured):</b> every web row asks its engine for the same nominal 1.5 px point. Because engines rasterise differently (opaque squares vs antialiased discs), the measured footprint at that setting is cosmos 1.8 · three.js 2.7 · deck.gl 7.1 px²/point (probe: 25 isolated points, lit-pixel count). A sensitivity run with sizes tuned to <i>equal</i> ~2.7 px² footprints (three 1.5 / deck 0.9 / cosmos 2.0) moved 10M-point fps by under 10% per engine and did not change the ordering — point size does not explain the ranking, so the published rows keep the equal-nominal-size configuration.</li><li><b>cosmos.gl · 3D fork</b> — <code>@cosmograph/cosmos</code> with <code>spaceDimensions: 3</code> (perspective orbit camera), GPU simulation off, 1.5 px points, otherwise the fork&rsquo;s shipped 3D defaults (depth-fade on). The camera is framed from the dataset&rsquo;s bounding box with explicit near/far planes: the engine&rsquo;s automatic fit/bounds path breaks once points &times; dimensions exceeds 2&#178;&#8311; (~44.7M points in 3D, ~67.1M in 2D — mis-framed camera, scene depth-clipped to slivers) — reported upstream with a minimal repro. The orbit advances the engine&rsquo;s own camera state once per frame, so every measured frame is a real redraw.</li></ul></details>
+
+<details class="method"><summary>How it was measured — the five gates</summary><ul><li>Real GPU, verified: every run checks it ran on Apple-Silicon hardware (Metal GPU), never a software fallback.</li><li>Coverage: the engine must actually load the whole dataset (engine-reported counts vs the loaded file).</li><li>Presentation: the surface must actually present — a pixel-diff under a camera delta (web) or a windowed swapchain, not an offscreen loop (native). This is what corrected the "200 fps @50M" Datoviz figure to its real windowed 5 fps.</li><li>Camera-state: every number records the camera state it was measured in (here: the full-graph overview / orbit).</li><li>Input-honesty: motion is engine-API driven, not a synthetic uncoalesced event stream (the artifact that once mis-scored Cosmograph at 5 fps).</li><li>A cell is published only if all five gates pass; a failure quarantines the number, it is never silently shown.</li></ul></details>
+
+<footer>Procedurally generated from gate-verified benchmark data — rebuild with the bench-core report build. Aggregate figures only; raw data and provenance are never published.</footer>
+</div>
+<script type="application/json" id="bench-charts">[{"id":"man-wall","kind":"logline","yMax":130,"refLine":60,"xLabel":"points (log)","yLabel":"fps","series":[{"label":"Datoviz · windowed","points":[{"x":100000,"y":156,"p95":17.7,"gates":"pass"},{"x":1000000,"y":155,"p95":17.6,"gates":"pass"},{"x":10000000,"y":22,"p95":59.1,"gates":"pass"},{"x":20000000,"y":9.8,"p95":127.2,"gates":"pass"},{"x":50000000,"y":5.2,"p95":200.9,"gates":"pass"}]},{"label":"deck.gl","points":[{"x":100000,"y":120,"p95":10,"gates":"pass"},{"x":1000000,"y":120,"p95":9.3,"gates":"pass"},{"x":10000000,"y":15,"p95":75.8,"gates":"pass"},{"x":20000000,"y":8.6,"p95":141.7,"gates":"pass"},{"x":50000000,"y":3.1,"p95":445.9,"gates":"pass"}]},{"label":"three.js","points":[{"x":100000,"y":120,"p95":9.7,"gates":"pass"},{"x":1000000,"y":120,"p95":9.1,"gates":"pass"},{"x":10000000,"y":35,"p95":38.2,"gates":"pass"},{"x":20000000,"y":16,"p95":80.1,"gates":"pass"},{"x":50000000,"y":7.5,"p95":153.1,"gates":"pass"}]},{"label":"cosmos.gl · 3D fork","color":"#0e8a6e","points":[{"x":100000,"y":120,"p95":9.2,"gates":"pass"},{"x":1000000,"y":120,"p95":9.2,"gates":"pass"},{"x":10000000,"y":23,"p95":58.3,"gates":"pass"},{"x":20000000,"y":10,"p95":120.2,"gates":"pass"},{"x":50000000,"y":6.9,"p95":191.1,"gates":"pass"}]}]}]</script>
+<script src="assets/chart.umd.js"></script>
+<script src="assets/report-client.js" defer></script>
+</body>
+</html>
