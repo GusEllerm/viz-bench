@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helios-Web — Graph Bench</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #0e1116; color: #e6e6e6;
+        font: 13px/1.45 -apple-system, system-ui, sans-serif; overflow: hidden; }
+      #graph { position: absolute; inset: 0; }
+      #hud { position: absolute; top: 12px; left: 12px; z-index: 10; background: rgba(16,20,28,.82);
+        border: 1px solid #232b39; border-radius: 10px; padding: 12px 14px; min-width: 230px;
+        backdrop-filter: blur(6px); }
+      #hud h1 { font-size: 14px; margin: 0 0 8px; }
+      #hud .row { display: flex; justify-content: space-between; gap: 16px; }
+      #hud .row span:last-child { font-variant-numeric: tabular-nums; color: #9fe0c0; }
+      #hud .stage { color: #9bb; margin-top: 6px; min-height: 16px; }
+      #hud .err { color: #ff8b8b; white-space: pre-wrap; margin-top: 6px; }
+      select { background: #1b2330; color: #e6e6e6; border: 1px solid #2a3446; border-radius: 6px; padding: 4px 6px; }
+      .legend { position: absolute; bottom: 12px; left: 12px; z-index: 10; background: rgba(16,20,28,.82);
+        border: 1px solid #232b39; border-radius: 8px; padding: 8px 12px; }
+      .legend span { margin-right: 12px; } .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; }
+      a { color: #6cf; }
+    </style>
+  </head>
+  <body>
+    <div id="graph"></div>
+    <div id="hud">
+      <h1>Helios-Web · <a href="/">bench</a></h1>
+      <div class="row"><label for="dataset">dataset</label>
+        <select id="dataset">
+          <option value="medical_device">medical_device · 156K e</option>
+          <option value="drug">drug · 363K e</option>
+          <option value="semiconductor">semiconductor · 604K e</option>
+          <option value="combined">combined · 1.1M e</option>
+        </select>
+      </div>
+      <div class="row"><span>nodes</span><span id="m-nodes">—</span></div>
+      <div class="row"><span>edges</span><span id="m-edges">—</span></div>
+      <div class="row"><span>fetch+parse</span><span id="m-fetch">—</span></div>
+      <div class="row"><span>data prep</span><span id="m-prep">—</span></div>
+      <div class="row"><span>init render</span><span id="m-init">—</span></div>
+      <div class="row"><span>FPS (now / min)</span><span id="m-fps">—</span></div>
+      <div class="stage" id="m-stage"></div>
+      <div class="err" id="m-err"></div>
+    </div>
+    <div class="legend">
+      <span><i class="dot" style="background:#4C78A8"></i>paper</span>
+      <span><i class="dot" style="background:#F58518"></i>patent</span>
+      <span><i class="dot" style="background:#54A24B"></i>product</span>
+      <span><i class="dot" style="background:#E45756"></i>trial</span>
+    </div>
+    <script type="module" src="/src/helios.js"></script>
+  </body>
+</html>

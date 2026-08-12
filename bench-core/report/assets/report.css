@@ -1,0 +1,102 @@
+/* Shared styles for the generated benchmark site. Design tokens + table/card/chart system
+   lifted from the original hand-authored reports so the look is continuous. */
+:root{
+  --ink:#1f2328; --mut:#57606a; --line:#d0d7de; --panel:#f6f8fa; --accent:#0969da;
+  --g:#1a7f37; --green:#2da44e; --amber:#bc8a00; --red:#cf222e;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);background:#fff;
+  font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;}
+.wrap{max-width:900px;margin:0 auto;padding:36px 28px 80px}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+code{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:1px 5px;font-size:12.5px}
+
+header{border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:10px}
+h1{font-size:26px;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:13.5px}.sub b{color:var(--ink)}
+h2{font-size:19px;margin:38px 0 10px;padding-top:12px;border-top:1px solid var(--line);letter-spacing:-.01em}
+h2:first-of-type{border-top:none}
+h2 .n{color:var(--mut);font-weight:600;margin-right:8px}
+h3{font-size:15px;margin:20px 0 6px}
+p{margin:10px 0}.lead{font-size:15.5px}
+small,.fine{font-size:12.5px;color:var(--mut)}
+
+/* top nav between pages */
+.nav{display:flex;gap:18px;font-size:13.5px;margin:12px 0 0}
+.nav a{font-weight:600}.nav a[aria-current]{color:var(--ink);border-bottom:2px solid var(--ink)}
+
+/* verdict cards */
+.verdict{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 6px}
+.card{border:1px solid var(--line);border-radius:10px;padding:13px 15px;background:#fff}
+.card.win{border-color:var(--green);background:#f2fbf5}
+.card .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
+.card.win .tag{color:var(--g)}
+.card h4{margin:3px 0 4px;font-size:16px}
+.card .m{font-variant-numeric:tabular-nums;font-weight:700;font-size:15px}
+.card p{margin:4px 0 0;font-size:13px;color:var(--mut)}
+
+/* gate-pass badge (the rigor, surfaced compactly) */
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--g);
+  background:#f2fbf5;border:1px solid var(--green);border-radius:20px;padding:2px 9px}
+.badge::before{content:"✓";font-weight:800}
+.pill{display:inline-block;background:var(--panel);border:1px solid var(--line);border-radius:20px;
+  padding:1px 8px;font-size:11px;color:var(--mut);margin-left:4px}
+
+/* trust ribbon — the rigor, stated once as context (NOT a result card) */
+.trust-ribbon{display:flex;align-items:center;gap:11px;flex-wrap:wrap;
+  border:1px solid var(--line);border-left:3px solid var(--g);border-radius:8px;
+  padding:10px 14px;margin:12px 0 6px;background:var(--panel);font-size:12.5px;color:var(--mut)}
+.trust-ribbon .badge{flex:none}
+.trust-ribbon b{color:var(--ink)}
+
+/* tables */
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px}
+caption{caption-side:bottom;color:var(--mut);font-size:12px;text-align:left;padding-top:8px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+thead th{background:var(--panel);font-weight:700}
+.sub-th{font-weight:600;color:var(--mut);font-size:11.5px}
+td.g{background:#dafbe1;color:#04260f}td.a{background:#fff4d6;color:#3d2c00}td.r{background:#ffe3e1;color:#3d0a07}
+td.win{font-weight:800}
+tr[data-librow].dim td, td.dim{opacity:.32}
+
+/* charts */
+.chart{border:1px solid var(--line);border-radius:10px;padding:10px 12px 6px;margin:14px 0;background:#fff}
+.chart figcaption{font-size:12.5px;color:var(--mut);padding:0 2px 8px}
+.chart .canvas-wrap{position:relative;height:340px}
+.chart.tall .canvas-wrap{height:440px}
+noscript .nojs{color:var(--mut);font-size:12.5px;font-style:italic}
+
+.legend{font-size:12px;color:var(--mut);margin:6px 0}
+.legend span{margin-right:14px;white-space:nowrap}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:6px;padding:10px 14px;margin:14px 0;font-size:13.5px}
+details.method{border:1px solid var(--line);border-radius:8px;padding:4px 14px;margin:14px 0;background:#fff}
+details.method summary{cursor:pointer;font-weight:600;padding:8px 0}
+details.method ul{margin:4px 0 12px;padding-left:20px}details.method li{margin:5px 0;font-size:13.5px}
+
+footer{margin-top:42px;padding-top:14px;border-top:1px solid var(--line);color:var(--mut);font-size:12px}
+/* capability matrix + feature detail — glyph = support, background = evidence */
+table.cap td:not(:first-child),table.cap th:not(:first-child){text-align:center;width:66px}
+table.cap th:not(:first-child){white-space:nowrap}
+table.cap td:first-child .cat{display:block;font-size:11px;color:var(--mut);font-weight:400}
+table.cap td:first-child a{font-weight:600}
+/* verified = green bg + a NON-COLOUR cue (inset ring + bold) so it survives grayscale / colourblind */
+td.cap-verified{background:#dafbe1;box-shadow:inset 0 0 0 2px var(--green);font-weight:800}
+td.cap-verified a{color:var(--g);text-decoration:none}
+td.cap-verified a:hover{text-decoration:underline}
+td.cap-surveyed{color:var(--ink)}
+td.cap-none{color:var(--line)}
+.cap-legend{font-size:12.5px;color:var(--mut);margin:9px 2px 0}
+.cap-legend b{font-weight:700;color:var(--ink)}
+.cap-legend .cap-legend-v{color:var(--g);border-bottom:2px solid var(--green)}
+table.capdetail td,table.capdetail th{text-align:left}
+table.capdetail td.cap-verified{background:#dafbe1;box-shadow:inset 0 0 0 2px var(--green);font-weight:700}
+table.capdetail td.cap-surveyed,table.capdetail td.cap-none{color:var(--ink)}
+.cap-word{color:var(--mut)}
+img.cap-shot{width:100%;border-radius:8px;border:1px solid var(--line);display:block;background:#0e1116}
+
+@media (max-width:640px){.verdict{grid-template-columns:1fr}.chart .canvas-wrap{height:300px}}

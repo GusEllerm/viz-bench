@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manifold & Point-Cloud Renderer Bench</title>
+    <style>
+      body { margin: 0; font: 15px/1.5 -apple-system, system-ui, sans-serif; background: #0e1116; color: #e6e6e6; }
+      main { max-width: 760px; margin: 0 auto; padding: 40px 24px; }
+      h1 { font-size: 22px; } p { color: #9bb; }
+      a { color: #6cf; text-decoration: none; }
+      .card { background: #161c27; border: 1px solid #232b39; border-radius: 10px; padding: 12px 16px; margin: 8px 0;
+        display: flex; align-items: center; gap: 14px; }
+      .card b { min-width: 130px; } .card .n { color: #9bb; font-variant-numeric: tabular-nums; min-width: 120px; }
+      .card .r { margin-left: auto; } .card .r a { margin-left: 14px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Manifold &amp; Point-Cloud Renderer Bench</h1>
+      <p>Synthetic manifolds (swiss roll / s-curve / sphere / torus) + the embedded knowledge graph.
+        Colour encodes each manifold's intrinsic coordinate. Pick a renderer × cloud; each page reports load time + FPS.</p>
+      <div id="list">loading…</div>
+    </main>
+    <script type="module">
+      const fmt = (n) => n.toLocaleString();
+      const renderers = [['deck', 'deck.gl'], ['three', 'three.js']];
+      try {
+        const man = await (await fetch('data/manifest.json')).json();
+        document.getElementById('list').innerHTML = man.clouds
+          .sort((a, b) => (a.name.localeCompare(b.name)) || (a.n - b.n))
+          .map((c) => `<div class="card"><b>${c.name}</b><span class="n">${fmt(c.n)} pts</span>
+            <span class="r">${renderers.map(([id, label]) => `<a href="${id}.html?c=${c.base}">${label} →</a>`).join('')}</span></div>`).join('');
+      } catch (e) { document.getElementById('list').textContent = 'Could not load manifest: ' + e.message; }
+    </script>
+  </body>
+</html>

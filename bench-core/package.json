@@ -1,0 +1,11 @@
+{
+  "name": "@viz-bench/bench-core",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Shared, contract-enforcing benchmark harness for the visualization-research suite (graph + manifold). node/ is node-only (Playwright); page/ is browser-safe (zero node imports); py/ mirrors the schema/gates for the native side.",
+  "exports": {
+    "./node/*": "./node/*",
+    "./page/*": "./page/*"
+  }
+}

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graph Bench — Overview Demo</title>
+    <style>
+      body { margin: 0; font: 15px/1.5 -apple-system, system-ui, sans-serif; background: #0e1116; color: #e6e6e6; }
+      a { color: #6cf; }
+      code { background: #1b2330; padding: 1px 5px; border-radius: 4px; font-size: 13px; }
+      em { color: #cde; font-style: normal; }
+
+      header.nav { display:flex; align-items:center; justify-content:space-between; gap:16px;
+        padding:13px 24px; border-bottom:1px solid #232b39; position:sticky; top:0; z-index:20;
+        background:rgba(14,17,22,.92); backdrop-filter:blur(8px); }
+      header.nav .brand { font-weight:700; letter-spacing:.01em; }
+      header.nav .brand span { color:#788; font-weight:400; }
+      header.nav nav a { margin-left:18px; color:#9bb; text-decoration:none; font-size:14px; }
+      header.nav nav a:hover { color:#6cf; }
+
+      main { max-width: 780px; margin: 0 auto; padding: 8px 24px 64px; }
+      .hero { padding: 30px 0 6px; }
+      .hero h1 { font-size: 27px; margin: 0 0 10px; letter-spacing:-.01em; }
+      .hero p { color: #9bb; max-width: 66ch; margin: 8px 0; }
+      .hero .verdict { color:#cde; }
+      h2 { font-size: 16px; color: #9bb; margin-top: 34px; }
+      h2 .muted { font-weight: 400; color:#788; }
+
+      .cta { display:flex; align-items:center; gap:16px; text-decoration:none; color:inherit;
+        background:linear-gradient(135deg,#11283f,#10301d); border:1px solid #2c4d72; border-radius:14px;
+        padding:20px 22px; margin:16px 0; }
+      .cta:hover { border-color:#6cf; }
+      .cta .icon { font-size:30px; line-height:1; }
+      .cta .big { font-size:18px; font-weight:700; }
+      .cta .desc { color:#aebfd6; font-size:13.5px; margin-top:3px; }
+      .cta .arrow { margin-left:auto; font-size:26px; color:#7fd0ff; }
+
+      table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+      th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #232b39; }
+      td.n { text-align: right; font-variant-numeric: tabular-nums; }
+
+      .card { display: block; background: #161c27; border: 1px solid #232b39; border-radius: 10px;
+        padding: 14px 18px; margin: 8px 0; text-decoration: none; color: inherit; }
+      .card:hover { border-color: #6cf; }
+      .card strong { font-size:15.5px; }
+      .card .meta { margin-top:7px; font-weight:700; font-variant-numeric:tabular-nums; }
+      .card .meta .at { color:#788; font-weight:400; font-size:12px; }
+      .card .desc { color:#9bb; margin-top:4px; font-size:13.5px; }
+      .more { margin:2px 0 12px; font-size:12.5px; color:#788; }
+      .more .btn { display:inline-block; border:1px solid #2a3446; border-radius:6px; padding:3px 10px; margin:2px 6px 2px 0; color:#9fe0c0; text-decoration:none; }
+      .more .btn:hover { border-color:#6cf; color:#6cf; }
+      .pill { display:inline-block; background:#1b2330; border-radius:20px; padding:2px 10px; font-size:12px; color:#9bb; margin-right:6px; border:1px solid transparent;}
+      .pill.win { background:#0f2e1c; color:#79e0a4; border-color:#1c5635; }
+      .pill.ok { background:#10243a; color:#8ec7ff; border-color:#1d456e; }
+      .pill.warn { background:#332813; color:#f0c674; border-color:#5a4416; }
+      .pill.out { background:#331717; color:#ff9b9b; border-color:#5c2626; }
+
+      .small { display:flex; gap:10px; }
+      .small .card { flex:1; }
+      .small .card .desc { margin-top:2px; }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="brand">Graph Bench <span>· overview demo</span></div>
+      <nav>
+        <a href="#benchmarks">Benchmarks</a>
+        <a href="#manifolds">3D</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Large-Graph Visualisation — Overview Demo</h1>
+        <p>The <strong>renderer benchmark</strong> pages in one place: one live prototype per library, all fed the
+          same real knowledge graph — up to <strong>139K nodes / 1.1M edges</strong>.</p>
+        <p class="verdict"><strong>Verdict:</strong> Sigma.js with an offline-precomputed layout wins at scale
+          (~100 fps @ 1.1M edges); deck.gl is the ultra-light runner-up.</p>
+      </section>
+
+      <h2 id="benchmarks">Benchmarks <span class="muted">— renderers ranked by measured FPS @ 1.1M edges</span></h2>
+      <p style="color:#9bb;margin:6px 0 0">Each card launches a live prototype on the real GPU (load time + FPS in the HUD).
+        Start with <code>medical_device</code> (snappiest), work up to <code>combined</code>.</p>
+
+      <a class="card" href="/sigmapre.html?g=medical_device">
+        <strong>Sigma.js · precomputed layout</strong>
+        <span class="pill win">✓ winner</span><span class="pill">batched WebGL</span><span class="pill">offline FA2</span>
+        <div class="meta">119 fps at the 1.1M-edge overview · 588 MB</div>
+        <div class="desc">The recommended stack: smooth in every state — including the full-graph overview where everything else drops below 20 fps. Graph-native.</div>
+      </a>
+
+      <a class="card" href="/cosmograph.html?g=medical_device&amp;pre=1">
+        <strong>Cosmograph · precomputed positions</strong>
+        <span class="pill ok">in-motion champ</span><span class="pill">GPU points + links</span><span class="pill">pointXBy/YBy</span>
+        <div class="meta">103 fps in motion · p95 8.8 ms <span class="at">@ 1.1M edges</span> · overview 6 fps (use LOD)</div>
+        <div class="desc">Re-measured after a harness artifact was found (was wrongly reported as 5 fps): superb in motion / zoomed in. Known limit: the zoomed-out fit-all overview is link-overdraw-bound at this density (any pixel ratio) — the auto-LOD variant below hides links at far zoom, the production pattern.</div>
+      </a>
+      <div class="more">
+        <a class="btn" href="/cosmograph.html?g=combined&amp;pre=1&amp;lod=1">combined · 1.1M · auto-LOD links (smooth overview)</a>
+        <a class="btn" href="/cosmograph.html?g=combined&amp;pre=1">combined · 1.1M · full links</a>
+        <a class="btn" href="/cosmograph.html?g=combined&amp;pre=1&amp;links=0">combined · points only</a>
+      </div>
+
+      <a class="card" href="/cosmos.html?g=medical_device">
+        <strong>cosmos.gl · bare engine</strong>
+        <span class="pill ok">engine</span><span class="pill">no wrapper</span>
+        <div class="meta">104 fps · <span style="color:#9fe0c0">167 MB</span> <span class="at">@ 1.1M edges</span></div>
+        <div class="desc">The raw engine under Cosmograph (donated to OpenJS), fed typed arrays directly — same speed, lightest graph renderer after deck.gl.</div>
+      </a>
+
+      <a class="card" href="/helios.html?g=medical_device">
+        <strong>Helios-Web</strong>
+        <span class="pill">WebGL2</span><span class="pill">typed arrays</span><span class="pill">~60 Hz cap</span>
+        <div class="meta">36 fps overview · 10 in motion <span class="at">@ 1.1M edges</span> · 269 MB</div>
+        <div class="desc">Filipi Nascimento's large-network renderer on the same precomputed layout — the mirror image of Cosmograph: #2 at the overview, weak zoomed-in. <code>?fast=1</code> = 1-px edges (52 fps overview).</div>
+      </a>
+
+      <a class="card" href="/sigma.html?g=medical_device">
+        <strong>Sigma.js · live FA2</strong>
+        <span class="pill">batched WebGL</span><span class="pill">FA2 (worker)</span>
+        <div class="meta">51 fps · 1,620 MB <span class="at">@ 1.1M edges</span></div>
+        <div class="desc">Same renderer, laying out in-browser via a ForceAtlas2 worker — ~½ the FPS and 3× the RAM of the precomputed variant. The cost of live layout.</div>
+      </a>
+
+      <a class="card" href="/deck.html?g=medical_device">
+        <strong>deck.gl</strong>
+        <span class="pill ok">memory pick</span><span class="pill">instanced WebGL2</span><span class="pill">binary attrs</span>
+        <div class="meta">12–20 fps · <span style="color:#9fe0c0">28 MB</span> <span class="at">@ 1.1M edges</span></div>
+        <div class="desc">Instanced rendering straight from binary buffers — degrades gradually, ~21× lighter RAM than Sigma. Not graph-native (bring your own coords + picking).</div>
+      </a>
+
+      <a class="card" href="/cosmograph.html?g=medical_device">
+        <strong>Cosmograph · live GPU layout</strong>
+        <span class="pill">GPU points + links</span><span class="pill">GPU sim</span>
+        <div class="meta">12–28 fps while converging <span class="at">@ 1.1M edges</span></div>
+        <div class="desc">Its built-in GPU force layout, live. Fill-bound while the layout is a hairball; approaches the precomputed numbers as it spreads.</div>
+      </a>
+
+      <a class="card" href="/forcegraph.html?g=medical_device">
+        <strong>3d-force-graph</strong>
+        <span class="pill out">✗ out</span><span class="pill">Three.js scene-graph</span>
+        <div class="meta">~2 fps · 3,760 MB <span class="at">@ 1.1M edges</span></div>
+        <div class="desc">Three.js / WebGL, one sphere mesh per node → ~10⁵ draw calls/frame. Unusable at scale (also our 3D-bridge datapoint).</div>
+      </a>
+
+      <a class="card" href="/g6.html?g=medical_device">
+        <strong>AntV G6</strong>
+        <span class="pill out">✗ out</span><span class="pill">scene-graph</span>
+        <div class="meta">couldn't build 156K edges</div>
+        <div class="desc">Feature-rich, but its per-element scene-graph model wedged (&gt;12 min, 1.5 GB) before producing a frame.</div>
+      </a>
+
+      <h2 id="manifolds">3D / Manifolds <span class="muted">— point-cloud renderers (deck.gl · three.js)</span></h2>
+      <p style="color:#9bb;margin:6px 0 0">The benchmark graph projected into 3D (spectral → UMAP) + canonical synthetic manifolds, coloured by intrinsic coordinate. Drag to orbit, scroll to zoom. Both web renderers hit ~120 fps to 1M points.</p>
+
+      <a class="card" href="helios3d.html?fast=1">
+        <strong>Knowledge graph in 3D · with edges · Helios-Web</strong>
+        <span class="pill win">real data</span><span class="pill">139K pts + 1.1M edges</span><span class="pill">19 fps orbit (fastEdges)</span>
+        <div class="desc">The only view that draws the graph's <b>edges</b> in 3D: nodes at their UMAP manifold coordinates, all 1.1M links rendered. Heavy but real — 11 fps with full edges, 19 with 1-px fastEdges. Drag rotates.</div>
+      </a>
+      <div class="more">
+        <a class="btn" href="helios3d.html">full-width edges</a>
+        <a class="btn" href="helios3d.html?c=spec3&amp;fast=1">spectral embedding</a>
+        <a class="btn" href="helios3d.html?live=1&amp;fast=1">Helios live 3D layout</a>
+        <a class="btn" href="heliospc.html?c=graph_combined_umap3">points only · ~120 fps</a>
+      </div>
+
+      <a class="card" href="pointcloud-deck.html?c=graph_combined_umap3">
+        <strong>Knowledge graph → 3D manifold</strong>
+        <span class="pill win">real data</span><span class="pill">139K pts</span><span class="pill">~119 fps</span>
+        <div class="desc">The knowledge graph embedded into 3D (UMAP of a spectral embedding) — a dense paper/patent core with a product/trial halo. <b>Click to open in deck.gl</b>; drag to orbit, scroll to zoom.</div>
+      </a>
+      <div class="more">also open: <a class="btn" href="pointcloud-three.html?c=graph_combined_umap3">three.js</a><a class="btn" href="pointcloud-deck.html?c=graph_combined_spec3">spectral layout</a></div>
+
+      <a class="card" href="pointcloud-deck.html?c=swiss_roll_1000000">
+        <strong>Synthetic manifolds</strong>
+        <span class="pill">1M pts</span><span class="pill">~120 fps</span>
+        <div class="desc">The classic manifold-learning shapes, coloured by their intrinsic coordinate so the structure is visible. <b>Click for the swiss roll in deck.gl.</b></div>
+      </a>
+      <div class="more">also open: <a class="btn" href="pointcloud-deck.html?c=sphere_1000000">sphere</a><a class="btn" href="pointcloud-deck.html?c=torus_1000000">torus</a><a class="btn" href="pointcloud-deck.html?c=s_curve_1000000">s-curve</a><a class="btn" href="pointcloud-three.html?c=swiss_roll_1000000">swiss roll · three.js</a></div>
+
+      <h2>Datasets</h2>
+      <table>
+        <thead><tr><th>graph</th><th class="n">nodes</th><th class="n">edges</th></tr></thead>
+        <tbody>
+          <tr><td>medical_device</td><td class="n">26,635</td><td class="n">155,882</td></tr>
+          <tr><td>drug</td><td class="n">72,763</td><td class="n">362,820</td></tr>
+          <tr><td>semiconductor</td><td class="n">42,712</td><td class="n">604,288</td></tr>
+          <tr><td>combined</td><td class="n">139,442</td><td class="n">1,115,636</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Notes</h2>
+      <ul style="color:#9bb">
+        <li>Node colour = type (paper / patent / product / trial); size ∝ √degree.</li>
+        <li><strong>Precomputed</strong> variants (Sigma · precomputed, Cosmograph · precomputed, cosmos.gl, deck.gl, 3d-force-graph) render a layout baked offline (FA2 coordinates in <code>*.layout.json</code>); <strong>live</strong> variants (Sigma · live, Cosmograph · live) lay out in-browser.</li>
+        <li>Run on a real GPU (your Mac) for accurate FPS — headless/CI browsers fall back to software rendering.</li>
+        <li>This page is the hub of the demo site — <code>npm run dev</code> (or <code>npx vite</code>) for live dev, or <code>npm run build</code> + any static server for the built site.</li>
+      </ul>
+    </main>
+  </body>
+</html>

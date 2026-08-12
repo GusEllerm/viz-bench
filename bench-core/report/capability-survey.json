@@ -1,0 +1,54 @@
+[
+  { "feature": "density-map", "featureLabel": "Density map / heatmap", "category": "aggregate", "library": "three.js", "support": "workaround", "evidence": "surveyed", "notes": "No built-in aggregation; a custom shader / instanced sprites can approximate it." },
+  { "feature": "density-map", "featureLabel": "Density map / heatmap", "category": "aggregate", "library": "sigma.js", "support": "workaround", "evidence": "surveyed", "notes": "No native density/heatmap primitive (API-audited: only labelDensity). A per-node local-density colouring is possible as an approximation, as three.js does — not native, not yet verified here." },
+  { "feature": "density-map", "featureLabel": "Density map / heatmap", "category": "aggregate", "library": "cosmos.gl", "support": "workaround", "evidence": "surveyed", "notes": "No native density primitive (API-audited). A per-point local-density colouring is possible via setPointColors, as three.js does — not native, not yet verified here." },
+  { "feature": "density-map", "featureLabel": "Density map / heatmap", "category": "aggregate", "library": "helios-web", "support": "native", "evidence": "surveyed", "notes": "Built-in density plot — the config.density option enables a DensityGL kernel-density-estimation pass." },
+
+  { "feature": "points", "featureLabel": "Points / scatter", "category": "encode", "library": "sigma.js", "support": "native", "evidence": "surveyed", "notes": "Nodes are the primitive." },
+  { "feature": "points", "featureLabel": "Points / scatter", "category": "encode", "library": "deck.gl", "support": "native", "evidence": "surveyed", "notes": "ScatterplotLayer / PointCloudLayer." },
+  { "feature": "points", "featureLabel": "Points / scatter", "category": "encode", "library": "cosmos.gl", "support": "native", "evidence": "surveyed", "notes": "GPU point rendering." },
+  { "feature": "points", "featureLabel": "Points / scatter", "category": "encode", "library": "three.js", "support": "native", "evidence": "surveyed", "notes": "THREE.Points." },
+  { "feature": "points", "featureLabel": "Points / scatter", "category": "encode", "library": "helios-web", "support": "native", "evidence": "surveyed", "notes": "Typed-array node rendering." },
+
+  { "feature": "lines", "featureLabel": "Lines / edges", "category": "encode", "library": "sigma.js", "support": "native", "evidence": "surveyed", "notes": "Edge programs (hairline / thick)." },
+  { "feature": "lines", "featureLabel": "Lines / edges", "category": "encode", "library": "deck.gl", "support": "native", "evidence": "surveyed", "notes": "LineLayer / PathLayer." },
+  { "feature": "lines", "featureLabel": "Lines / edges", "category": "encode", "library": "cosmos.gl", "support": "native", "evidence": "surveyed", "notes": "GPU link rendering." },
+  { "feature": "lines", "featureLabel": "Lines / edges", "category": "encode", "library": "three.js", "support": "workaround", "evidence": "surveyed", "notes": "LineSegments (1px); Line2 add-on for width." },
+  { "feature": "lines", "featureLabel": "Lines / edges", "category": "encode", "library": "helios-web", "support": "native", "evidence": "surveyed", "notes": "Edge rendering (fastEdges 1px mode)." },
+
+  { "feature": "pick-tooltip", "featureLabel": "Pick / hover tooltip", "category": "interact", "library": "sigma.js", "support": "native", "evidence": "surveyed", "notes": "clickNode / overNode / overEdge events." },
+  { "feature": "pick-tooltip", "featureLabel": "Pick / hover tooltip", "category": "interact", "library": "deck.gl", "support": "native", "evidence": "surveyed", "notes": "pickable + getTooltip." },
+  { "feature": "pick-tooltip", "featureLabel": "Pick / hover tooltip", "category": "interact", "library": "cosmos.gl", "support": "native", "evidence": "surveyed", "notes": "onClick / onHover point + link callbacks." },
+  { "feature": "pick-tooltip", "featureLabel": "Pick / hover tooltip", "category": "interact", "library": "three.js", "support": "workaround", "evidence": "surveyed", "notes": "Raycaster; not built in." },
+  { "feature": "pick-tooltip", "featureLabel": "Pick / hover tooltip", "category": "interact", "library": "helios-web", "support": "native", "evidence": "surveyed", "notes": "onNodeClick / onNodeHover." },
+
+  { "feature": "labels", "featureLabel": "Labels", "category": "annotate", "library": "sigma.js", "support": "native", "evidence": "surveyed", "notes": "Node/edge labels + LOD label threshold." },
+  { "feature": "labels", "featureLabel": "Labels", "category": "annotate", "library": "deck.gl", "support": "native", "evidence": "surveyed", "notes": "TextLayer." },
+  { "feature": "labels", "featureLabel": "Labels", "category": "annotate", "library": "cosmos.gl", "support": "native", "evidence": "surveyed", "notes": "Dynamic / top labels (Cosmograph)." },
+  { "feature": "labels", "featureLabel": "Labels", "category": "annotate", "library": "three.js", "support": "workaround", "evidence": "surveyed", "notes": "Sprite / CSS2DRenderer add-ons." },
+  { "feature": "labels", "featureLabel": "Labels", "category": "annotate", "library": "helios-web", "support": "native", "evidence": "surveyed", "notes": "Node labels." },
+
+  { "feature": "node-images", "featureLabel": "Node images / borders", "category": "annotate", "library": "sigma.js", "support": "plugin", "evidence": "surveyed", "notes": "@sigma/node-image; custom drawNode for borders." },
+  { "feature": "node-images", "featureLabel": "Node images / borders", "category": "annotate", "library": "deck.gl", "support": "native", "evidence": "surveyed", "notes": "IconLayer." },
+  { "feature": "node-images", "featureLabel": "Node images / borders", "category": "annotate", "library": "cosmos.gl", "support": "native", "evidence": "surveyed", "notes": "Native per-node images — setImageData(ImageData[]) + setPointImageIndices() + setPointImageSizes(). (Verified example supersedes this.)" },
+  { "feature": "node-images", "featureLabel": "Node images / borders", "category": "annotate", "library": "three.js", "support": "workaround", "evidence": "surveyed", "notes": "Sprite textures." },
+  { "feature": "node-images", "featureLabel": "Node images / borders", "category": "annotate", "library": "helios-web", "support": "none", "evidence": "surveyed", "notes": "No per-node image API (source-audited: image methods are canvas export only, no node-image atlas). Nodes are uniform GPU points." },
+
+  { "feature": "curved-edges", "featureLabel": "Curved edges", "category": "structure", "library": "sigma.js", "support": "plugin", "evidence": "surveyed", "notes": "@sigma/edge-curve (EdgeCurveProgram)." },
+  { "feature": "curved-edges", "featureLabel": "Curved edges", "category": "structure", "library": "deck.gl", "support": "native", "evidence": "surveyed", "notes": "ArcLayer / curved paths." },
+  { "feature": "curved-edges", "featureLabel": "Curved edges", "category": "structure", "library": "cosmos.gl", "support": "native", "evidence": "surveyed", "notes": "curvedLinks config." },
+  { "feature": "curved-edges", "featureLabel": "Curved edges", "category": "structure", "library": "three.js", "support": "workaround", "evidence": "surveyed", "notes": "No graph model, but three draws curves — QuadraticBezierCurve3 / TubeGeometry per edge. (Verified example supersedes this.)" },
+  { "feature": "curved-edges", "featureLabel": "Curved edges", "category": "structure", "library": "helios-web", "support": "none", "evidence": "surveyed", "notes": "Straight edges only (source-audited: no curve / bezier / bundling option in the edge renderer)." },
+
+  { "feature": "layout", "featureLabel": "Layout / force simulation", "category": "compute", "library": "cosmos.gl", "support": "native", "evidence": "surveyed", "notes": "GPU force simulation (enableSimulation). Measured in the Layout benchmark: ~39 iters/sec at 100K nodes and ~10 at 500K, vs graphology FA2's 1.3 and 0.24 on the CPU; sustains interactive layout to 1M.", "docs": "https://cosmograph.app/" },
+  { "feature": "layout", "featureLabel": "Layout / force simulation", "category": "compute", "library": "sigma.js", "support": "workaround", "evidence": "surveyed", "notes": "Sigma is a renderer with no layout of its own; the graphology-layout-forceatlas2 CPU companion supplies positions (fa2.start()). This IS the CPU force-atlas in the Layout benchmark: 27 iters/sec at 10K collapsing to 0.24 at 500K — minutes to converge at scale." },
+  { "feature": "layout", "featureLabel": "Layout / force simulation", "category": "compute", "library": "deck.gl", "support": "none", "evidence": "surveyed", "notes": "A rendering layer — expects node positions computed elsewhere. No graph layout." },
+  { "feature": "layout", "featureLabel": "Layout / force simulation", "category": "compute", "library": "three.js", "support": "none", "evidence": "surveyed", "notes": "A general 3D engine — no graph layout; external libraries (d3-force, 3d-force-graph) supply positions." },
+  { "feature": "layout", "featureLabel": "Layout / force simulation", "category": "compute", "library": "helios-web", "support": "native", "evidence": "surveyed", "notes": "Native force-directed layout (autoStartLayout). Measured interactive to ~100K nodes (~26 iters/sec); did not sustain live layout past ~100K in this test." },
+
+  { "feature": "3d", "featureLabel": "3D rendering", "category": "encode", "library": "deck.gl", "support": "native", "evidence": "surveyed", "notes": "OrbitView / OrbitController with 3D layers (PointCloudLayer et al.) — the 3D benchmark rows run on it." },
+  { "feature": "3d", "featureLabel": "3D rendering", "category": "encode", "library": "sigma.js", "support": "none", "evidence": "surveyed", "notes": "2D by design — the camera is a 2D pan/zoom transform over an x/y graph; no perspective or z axis." },
+  { "feature": "3d", "featureLabel": "3D rendering", "category": "encode", "library": "cosmos.gl", "support": "plugin", "evidence": "surveyed", "notes": "Not in mainline @cosmos.gl/graph (a 2D engine). The author's experimental fork @cosmograph/cosmos adds spaceDimensions: 3 — a perspective orbit camera, 3D simulation space, depth cueing — and is benchmarked on the 3D / manifold page." },
+  { "feature": "3d", "featureLabel": "3D rendering", "category": "encode", "library": "three.js", "support": "native", "evidence": "surveyed", "notes": "A 3D engine outright — perspective cameras, orbit controls, depth-sorted scenes." },
+  { "feature": "3d", "featureLabel": "3D rendering", "category": "encode", "library": "helios-web", "support": "native", "evidence": "surveyed", "notes": "Renders 3D natively (use2D: false; xyz node positions and a 3D camera). The 2D mode used in the graph benchmark is the same engine flattened." }
+]

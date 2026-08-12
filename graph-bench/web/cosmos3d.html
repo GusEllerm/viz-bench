@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cosmos 3D — @cosmograph/cosmos example</title>
+    <style>
+      html, body { margin: 0; height: 100%; background: #0e1116; color: #e6e6e6;
+        font: 13px/1.45 -apple-system, system-ui, sans-serif; overflow: hidden; }
+      #graph { position: absolute; inset: 0; background: #0e1116; }
+      #hud { position: absolute; top: 12px; left: 12px; z-index: 10; background: rgba(16,20,28,.82);
+        border: 1px solid #232b39; border-radius: 10px; padding: 12px 14px; min-width: 230px; backdrop-filter: blur(6px); }
+      #hud h1 { font-size: 14px; margin: 0 0 8px; }
+      #hud .row { display: flex; justify-content: space-between; gap: 16px; }
+      #hud .row span:last-child { font-variant-numeric: tabular-nums; color: #9fe0c0; }
+      #hud .stage { color: #9bb; margin-top: 6px; min-height: 16px; }
+      #hud .err { color: #ff8b8b; white-space: pre-wrap; margin-top: 6px; }
+      #hud .hint { color: #7d8896; margin-top: 8px; font-size: 12px; }
+      #hud .btns { display: flex; gap: 6px; margin-top: 10px; }
+      #hud button { background: #1a2230; color: #cfe3d8; border: 1px solid #2c3a4f; border-radius: 7px;
+        padding: 4px 10px; font: inherit; font-size: 12px; cursor: pointer; }
+      #hud button:hover { background: #223047; }
+      #hud button.active { background: #0e8a6e; border-color: #0e8a6e; color: #fff; }
+    </style>
+  </head>
+  <body>
+    <div id="graph"></div>
+    <div id="hud">
+      <h1>cosmos 3D <span style="color:#7d8896;font-weight:400">@cosmograph/cosmos</span></h1>
+      <div class="row"><span>mode</span><span id="m-mode">—</span></div>
+      <div class="row"><span>nodes</span><span id="m-nodes">—</span></div>
+      <div class="row"><span>edges</span><span id="m-edges">—</span></div>
+      <div class="row"><span>fps / min</span><span id="m-fps">—</span></div>
+      <div class="stage" id="m-stage"></div>
+      <div class="err" id="m-err"></div>
+      <div class="btns">
+        <button id="b-3d" class="active">3D</button>
+        <button id="b-2d">2D</button>
+        <button id="b-sim">pause sim</button>
+        <button id="b-fit">fit</button>
+      </div>
+      <div class="hint">drag rotate · wheel dolly · shift-drag pan<br />?n=5000 nodes · ?dim=2|3</div>
+    </div>
+    <script type="module" src="/src/cosmos3d.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@antv/g-webgl": "^2.1.1",
+    "@antv/g6": "^5.1.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}
