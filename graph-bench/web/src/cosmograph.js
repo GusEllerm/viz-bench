@@ -8,7 +8,7 @@ const container = document.getElementById('graph');
 const selector = document.getElementById('dataset');
 let cosmograph = null;
 
-const PRE_COLORS = { paper: '#4C78A8', patent: '#F58518', product: '#54A24B', trial: '#E45756' };
+import { hexOf } from './typecolors.js';
 
 async function run(graph) {
   // ?pre=1 → Cosmograph's embeddings mode: feed the PRECOMPUTED FA2 layout via
@@ -31,7 +31,7 @@ async function run(graph) {
       pts = new Array(nodes.length);
       for (let i = 0; i < nodes.length; i++) {
         const nd = nodes[i];
-        pts[i] = { id: nd.id, label: nd.l || nd.id, color: PRE_COLORS[nd.t] || '#9aa0aa', size: Math.max(1.5, Math.sqrt(nd.d || 1)), x: nd.x, y: nd.y };
+        pts[i] = { id: nd.id, label: nd.l || nd.id, color: hexOf(nd.t), size: Math.max(1.5, Math.sqrt(nd.d || 1)), x: nd.x, y: nd.y };
       }
       const e = json.edges;
       lks = new Array(e.length / 2);
@@ -174,7 +174,7 @@ async function run(graph) {
 }
 
 const params = new URLSearchParams(location.search);
-const initial = params.get('g') || 'medical_device';
+const initial = params.get('g') || 'arxiv_2015';
 selector.value = initial;
 selector.addEventListener('change', (e) => {
   const g = e.target.value;

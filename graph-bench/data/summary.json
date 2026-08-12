@@ -1,0 +1,14 @@
+{
+  "arxiv_2015": {
+    "nodes": 53160,
+    "edges": 148458,
+    "source": "ogbn-arxiv (ODC-BY)",
+    "cutoffYear": 2015
+  },
+  "arxiv_2017": {
+    "nodes": 90941,
+    "edges": 369033,
+    "source": "ogbn-arxiv (ODC-BY)",
+    "cutoffYear": 2017
+  }
+}

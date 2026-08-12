@@ -1,8 +1,8 @@
-// Helios-Web in its native 3D mode: the combined knowledge graph (139,442 nodes /
+// Helios-Web in its native 3D mode: the benchmark graph (nodes /
 // 1.1M edges) rendered AT its Phase-4 manifold-embedding coordinates (UMAP or
 // spectral, ?c=umap3|spec3) — the only page in the suite that draws the graph's
 // EDGES in 3D. Node order in the cloud binaries is verified identical to
-// combined.layout.json (type-color check, 0/139,442 mismatches), so positions,
+// the layout export, so positions,
 // colors and edges line up by index.
 //   ?fast=1 → helios fastEdges (1-px edges) · ?live=1 → ignore the embedding and
 //   run Helios's own 3D force layout instead.
@@ -26,15 +26,15 @@ let helios = null;
 async function run(cloud) {
   const q = new URLSearchParams(location.search);
   const live = q.get('live') === '1';
-  window.__bench = { tool: 'helios3d', dataset: `combined·${live ? 'live3d' : cloud}`, ready: false, settled: !live, timings: null };
+  window.__bench = { tool: 'helios3d', dataset: `graph3d·${live ? 'live3d' : cloud}`, ready: false, settled: !live, timings: null };
   try {
     metrics.stage(`fetching graph + ${cloud} embedding …`);
     const t0 = performance.now();
     const [graphRes, posRes] = await Promise.all([
-      fetch('data/combined.layout.json'),
+      fetch('data/arxiv_full.layout.json'),
       live ? Promise.resolve(null) : fetch(`data/clouds/graph_combined_${cloud}.pos.f32`),
     ]);
-    if (!graphRes.ok) throw new Error(`fetch combined.layout.json → ${graphRes.status}`);
+    if (!graphRes.ok) throw new Error(`fetch arxiv_full.layout.json → ${graphRes.status}`);
     if (posRes && !posRes.ok) throw new Error(`fetch graph_combined_${cloud}.pos.f32 → ${posRes.status}`);
     const json = await graphRes.json();
     const pos = posRes ? new Float32Array(await posRes.arrayBuffer()) : null;

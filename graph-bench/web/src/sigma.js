@@ -68,7 +68,7 @@ async function run(graph) {
 }
 
 const params = new URLSearchParams(location.search);
-const initial = params.get('g') || 'medical_device';
+const initial = params.get('g') || 'arxiv_2015';
 selector.value = initial;
 selector.addEventListener('change', (e) => {
   const g = e.target.value;

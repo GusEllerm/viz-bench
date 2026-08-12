@@ -17,7 +17,7 @@ const TOOLS = [
   { key: 'cosmographpre', page: 'cosmograph.html', q: '&pre=1', wrapper: true },
   { key: 'cosmographnoblend', page: 'cosmograph.html', q: '&pre=1&noblend=1', wrapper: true },
 ];
-const DATASETS = ['semiconductor', 'combined'];
+const DATASETS = ['arxiv_2018', 'arxiv_full'];
 const MS = 4000;
 
 async function panFPS(page, ms) {
@@ -48,7 +48,7 @@ process.stdout.write('warming up display … ');
 {
   const p = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 });
   try {
-    await p.goto(`${BASE}/deck.html?g=medical_device`, { waitUntil: 'load' });
+    await p.goto(`${BASE}/deck.html?g=arxiv_2015`, { waitUntil: 'load' });
     await p.waitForFunction(() => window.__bench && (window.__bench.ready || window.__bench.error), null, { timeout: 60000 }).catch(() => {});
     await coalescedPan(p, { durationMs: 6000, selector: '#graph' });
   } catch {} finally { await p.close().catch(() => {}); }

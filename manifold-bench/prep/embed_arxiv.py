@@ -58,7 +58,10 @@ def main():
     mpath = os.path.join(OUT, "manifest.json")
     manifest = json.load(open(mpath)) if os.path.exists(mpath) else {"clouds": []}
     manifest["clouds"] = [c for c in manifest["clouds"] if c.get("base") != BASE]
-    bbox = [xyz.min(axis=0).tolist(), xyz.max(axis=0).tolist()]
+    # ROBUST bbox (0.5–99.5 percentile): UMAP leaves a few disconnected-vertex outliers far from
+    # the cloud; the bench pages frame the camera from this bbox, so a raw min/max would waste
+    # most of the viewport. Outlier points still load (coverage counts all), just off-frame.
+    bbox = [np.percentile(xyz, 0.5, axis=0).tolist(), np.percentile(xyz, 99.5, axis=0).tolist()]
     manifest["clouds"].append({"name": "arxiv", "n": int(n), "base": BASE,
                                "pos": f"{BASE}.pos.f32", "col": f"{BASE}.col.u8", "bbox": bbox})
     json.dump(manifest, open(mpath, "w"), indent=1)

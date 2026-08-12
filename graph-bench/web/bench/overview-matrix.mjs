@@ -7,8 +7,8 @@
 // a published table.
 //
 //   node bench/overview-matrix.mjs                 # full 4×4 matrix
-//   node bench/overview-matrix.mjs combined        # one dataset, all tools
-//   node bench/overview-matrix.mjs medical_device deck   # one cell (smoke)
+//   node bench/overview-matrix.mjs arxiv_full      # one dataset, all tools
+//   node bench/overview-matrix.mjs arxiv_2015 deck   # one cell (smoke)
 import { launchBrowser, startServer, readGL } from '../../../bench-core/node/harness.mjs';
 import { startProbe, readProbe } from '../../../bench-core/node/probe.mjs';
 import { coalescedPan } from '../../../bench-core/node/drivers.mjs';
@@ -45,7 +45,7 @@ const TOOLS = [
   { key: 'deck', page: 'deck.html', q: '', engine: 'deck.gl', edgePolicy: 'exact' },
   { key: 'helios', page: 'helios.html', q: '', engine: 'helios-web', edgePolicy: 'exact' },
 ];
-const DATASETS = ['medical_device', 'drug', 'semiconductor', 'combined'];
+const DATASETS = ['arxiv_2015', 'arxiv_2017', 'arxiv_2018', 'arxiv_full'];
 
 const onlyDs = process.argv[2];
 const onlyTool = process.argv[3];
@@ -158,7 +158,7 @@ async function runCell(browser, ds, tool, prov) {
 async function warmupDisplay(browser) {
   const p = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 });
   try {
-    await p.goto(`${BASE}/deck.html?g=medical_device`, { waitUntil: 'load' });
+    await p.goto(`${BASE}/deck.html?g=arxiv_2015`, { waitUntil: 'load' });
     await p.waitForFunction(() => window.__bench && (window.__bench.ready || window.__bench.error), null, { timeout: 60000 }).catch(() => {});
     await coalescedPan(p, { durationMs: 8000, selector: '#graph' });
   } catch {} finally {

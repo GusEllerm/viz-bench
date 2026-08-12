@@ -12,13 +12,7 @@ const metrics = new Metrics();
 const selector = document.getElementById('dataset');
 
 // same palette as the rest of the suite (helios takes rgb floats 0–1)
-const TYPE_COLORS = {
-  paper: [0.298, 0.471, 0.659],
-  patent: [0.961, 0.522, 0.094],
-  product: [0.329, 0.635, 0.294],
-  trial: [0.894, 0.341, 0.337],
-};
-const FALLBACK = [0.7, 0.7, 0.7];
+import { rgb01Of } from './typecolors.js';
 
 let helios = null;
 
@@ -53,7 +47,7 @@ async function run(ds) {
       nodeDict[nd.id] = {
         label: nd.l || nd.id,
         Position: [(nd.x - cx) * k, (nd.y - cy) * k, 0],
-        Color: TYPE_COLORS[nd.t] || FALLBACK,
+        Color: rgb01Of(nd.t),
         Size: Math.max(0.5, Math.sqrt(nd.d || 1) * 0.25),
       };
     }
@@ -123,7 +117,7 @@ async function run(ds) {
 }
 
 const params = new URLSearchParams(location.search);
-const initial = params.get('g') || 'medical_device';
+const initial = params.get('g') || 'arxiv_2015';
 selector.value = initial;
 selector.addEventListener('change', (ev) => {
   const g = ev.target.value;

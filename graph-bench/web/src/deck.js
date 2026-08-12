@@ -10,8 +10,7 @@ import { installAdapter } from '../../../bench-core/page/contract.js';
 import { PRIMITIVE } from '../../../bench-core/page/primitives.js';
 
 // node type → RGB (shared legend across the bench pages)
-const COLORS = { paper: [76, 120, 168], patent: [245, 133, 24], product: [84, 162, 75], trial: [228, 87, 86] };
-const FALLBACK = [150, 150, 150];
+import { rgb255Of } from './typecolors.js';
 
 const metrics = new Metrics();
 const container = document.getElementById('graph');
@@ -50,7 +49,7 @@ async function run(graph) {
       const n = nodes[i];
       const x = n.x, y = n.y;
       pos[2 * i] = x; pos[2 * i + 1] = y;
-      const c = COLORS[n.t] || FALLBACK;
+      const c = rgb255Of(n.t);
       col[3 * i] = c[0]; col[3 * i + 1] = c[1]; col[3 * i + 2] = c[2];
       rad[i] = Math.max(1.5, Math.sqrt(n.d || 1));
       if (x < minX) minX = x; if (x > maxX) maxX = x;
@@ -134,7 +133,7 @@ async function run(graph) {
 }
 
 const params = new URLSearchParams(location.search);
-const initial = params.get('g') || 'medical_device';
+const initial = params.get('g') || 'arxiv_2015';
 selector.value = initial;
 selector.addEventListener('change', (e) => {
   const g = e.target.value;

@@ -8,7 +8,7 @@ import { Metrics } from './metrics.js';
 import { installAdapter } from '../../../bench-core/page/contract.js';
 import { PRIMITIVE } from '../../../bench-core/page/primitives.js';
 
-const COLORS = { paper: '#4C78A8', patent: '#F58518', product: '#54A24B', trial: '#E45756' };
+import { hexOf } from './typecolors.js';
 const metrics = new Metrics();
 const container = document.getElementById('graph');
 const selector = document.getElementById('dataset');
@@ -34,7 +34,7 @@ async function run(graph) {
     const nodes = json.nodes;
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i];
-      g.addNode(n.id, { x: n.x, y: n.y, size: Math.max(1.5, Math.sqrt(n.d || 1)), color: COLORS[n.t] || '#9aa0aa' });
+      g.addNode(n.id, { x: n.x, y: n.y, size: Math.max(1.5, Math.sqrt(n.d || 1)), color: hexOf(n.t) });
     }
     const edges = json.edges;
     for (let e = 0; e < edges.length / 2; e++) {
@@ -86,7 +86,7 @@ async function run(graph) {
 }
 
 const params = new URLSearchParams(location.search);
-const initial = params.get('g') || 'medical_device';
+const initial = params.get('g') || 'arxiv_2015';
 selector.value = initial;
 selector.addEventListener('change', (e) => {
   const g = e.target.value;

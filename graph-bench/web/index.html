@@ -80,70 +80,70 @@
 
       <h2 id="benchmarks">Benchmarks <span class="muted">— renderers ranked by measured FPS @ 1.1M edges</span></h2>
       <p style="color:#9bb;margin:6px 0 0">Each card launches a live prototype on the real GPU (load time + FPS in the HUD).
-        Start with <code>medical_device</code> (snappiest), work up to <code>combined</code>.</p>
+        Start with <code>arxiv_2015</code> (snappiest), work up to <code>arxiv_full</code>.</p>
 
-      <a class="card" href="/sigmapre.html?g=medical_device">
+      <a class="card" href="/sigmapre.html?g=arxiv_2015">
         <strong>Sigma.js · precomputed layout</strong>
         <span class="pill win">✓ winner</span><span class="pill">batched WebGL</span><span class="pill">offline FA2</span>
         <div class="meta">119 fps at the 1.1M-edge overview · 588 MB</div>
         <div class="desc">The recommended stack: smooth in every state — including the full-graph overview where everything else drops below 20 fps. Graph-native.</div>
       </a>
 
-      <a class="card" href="/cosmograph.html?g=medical_device&amp;pre=1">
+      <a class="card" href="/cosmograph.html?g=arxiv_2015&amp;pre=1">
         <strong>Cosmograph · precomputed positions</strong>
         <span class="pill ok">in-motion champ</span><span class="pill">GPU points + links</span><span class="pill">pointXBy/YBy</span>
         <div class="meta">103 fps in motion · p95 8.8 ms <span class="at">@ 1.1M edges</span> · overview 6 fps (use LOD)</div>
         <div class="desc">Re-measured after a harness artifact was found (was wrongly reported as 5 fps): superb in motion / zoomed in. Known limit: the zoomed-out fit-all overview is link-overdraw-bound at this density (any pixel ratio) — the auto-LOD variant below hides links at far zoom, the production pattern.</div>
       </a>
       <div class="more">
-        <a class="btn" href="/cosmograph.html?g=combined&amp;pre=1&amp;lod=1">combined · 1.1M · auto-LOD links (smooth overview)</a>
-        <a class="btn" href="/cosmograph.html?g=combined&amp;pre=1">combined · 1.1M · full links</a>
-        <a class="btn" href="/cosmograph.html?g=combined&amp;pre=1&amp;links=0">combined · points only</a>
+        <a class="btn" href="/cosmograph.html?g=arxiv_full&amp;pre=1&amp;lod=1">arxiv_full · 1.16M · auto-LOD links (smooth overview)</a>
+        <a class="btn" href="/cosmograph.html?g=arxiv_full&amp;pre=1">arxiv_full · 1.16M · full links</a>
+        <a class="btn" href="/cosmograph.html?g=arxiv_full&amp;pre=1&amp;links=0">arxiv_full · points only</a>
       </div>
 
-      <a class="card" href="/cosmos.html?g=medical_device">
+      <a class="card" href="/cosmos.html?g=arxiv_2015">
         <strong>cosmos.gl · bare engine</strong>
         <span class="pill ok">engine</span><span class="pill">no wrapper</span>
         <div class="meta">104 fps · <span style="color:#9fe0c0">167 MB</span> <span class="at">@ 1.1M edges</span></div>
         <div class="desc">The raw engine under Cosmograph (donated to OpenJS), fed typed arrays directly — same speed, lightest graph renderer after deck.gl.</div>
       </a>
 
-      <a class="card" href="/helios.html?g=medical_device">
+      <a class="card" href="/helios.html?g=arxiv_2015">
         <strong>Helios-Web</strong>
         <span class="pill">WebGL2</span><span class="pill">typed arrays</span><span class="pill">~60 Hz cap</span>
         <div class="meta">36 fps overview · 10 in motion <span class="at">@ 1.1M edges</span> · 269 MB</div>
         <div class="desc">Filipi Nascimento's large-network renderer on the same precomputed layout — the mirror image of Cosmograph: #2 at the overview, weak zoomed-in. <code>?fast=1</code> = 1-px edges (52 fps overview).</div>
       </a>
 
-      <a class="card" href="/sigma.html?g=medical_device">
+      <a class="card" href="/sigma.html?g=arxiv_2015">
         <strong>Sigma.js · live FA2</strong>
         <span class="pill">batched WebGL</span><span class="pill">FA2 (worker)</span>
         <div class="meta">51 fps · 1,620 MB <span class="at">@ 1.1M edges</span></div>
         <div class="desc">Same renderer, laying out in-browser via a ForceAtlas2 worker — ~½ the FPS and 3× the RAM of the precomputed variant. The cost of live layout.</div>
       </a>
 
-      <a class="card" href="/deck.html?g=medical_device">
+      <a class="card" href="/deck.html?g=arxiv_2015">
         <strong>deck.gl</strong>
         <span class="pill ok">memory pick</span><span class="pill">instanced WebGL2</span><span class="pill">binary attrs</span>
         <div class="meta">12–20 fps · <span style="color:#9fe0c0">28 MB</span> <span class="at">@ 1.1M edges</span></div>
         <div class="desc">Instanced rendering straight from binary buffers — degrades gradually, ~21× lighter RAM than Sigma. Not graph-native (bring your own coords + picking).</div>
       </a>
 
-      <a class="card" href="/cosmograph.html?g=medical_device">
+      <a class="card" href="/cosmograph.html?g=arxiv_2015">
         <strong>Cosmograph · live GPU layout</strong>
         <span class="pill">GPU points + links</span><span class="pill">GPU sim</span>
         <div class="meta">12–28 fps while converging <span class="at">@ 1.1M edges</span></div>
         <div class="desc">Its built-in GPU force layout, live. Fill-bound while the layout is a hairball; approaches the precomputed numbers as it spreads.</div>
       </a>
 
-      <a class="card" href="/forcegraph.html?g=medical_device">
+      <a class="card" href="/forcegraph.html?g=arxiv_2015">
         <strong>3d-force-graph</strong>
         <span class="pill out">✗ out</span><span class="pill">Three.js scene-graph</span>
         <div class="meta">~2 fps · 3,760 MB <span class="at">@ 1.1M edges</span></div>
         <div class="desc">Three.js / WebGL, one sphere mesh per node → ~10⁵ draw calls/frame. Unusable at scale (also our 3D-bridge datapoint).</div>
       </a>
 
-      <a class="card" href="/g6.html?g=medical_device">
+      <a class="card" href="/g6.html?g=arxiv_2015">
         <strong>AntV G6</strong>
         <span class="pill out">✗ out</span><span class="pill">scene-graph</span>
         <div class="meta">couldn't build 156K edges</div>
@@ -183,10 +183,10 @@
       <table>
         <thead><tr><th>graph</th><th class="n">nodes</th><th class="n">edges</th></tr></thead>
         <tbody>
-          <tr><td>medical_device</td><td class="n">26,635</td><td class="n">155,882</td></tr>
-          <tr><td>drug</td><td class="n">72,763</td><td class="n">362,820</td></tr>
-          <tr><td>semiconductor</td><td class="n">42,712</td><td class="n">604,288</td></tr>
-          <tr><td>combined</td><td class="n">139,442</td><td class="n">1,115,636</td></tr>
+          <tr><td>arxiv_2015</td><td class="n">53,160</td><td class="n">148,458</td></tr>
+          <tr><td>arxiv_2017</td><td class="n">90,941</td><td class="n">369,033</td></tr>
+          <tr><td>arxiv_2018</td><td class="n">120,740</td><td class="n">615,415</td></tr>
+          <tr><td>arxiv_full</td><td class="n">169,343</td><td class="n">~1,160,000</td></tr>
         </tbody>
       </table>
 

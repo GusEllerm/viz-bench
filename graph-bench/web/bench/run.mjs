@@ -10,7 +10,7 @@
 // Usage:
 //   node bench/run.mjs                      # full matrix
 //   node bench/run.mjs cosmograph            # one tool, all datasets
-//   node bench/run.mjs sigma drug            # one tool + one dataset (smoke test)
+//   node bench/run.mjs sigma arxiv_2017      # one tool + one dataset (smoke test)
 import { readGL, withTimeout, launchBrowser, startServer } from '../../../bench-core/node/harness.mjs';
 import { startProbe, readProbe } from '../../../bench-core/node/probe.mjs';
 import { syntheticInput } from '../../../bench-core/node/drivers.mjs';
@@ -23,7 +23,7 @@ const BASE = 'http://localhost:5180';
 // so the FPS numbers compare RENDER throughput. g6 disqualified (scene-graph can't build
 // 156K+ edges). Test any tool ad-hoc: node bench/run.mjs <tool> <ds>
 const TOOLS = ['sigma', 'cosmograph', 'deck', 'forcegraph'];
-const DATASETS = ['medical_device', 'drug', 'semiconductor', 'combined'];
+const DATASETS = ['arxiv_2015', 'arxiv_2017', 'arxiv_2018', 'arxiv_full'];
 const LAYOUT_BUDGET_MS = 8000;   // let each tool lay out before we measure interaction
 const INTERACT_MS = 5000;        // scripted zoom/pan window
 const READY_TIMEOUT_MS = 90000;  // max wait for data load + first render (fail fast if wedged)

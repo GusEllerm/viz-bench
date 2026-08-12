@@ -12,14 +12,7 @@ const metrics = new Metrics();
 const container = document.getElementById('graph');
 const selector = document.getElementById('dataset');
 
-// shared node-type palette (rgba 0–1 for cosmos)
-const TYPE_COLORS = {
-  paper: [0.298, 0.471, 0.659, 1.0],
-  patent: [0.961, 0.522, 0.094, 1.0],
-  product: [0.329, 0.635, 0.294, 1.0],
-  trial: [0.894, 0.341, 0.337, 1.0],
-};
-const FALLBACK = [0.7, 0.7, 0.7, 1.0];
+import { rgba01Of } from './typecolors.js';
 
 let graph = null;
 
@@ -45,7 +38,7 @@ async function run(ds) {
       const nd = nodes[i];
       pos[i * 2] = nd.x;
       pos[i * 2 + 1] = nd.y;
-      col.set(TYPE_COLORS[nd.t] || FALLBACK, i * 4);
+      col.set(rgba01Of(nd.t), i * 4);
       size[i] = Math.max(2, Math.sqrt(nd.d || 1) * 1.2);
     }
     const links = Float32Array.from(json.edges);
@@ -120,7 +113,7 @@ async function run(ds) {
 }
 
 const params = new URLSearchParams(location.search);
-const initial = params.get('g') || 'medical_device';
+const initial = params.get('g') || 'arxiv_2015';
 selector.value = initial;
 selector.addEventListener('change', (e) => {
   const g = e.target.value;
