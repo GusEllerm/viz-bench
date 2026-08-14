@@ -74,6 +74,9 @@ async function run(graph) {
 
     deck = new Deck({
       canvas,
+      // Context MSAA OFF — parity: Sigma hardcodes antialias:false and cannot enable it; the A/B
+      // showed multisample resolve dominates the continuous metric (26→120 fps at 615K edges).
+      deviceProps: { webgl: { antialias: false } },
       views: new OrthographicView(),
       controller: true,
       initialViewState: viewState(),

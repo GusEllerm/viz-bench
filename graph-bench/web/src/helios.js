@@ -69,6 +69,9 @@ async function run(ds) {
       use2D: true,
       autoStartLayout: false, // positions are precomputed — render-only
       fastEdges: q.get('fast') === '1',
+      // Context MSAA OFF — parity: Sigma hardcodes antialias:false and cannot enable it; the A/B
+      // showed multisample resolve dominates the continuous metric (36→120 fps at 615K edges).
+      webglOptions: { antialias: false },
     });
     window.__bench.helios = helios;
     try { helios.backgroundColor([0.055, 0.066, 0.086, 1.0]); } catch (err) {} // #0e1116, house theme

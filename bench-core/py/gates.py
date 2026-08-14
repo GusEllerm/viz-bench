@@ -26,11 +26,15 @@ def presentation_gate_native(*, offscreen, fps, refresh_hz, mode="interactive"):
     if mode == "throughput" or offscreen:
         # throughput-only — no swapchain present; legitimate but NEVER interactive
         return {"pass": True, "verdict": "n/a", "detail": f"offscreen/throughput (~{fps:.0f} fps, no present)"}
-    ceil = refresh_hz * 1.5
+    # Ceiling separates a REAL windowed present from an offscreen/batch loop (offscreen datoviz
+    # reads thousands of fps — 60x refresh). 3x refresh accommodates present modes that do not
+    # vsync-lock (the current pip datoviz presents uncapped: light clouds legitimately reach
+    # ~150-180 fps in a real window) while still failing anything offscreen-shaped.
+    ceil = refresh_hz * 3
     ok = 0 < fps <= ceil
     return {
         "pass": ok, "verdict": "pass" if ok else "fail",
-        "detail": f"windowed {fps:.1f} fps {'≤' if fps <= ceil else '>'} {ceil:.0f} (refresh {refresh_hz}×1.5)",
+        "detail": f"windowed {fps:.1f} fps {'≤' if fps <= ceil else '>'} {ceil:.0f} (refresh {refresh_hz}×3)",
     }
 
 

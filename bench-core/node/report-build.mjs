@@ -31,6 +31,8 @@ const SERIES_COLORS = {
   cosmographpre: '#0e8a6e',      // Cosmograph — dark teal-green (its established colour)
   cosmographnoblend: '#5cc4a6',  // Cosmograph · opaque — light teal-green (same hue, lighter)
   cosmos3d: '#0e8a6e',           // cosmos.gl · 3D fork — the cosmos-family teal (manifold charts)
+  helios: '#8250df',             // Helios-Web — purple (same hue family as its fast row)
+  heliosfast: '#b6a3e8',         // Helios-Web · fast — light purple (same tool, lighter mode)
 };
 
 // ---- section renderers ----

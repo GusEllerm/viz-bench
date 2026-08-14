@@ -31,16 +31,16 @@
       "driver": "arcball",
       "cameraState": "overview",
       "motion": "continuous-orbit",
-      "frames": 300,
+      "frames": 900,
       "windowed": true,
       "headed": true,
       "refreshHz": 120.0
     },
     "metrics": {
-      "fps": 156.3,
-      "frames": 300,
-      "p50ms": 5.0,
-      "p95ms": 17.7
+      "fps": 152.3,
+      "frames": 900,
+      "p50ms": 5.2,
+      "p95ms": 8.6
     },
     "presentation": {
       "surface": "onscreen",
@@ -54,15 +54,15 @@
     "gates": {
       "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
       "coverage": "pass: points 100000/100000",
-      "presentation": "pass: windowed 156.3 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "presentation": "pass: windowed 152.3 fps \u2264 180 (refresh 120.0\u00d71.5)",
       "cameraState": "pass: state=overview supports=overview",
       "inputHonesty": "pass: driver=arcball"
     },
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:36:42.888332+00:00",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-14T13:10:59.928077+00:00",
+      "gitCommit": "ab82782",
       "machine": "Apple M5 Pro",
       "os": "darwin 25.5.0",
       "python": "3.13.12",
@@ -101,16 +101,16 @@
       "driver": "arcball",
       "cameraState": "overview",
       "motion": "continuous-orbit",
-      "frames": 300,
+      "frames": 900,
       "windowed": true,
       "headed": true,
       "refreshHz": 120.0
     },
     "metrics": {
-      "fps": 154.8,
-      "frames": 300,
-      "p50ms": 4.9,
-      "p95ms": 17.6
+      "fps": 167.7,
+      "frames": 900,
+      "p50ms": 5.1,
+      "p95ms": 9.8
     },
     "presentation": {
       "surface": "onscreen",
@@ -124,85 +124,15 @@
     "gates": {
       "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
       "coverage": "pass: points 1000000/1000000",
-      "presentation": "pass: windowed 154.8 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "presentation": "pass: windowed 167.7 fps \u2264 180 (refresh 120.0\u00d71.5)",
       "cameraState": "pass: state=overview supports=overview",
       "inputHonesty": "pass: driver=arcball"
     },
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:36:45.648344+00:00",
-      "gitCommit": "c4b7186",
-      "machine": "Apple M5 Pro",
-      "os": "darwin 25.5.0",
-      "python": "3.13.12",
-      "harness": "@viz-bench/bench-core/1-py"
-    }
-  },
-  {
-    "schemaVersion": "result/1",
-    "domain": "manifold",
-    "tool": "datoviz",
-    "engine": {
-      "library": "datoviz",
-      "version": "0.3.5"
-    },
-    "dataset": {
-      "name": "arxiv_umap3",
-      "descriptor": "manifold-bench/data/manifest.json",
-      "expectedLoaded": {
-        "points": 169343
-      }
-    },
-    "primitives": [
-      "points"
-    ],
-    "scale": {
-      "points": 169343
-    },
-    "coverage": {
-      "engine": {
-        "points": 169343
-      },
-      "edgePolicy": "points",
-      "ok": true
-    },
-    "protocol": {
-      "driver": "arcball",
-      "cameraState": "overview",
-      "motion": "continuous-orbit",
-      "frames": 300,
-      "windowed": true,
-      "headed": true,
-      "refreshHz": 120.0
-    },
-    "metrics": {
-      "fps": 159.2,
-      "frames": 300,
-      "p50ms": 4.9,
-      "p95ms": 17.9
-    },
-    "presentation": {
-      "surface": "onscreen",
-      "method": "windowed-vsync",
-      "presented": true
-    },
-    "gpu": {
-      "renderer": "Datoviz/Vulkan via MoltenVK on Metal",
-      "software": false
-    },
-    "gates": {
-      "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
-      "coverage": "pass: points 169343/169343",
-      "presentation": "pass: windowed 159.2 fps \u2264 180 (refresh 120.0\u00d71.5)",
-      "cameraState": "pass: state=overview supports=overview",
-      "inputHonesty": "pass: driver=arcball"
-    },
-    "ok": true,
-    "gateFailures": [],
-    "provenance": {
-      "timestamp": "2026-08-12T19:36:47.825053+00:00",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-14T13:11:06.171838+00:00",
+      "gitCommit": "ab82782",
       "machine": "Apple M5 Pro",
       "os": "darwin 25.5.0",
       "python": "3.13.12",
@@ -247,10 +177,10 @@
       "refreshHz": 120.0
     },
     "metrics": {
-      "fps": 21.8,
+      "fps": 26.3,
       "frames": 300,
-      "p50ms": 45.1,
-      "p95ms": 59.1
+      "p50ms": 35.5,
+      "p95ms": 55.1
     },
     "presentation": {
       "surface": "onscreen",
@@ -264,15 +194,15 @@
     "gates": {
       "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
       "coverage": "pass: points 10000000/10000000",
-      "presentation": "pass: windowed 21.8 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "presentation": "pass: windowed 26.3 fps \u2264 180 (refresh 120.0\u00d71.5)",
       "cameraState": "pass: state=overview supports=overview",
       "inputHonesty": "pass: driver=arcball"
     },
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:36:50.102747+00:00",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-14T13:11:17.237019+00:00",
+      "gitCommit": "ab82782",
       "machine": "Apple M5 Pro",
       "os": "darwin 25.5.0",
       "python": "3.13.12",
@@ -317,10 +247,10 @@
       "refreshHz": 120.0
     },
     "metrics": {
-      "fps": 9.8,
+      "fps": 12.4,
       "frames": 300,
-      "p50ms": 101.6,
-      "p95ms": 127.2
+      "p50ms": 73.8,
+      "p95ms": 122.0
     },
     "presentation": {
       "surface": "onscreen",
@@ -334,15 +264,15 @@
     "gates": {
       "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
       "coverage": "pass: points 20000000/20000000",
-      "presentation": "pass: windowed 9.8 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "presentation": "pass: windowed 12.4 fps \u2264 180 (refresh 120.0\u00d71.5)",
       "cameraState": "pass: state=overview supports=overview",
       "inputHonesty": "pass: driver=arcball"
     },
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:37:04.586968+00:00",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-14T13:11:29.451747+00:00",
+      "gitCommit": "ab82782",
       "machine": "Apple M5 Pro",
       "os": "darwin 25.5.0",
       "python": "3.13.12",
@@ -387,10 +317,10 @@
       "refreshHz": 120.0
     },
     "metrics": {
-      "fps": 5.2,
+      "fps": 5.5,
       "frames": 300,
-      "p50ms": 192.9,
-      "p95ms": 200.9
+      "p50ms": 177.5,
+      "p95ms": 202.1
     },
     "presentation": {
       "surface": "onscreen",
@@ -404,15 +334,85 @@
     "gates": {
       "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
       "coverage": "pass: points 50000000/50000000",
-      "presentation": "pass: windowed 5.2 fps \u2264 180 (refresh 120.0\u00d71.5)",
+      "presentation": "pass: windowed 5.5 fps \u2264 180 (refresh 120.0\u00d71.5)",
       "cameraState": "pass: state=overview supports=overview",
       "inputHonesty": "pass: driver=arcball"
     },
     "ok": true,
     "gateFailures": [],
     "provenance": {
-      "timestamp": "2026-08-12T19:37:36.566754+00:00",
-      "gitCommit": "c4b7186",
+      "timestamp": "2026-08-14T13:11:55.348375+00:00",
+      "gitCommit": "ab82782",
+      "machine": "Apple M5 Pro",
+      "os": "darwin 25.5.0",
+      "python": "3.13.12",
+      "harness": "@viz-bench/bench-core/1-py"
+    }
+  },
+  {
+    "schemaVersion": "result/1",
+    "domain": "manifold",
+    "tool": "datoviz",
+    "engine": {
+      "library": "datoviz",
+      "version": "0.3.5"
+    },
+    "dataset": {
+      "name": "arxiv_umap3",
+      "descriptor": "manifold-bench/data/manifest.json",
+      "expectedLoaded": {
+        "points": 169343
+      }
+    },
+    "primitives": [
+      "points"
+    ],
+    "scale": {
+      "points": 169343
+    },
+    "coverage": {
+      "engine": {
+        "points": 169343
+      },
+      "edgePolicy": "points",
+      "ok": true
+    },
+    "protocol": {
+      "driver": "arcball",
+      "cameraState": "overview",
+      "motion": "continuous-orbit",
+      "frames": 900,
+      "windowed": true,
+      "headed": true,
+      "refreshHz": 120.0
+    },
+    "metrics": {
+      "fps": 136.9,
+      "frames": 900,
+      "p50ms": 7.3,
+      "p95ms": 12.8
+    },
+    "presentation": {
+      "surface": "onscreen",
+      "method": "windowed-vsync",
+      "presented": true
+    },
+    "gpu": {
+      "renderer": "Datoviz/Vulkan via MoltenVK on Metal",
+      "software": false
+    },
+    "gates": {
+      "gpu": "pass: Datoviz/Vulkan via MoltenVK on Metal",
+      "coverage": "pass: points 169343/169343",
+      "presentation": "pass: windowed 136.9 fps \u2264 360 (refresh 120.0\u00d73)",
+      "cameraState": "pass: state=overview supports=overview",
+      "inputHonesty": "pass: driver=arcball"
+    },
+    "ok": true,
+    "gateFailures": [],
+    "provenance": {
+      "timestamp": "2026-08-14T13:28:15.739875+00:00",
+      "gitCommit": "ab82782",
       "machine": "Apple M5 Pro",
       "os": "darwin 25.5.0",
       "python": "3.13.12",

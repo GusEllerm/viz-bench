@@ -44,6 +44,7 @@ const TOOLS = [
   { key: 'cosmosnoblend', page: 'cosmos.html', q: '&noblend=1', engine: 'cosmos.gl', edgePolicy: 'exact' },
   { key: 'deck', page: 'deck.html', q: '', engine: 'deck.gl', edgePolicy: 'exact' },
   { key: 'helios', page: 'helios.html', q: '', engine: 'helios-web', edgePolicy: 'exact' },
+  { key: 'heliosfast', page: 'helios.html', q: '&fast=1', engine: 'helios-web', edgePolicy: 'exact' }, // 1px GL-lines fast-edge mode (the default row is blended variable-width ribbons)
 ];
 const DATASETS = ['arxiv_2015', 'arxiv_2017', 'arxiv_2018', 'arxiv_full'];
 
@@ -104,6 +105,11 @@ async function runCell(browser, ds, tool, prov) {
     // repaint of the FIXED overview EVERY frame (window.__bench.redraw) so every engine renders
     // every frame — raw render throughput, apples-to-apples with the always-rendering engines.
     // Median of 3 (the metric has ~15% run-to-run variance).
+    // Park the pointer OFF the canvas first (parity audit F3): a pointer resting on #graph makes
+    // Helios run a per-frame hover readback (sync readPixels) and Cosmograph a forced full-res
+    // link-pick redraw every 5th frame during the forced-redraw runs — unequal work that only
+    // some engines pay. The pan itself needs the pointer; the continuous metric must not.
+    await page.mouse.move(5, 5);
     await page.evaluate(() => window.__bench.setCamera('overview'));
     await sleep(600);
     const contRuns = [];
@@ -127,6 +133,12 @@ async function runCell(browser, ds, tool, prov) {
     if (typeof DISPLAY_HZ === 'number' && DISPLAY_HZ >= 100) {
       for (const [label, v] of [['pan', m.fps], ['continuous', mCont.fps]]) {
         if (Math.abs(v - 30) <= 0.6) throw new Error(`display-throttle suspect: ${label} fps=${v} while display=${DISPLAY_HZ.toFixed(0)}Hz (occluded window?) — re-run with the screen unoccluded`);
+      }
+      // ProMotion's OTHER trap: the panel idles back to 60Hz and vsync-capped-fast cells read a
+      // bit-exact 60/60. A real render rate landing on exactly 60 for BOTH metrics is vanishingly
+      // unlikely; a 60Hz display state produces exactly that. Fail loud, same as the 30Hz case.
+      if (Math.abs(m.fps - 60) <= 0.6 && Math.abs(mCont.fps - 60) <= 0.6) {
+        throw new Error(`display-throttle suspect: pan AND continuous both =${m.fps}/${mCont.fps} while display=${DISPLAY_HZ.toFixed(0)}Hz (panel idled to 60Hz?) — re-run`);
       }
     }
 
