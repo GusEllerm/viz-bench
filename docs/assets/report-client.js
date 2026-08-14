@@ -95,7 +95,9 @@
             afterBuildTicks: (a) => { a.ticks = LOG_TICKS.map((value) => ({ value })); },
             ticks: { callback: (v) => LOG_LABEL[v] || '' },
           },
-          y: { beginAtZero: true, max: spec.yMax || 130, title: { display: !!spec.yLabel, text: spec.yLabel }, grid: { color: COL.line } },
+          // y max: explicit spec.yMax, else scale to the data (Datoviz's vsync-unlocked build
+          // reads ~150-180 at light tiers — a fixed 130 clipped its line off the top).
+          y: { beginAtZero: true, max: spec.yMax || Math.ceil((Math.max(130, ...spec.series.flatMap((s) => s.points.map((p) => p.y))) * 1.06) / 10) * 10, title: { display: !!spec.yLabel, text: spec.yLabel }, grid: { color: COL.line } },
         },
         plugins: {
           legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true } },

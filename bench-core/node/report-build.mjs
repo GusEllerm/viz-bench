@@ -35,6 +35,8 @@ const SERIES_COLORS = {
   heliosfast: '#b6a3e8',         // Helios-Web · fast — light purple (same tool, lighter mode)
   sigmapre: '#0969da',           // Sigma.js — blue (pinned; palette fallback shifts with row count)
   deck: '#bf3989',               // deck.gl — magenta (pinned; the index fallback collided with Cosmograph's teal)
+  three: '#bc4c00',              // three.js — burnt orange (pinned; deck's magenta pin displaced its old fallback)
+  datoviz: '#0969da',            // Datoviz — blue (pinned for stability as rows change)
 };
 
 // ---- section renderers ----
@@ -90,7 +92,7 @@ function renderChart(sec, pub, chartSpecs) {
     };
   } else {
     spec = {
-      id: sec.id, kind: 'logline', yMax: 130, refLine: 60, xLabel: 'points (log)', yLabel: 'fps',
+      id: sec.id, kind: 'logline', refLine: 60, xLabel: 'points (log)', yLabel: 'fps', // no yMax: the client scales to the data (Datoviz's uncapped present reads ~150-180)
       series: sec.series.map((t) => ({
         label: rl[t] || t,
         color: SERIES_COLORS[t],
