@@ -4,6 +4,17 @@
 // "what can the cosmos engine itself render" datapoint, directly comparable to
 // sigmapre/deck (same precomputed layout, render throughput only).
 import { Graph } from '@cosmos.gl/graph';
+
+// MSAA context shim (parity): the cosmos engine exposes no antialias config and
+// hardcodes its context request, so pre-force antialias:false at getContext level (the first
+// attribute set wins for a canvas). Same page-level-poke precedent as the noblend blend toggle.
+{ // always on — parity with Sigma/deck/Helios, which all bench antialias-off
+  const origGetContext = HTMLCanvasElement.prototype.getContext;
+  HTMLCanvasElement.prototype.getContext = function (type, attrs) {
+    if (String(type).startsWith('webgl')) attrs = { ...(attrs || {}), antialias: false };
+    return origGetContext.call(this, type, attrs);
+  };
+}
 import { Metrics } from './metrics.js';
 import { installAdapter } from '../../../bench-core/page/contract.js';
 import { PRIMITIVE } from '../../../bench-core/page/primitives.js';
@@ -89,7 +100,11 @@ async function run(ds) {
       pauseLayout: () => { try { if (live) { graph.pause(); window.__bench.paused = true; } } catch (e) {} },
       fitView: () => { try { graph.fitView(0); } catch (e) {} },
       cosmosZoom: (z, ms) => { try { graph.setZoomLevel(z, ms); } catch (e) {} },
-      redraw: () => { try { graph.render(); } catch (e) {} }, // force-repaint (continuous-render measurement)
+      // Continuous-render hook = an imperceptible zoom nudge, the SAME mechanism Sigma uses
+      // (parity): graph.render() is cosmos's data-ingest path (full update + transition +
+      // scheduler work per call), not a repaint — it dominated the continuous metric. A camera
+      // delta triggers a plain re-draw of the fixed scene, which is what the metric measures.
+      redraw: (() => { let n = 0, base = null; return () => { try { if (base == null) base = graph.getZoomLevel(); graph.setZoomLevel(base * (1 + 1e-6 * (++n % 2 ? 1 : -1)), 0); } catch (e) {} }; })(),
       counts: () => ({ nodes: n, edges: links.length / 2 }),
       cameraState: () => camState,
       // overview = fitView; mid/deep zoom in by fixed factors off the captured fit zoom.

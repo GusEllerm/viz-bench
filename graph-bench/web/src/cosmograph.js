@@ -1,4 +1,15 @@
 import { Cosmograph, prepareCosmographData } from '@cosmograph/cosmograph';
+
+// MSAA context shim (parity): the cosmos engine exposes no antialias config and
+// hardcodes its context request, so pre-force antialias:false at getContext level (the first
+// attribute set wins for a canvas). Same page-level-poke precedent as the noblend blend toggle.
+{ // always on — parity with Sigma/deck/Helios, which all bench antialias-off
+  const origGetContext = HTMLCanvasElement.prototype.getContext;
+  HTMLCanvasElement.prototype.getContext = function (type, attrs) {
+    if (String(type).startsWith('webgl')) attrs = { ...(attrs || {}), antialias: false };
+    return origGetContext.call(this, type, attrs);
+  };
+}
 import { Metrics } from './metrics.js';
 import { installAdapter } from '../../../bench-core/page/contract.js';
 import { PRIMITIVE } from '../../../bench-core/page/primitives.js';
@@ -106,7 +117,9 @@ async function run(graph) {
       // asynchronously AFTER ready — callers must tolerate a null until then.
       cg: cosmograph,
       cosmosZoom: (z, ms) => { try { cosmograph._cosmos.setZoomLevel(z, ms); } catch (e) {} },
-      redraw: () => { try { cosmograph._cosmos.render(); } catch (e) {} }, // force-repaint (continuous-render measurement)
+      // Continuous-render hook = an imperceptible zoom nudge (same mechanism as Sigma — parity):
+      // _cosmos.render() is the data-ingest path (full update per call), not a repaint.
+      redraw: (() => { let n = 0, base = null; return () => { try { if (base == null) base = cosmograph.getZoomLevel(); cosmograph.setZoomLevel(base * (1 + 1e-6 * (++n % 2 ? 1 : -1)), 0); } catch (e) {} }; })(),
       linkHoverEnabled: () => { try { return !!cosmograph._cosmos.store.isLinkHoveringEnabled; } catch (e) { return String(e); } },
       // the wrapper hardwires onLink* callbacks into cosmos, which force-enables
       // link-hover picking (a second full link draw + readPixels per hover check);

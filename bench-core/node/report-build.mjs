@@ -33,6 +33,8 @@ const SERIES_COLORS = {
   cosmos3d: '#0e8a6e',           // cosmos.gl · 3D fork — the cosmos-family teal (manifold charts)
   helios: '#8250df',             // Helios-Web — purple (same hue family as its fast row)
   heliosfast: '#b6a3e8',         // Helios-Web · fast — light purple (same tool, lighter mode)
+  sigmapre: '#0969da',           // Sigma.js — blue (pinned; palette fallback shifts with row count)
+  deck: '#bf3989',               // deck.gl — magenta (pinned; the index fallback collided with Cosmograph's teal)
 };
 
 // ---- section renderers ----
