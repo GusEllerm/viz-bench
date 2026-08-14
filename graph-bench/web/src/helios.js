@@ -12,7 +12,7 @@ const metrics = new Metrics();
 const selector = document.getElementById('dataset');
 
 // same palette as the rest of the suite (helios takes rgb floats 0–1)
-import { rgb01Of } from './typecolors.js';
+import { loadGraphTier } from './loadgraph.js';
 
 let helios = null;
 
@@ -20,41 +20,35 @@ async function run(ds) {
   let camState = 'overview';
   installAdapter({ tool: 'helios', dataset: ds, settled: true, primitives: [PRIMITIVE.POINTS, PRIMITIVE.LINES], supportsCamera: ['overview', 'mid', 'deep'] });
   try {
-    metrics.stage(`fetching ${ds}.layout.json …`);
-    const t0 = performance.now();
-    const res = await fetch(`data/${ds}.layout.json`);
-    if (!res.ok) throw new Error(`fetch ${ds}.layout.json → ${res.status}`);
-    const json = await res.json();
-    const tFetch = performance.now() - t0;
+    metrics.stage(`fetching ${ds} …`);
+    const d = await loadGraphTier(ds);
+    const tFetch = d.tFetch;
 
     metrics.stage('building helios network …');
     const t1 = performance.now();
-    const nodes = json.nodes;
-    const n = nodes.length;
-    // normalise the FA2 coords to ±300 (helios's native scale is ~±200)
+    const n = d.n;
+    // normalise the layout coords to ±300 (helios's native scale is ~±200)
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
     for (let i = 0; i < n; i++) {
-      const nd = nodes[i];
-      if (nd.x < minX) minX = nd.x; if (nd.x > maxX) maxX = nd.x;
-      if (nd.y < minY) minY = nd.y; if (nd.y > maxY) maxY = nd.y;
+      const x = d.pos[2 * i], y = d.pos[2 * i + 1];
+      if (x < minX) minX = x; if (x > maxX) maxX = x;
+      if (y < minY) minY = y; if (y > maxY) maxY = y;
     }
     const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
     const k = 600 / (Math.max(maxX - minX, maxY - minY) || 1);
 
     const nodeDict = {};
     for (let i = 0; i < n; i++) {
-      const nd = nodes[i];
-      nodeDict[nd.id] = {
-        label: nd.l || nd.id,
-        Position: [(nd.x - cx) * k, (nd.y - cy) * k, 0],
-        Color: rgb01Of(nd.t),
-        Size: Math.max(0.5, Math.sqrt(nd.d || 1) * 0.25),
+      nodeDict[d.idOf(i)] = {
+        label: d.labelOf(i),
+        Position: [(d.pos[2 * i] - cx) * k, (d.pos[2 * i + 1] - cy) * k, 0],
+        Color: [d.colRGB[3 * i] / 255, d.colRGB[3 * i + 1] / 255, d.colRGB[3 * i + 2] / 255],
+        Size: Math.max(0.5, Math.sqrt(d.deg[i] || 1) * 0.25),
       };
     }
-    const e = json.edges;
-    const edges = new Array(e.length / 2);
+    const edges = new Array(d.edges.length / 2);
     for (let i = 0; i < edges.length; i++) {
-      edges[i] = { source: nodes[e[2 * i]].id, target: nodes[e[2 * i + 1]].id };
+      edges[i] = { source: d.idOf(d.edges[2 * i]), target: d.idOf(d.edges[2 * i + 1]) };
     }
     const tPrep = performance.now() - t1;
 

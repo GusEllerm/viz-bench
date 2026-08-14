@@ -23,7 +23,7 @@ const metrics = new Metrics();
 const container = document.getElementById('graph');
 const selector = document.getElementById('dataset');
 
-import { rgba01Of } from './typecolors.js';
+import { loadGraphTier } from './loadgraph.js';
 
 let graph = null;
 
@@ -31,28 +31,22 @@ async function run(ds) {
   let camState = 'overview';
   installAdapter({ tool: 'cosmosbare', dataset: ds, settled: true, primitives: [PRIMITIVE.POINTS, PRIMITIVE.LINES], supportsCamera: ['overview', 'mid', 'deep'] });
   try {
-    metrics.stage(`fetching ${ds}.layout.json …`);
-    const t0 = performance.now();
-    const res = await fetch(`data/${ds}.layout.json`);
-    if (!res.ok) throw new Error(`fetch ${ds}.layout.json → ${res.status}`);
-    const json = await res.json();
-    const tFetch = performance.now() - t0;
+    metrics.stage(`fetching ${ds} …`);
+    const d = await loadGraphTier(ds);
+    const tFetch = d.tFetch;
 
     metrics.stage('building typed arrays …');
     const t1 = performance.now();
-    const nodes = json.nodes;
-    const n = nodes.length;
-    const pos = new Float32Array(n * 2);
+    const n = d.n;
+    const pos = d.pos;
     const col = new Float32Array(n * 4);
     const size = new Float32Array(n);
     for (let i = 0; i < n; i++) {
-      const nd = nodes[i];
-      pos[i * 2] = nd.x;
-      pos[i * 2 + 1] = nd.y;
-      col.set(rgba01Of(nd.t), i * 4);
-      size[i] = Math.max(2, Math.sqrt(nd.d || 1) * 1.2);
+      col[i * 4] = d.colRGB[3 * i] / 255; col[i * 4 + 1] = d.colRGB[3 * i + 1] / 255;
+      col[i * 4 + 2] = d.colRGB[3 * i + 2] / 255; col[i * 4 + 3] = 1;
+      size[i] = Math.max(2, Math.sqrt(d.deg[i] || 1) * 1.2);
     }
-    const links = Float32Array.from(json.edges);
+    const links = Float32Array.from(d.edges);
     const tPrep = performance.now() - t1;
 
     metrics.stage('rendering …');

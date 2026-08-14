@@ -17,7 +17,7 @@ import { presentationWeb } from '../../../bench-core/node/presentation.mjs';
 import { makeRecord, validate } from '../../../bench-core/node/schema.mjs';
 import { graphExpected, layoutExpected, hashFile } from '../../../bench-core/node/descriptors.mjs';
 import { provenance } from '../../../bench-core/node/provenance.mjs';
-import { writeFileSync, readFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, readFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
@@ -25,7 +25,10 @@ import { setTimeout as sleep } from 'node:timers/promises';
 const BASE = process.env.SITE || 'http://localhost:5180';
 const HERE = fileURLToPath(new URL('.', import.meta.url));            // graph-bench/web/bench/
 const SUMMARY = join(HERE, '../../data/summary.json');                // graph-bench/data/summary.json
-const layoutPath = (ds) => join(HERE, `../public/data/${ds}.layout.json`);
+const layoutPath = (ds) => {
+  const bin = join(HERE, `../public/data/${ds}.meta.json`); // binary tiers (graph-binary/1)
+  return existsSync(bin) ? bin : join(HERE, `../public/data/${ds}.layout.json`);
+};
 const OUT = join(HERE, 'results/overview-matrix.json');
 
 // Coverage oracle = the count in the loaded layout.json (cached per dataset), NOT

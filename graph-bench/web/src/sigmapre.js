@@ -8,7 +8,7 @@ import { Metrics } from './metrics.js';
 import { installAdapter } from '../../../bench-core/page/contract.js';
 import { PRIMITIVE } from '../../../bench-core/page/primitives.js';
 
-import { hexOf } from './typecolors.js';
+import { loadGraphTier, hexOfRGB } from './loadgraph.js';
 const metrics = new Metrics();
 const container = document.getElementById('graph');
 const selector = document.getElementById('dataset');
@@ -21,24 +21,18 @@ async function run(graph) {
     if (renderer) { try { renderer.kill(); } catch (e) {} renderer = null; }
     container.innerHTML = '';
 
-    metrics.stage(`fetching ${graph}.layout.json …`);
-    const t0 = performance.now();
-    const res = await fetch(`data/${graph}.layout.json`);
-    if (!res.ok) throw new Error(`fetch ${graph}.layout.json → ${res.status}`);
-    const json = await res.json();
-    const tFetch = performance.now() - t0;
+    metrics.stage(`fetching ${graph} …`);
+    const d = await loadGraphTier(graph);
+    const tFetch = d.tFetch;
 
     metrics.stage('building graphology graph (precomputed layout) …');
     const t1 = performance.now();
     const g = new Graph({ type: 'directed' });
-    const nodes = json.nodes;
-    for (let i = 0; i < nodes.length; i++) {
-      const n = nodes[i];
-      g.addNode(n.id, { x: n.x, y: n.y, size: Math.max(1.5, Math.sqrt(n.d || 1)), color: hexOf(n.t) });
+    for (let i = 0; i < d.n; i++) {
+      g.addNode(d.idOf(i), { x: d.pos[2 * i], y: d.pos[2 * i + 1], size: Math.max(1.5, Math.sqrt(d.deg[i] || 1)), color: hexOfRGB(d.colRGB, i) });
     }
-    const edges = json.edges;
-    for (let e = 0; e < edges.length / 2; e++) {
-      g.mergeEdge(nodes[edges[2 * e]].id, nodes[edges[2 * e + 1]].id);
+    for (let e = 0; e < d.edges.length / 2; e++) {
+      g.mergeEdge(d.idOf(d.edges[2 * e]), d.idOf(d.edges[2 * e + 1]));
     }
     const tPrep = performance.now() - t1;
 

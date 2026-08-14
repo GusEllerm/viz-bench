@@ -22,5 +22,10 @@
     "edges": 1157799,
     "source": "ogbn-arxiv (ODC-BY)",
     "cutoffYear": null
+  },
+  "cit_patents": {
+    "nodes": 3774768,
+    "edges": 16518947,
+    "source": "SNAP cit-Patents"
   }
 }

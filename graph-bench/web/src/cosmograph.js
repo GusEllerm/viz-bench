@@ -19,7 +19,7 @@ const container = document.getElementById('graph');
 const selector = document.getElementById('dataset');
 let cosmograph = null;
 
-import { hexOf } from './typecolors.js';
+import { loadGraphTier, hexOfRGB } from './loadgraph.js';
 
 async function run(graph) {
   // ?pre=1 → Cosmograph's embeddings mode: feed the PRECOMPUTED FA2 layout via
@@ -29,27 +29,29 @@ async function run(graph) {
   let camState = 'overview';
   installAdapter({ tool: PRE ? 'cosmographpre' : 'cosmograph', dataset: graph, settled: PRE, primitives: [PRIMITIVE.POINTS, PRIMITIVE.LINES], supportsCamera: ['overview', 'mid', 'deep'] });
   try {
-    const file = PRE ? `${graph}.layout.json` : `${graph}.json`;
-    metrics.stage(`fetching ${file} …`);
-    const t0 = performance.now();
-    const res = await fetch(`data/${file}`);
-    if (!res.ok) throw new Error(`fetch ${file} → ${res.status}`);
-    const json = await res.json();
-    let pts = json.points, lks = json.links;
-    let meta = json.meta ? { nodes: json.meta.nodes, edges: json.meta.edges } : null;
+    let pts, lks, meta, tFetch;
     if (PRE) {
-      const nodes = json.nodes;
-      pts = new Array(nodes.length);
-      for (let i = 0; i < nodes.length; i++) {
-        const nd = nodes[i];
-        pts[i] = { id: nd.id, label: nd.l || nd.id, color: hexOf(nd.t), size: Math.max(1.5, Math.sqrt(nd.d || 1)), x: nd.x, y: nd.y };
+      metrics.stage(`fetching ${graph} …`);
+      const d = await loadGraphTier(graph);
+      tFetch = d.tFetch;
+      pts = new Array(d.n);
+      for (let i = 0; i < d.n; i++) {
+        pts[i] = { id: d.idOf(i), label: d.labelOf(i), color: hexOfRGB(d.colRGB, i), size: Math.max(1.5, Math.sqrt(d.deg[i] || 1)), x: d.pos[2 * i], y: d.pos[2 * i + 1] };
       }
-      const e = json.edges;
-      lks = new Array(e.length / 2);
-      for (let k = 0; k < lks.length; k++) lks[k] = { source: nodes[e[2 * k]].id, target: nodes[e[2 * k + 1]].id };
-      meta = { nodes: nodes.length, edges: lks.length };
+      lks = new Array(d.edges.length / 2);
+      for (let k = 0; k < lks.length; k++) lks[k] = { source: d.idOf(d.edges[2 * k]), target: d.idOf(d.edges[2 * k + 1]) };
+      meta = { nodes: d.n, edges: lks.length };
+    } else {
+      const file = `${graph}.json`;
+      metrics.stage(`fetching ${file} …`);
+      const t0 = performance.now();
+      const res = await fetch(`data/${file}`);
+      if (!res.ok) throw new Error(`fetch ${file} → ${res.status}`);
+      const json = await res.json();
+      pts = json.points; lks = json.links;
+      meta = json.meta ? { nodes: json.meta.nodes, edges: json.meta.edges } : null;
+      tFetch = performance.now() - t0;
     }
-    const tFetch = performance.now() - t0;
 
     metrics.stage('preparing data (duckdb-wasm) …');
     const t1 = performance.now();

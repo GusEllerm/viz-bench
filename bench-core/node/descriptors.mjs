@@ -27,6 +27,8 @@ export function cloudExpected(manifestPath, base) {
 // export's edge dedup (drug raw 362,820 vs loaded 354,708; combined 1,115,636 vs 1,107,529).
 export function layoutExpected(layoutPath) {
   const j = JSON.parse(readFileSync(layoutPath, 'utf8'));
+  // binary tiers (graph-binary/1) pass their meta.json — counts live at the top level
+  if (j.format === 'graph-binary/1') return { nodes: j.nodes, edges: j.edges };
   return { nodes: j.nodes.length, edges: Math.floor((j.edges?.length || 0) / 2) };
 }
 

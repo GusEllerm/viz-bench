@@ -28,6 +28,7 @@ export default defineConfig({
         pointclouddeck: 'pointcloud-deck.html',
         pointcloudthree: 'pointcloud-three.html',
         layoutbench: 'layout-bench.html',
+        layoutexport: 'layout-export.html',
         cosmos3d: 'cosmos3d.html',
       },
     },

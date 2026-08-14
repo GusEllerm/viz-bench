@@ -10,7 +10,7 @@ import { installAdapter } from '../../../bench-core/page/contract.js';
 import { PRIMITIVE } from '../../../bench-core/page/primitives.js';
 
 // node type → RGB (shared legend across the bench pages)
-import { rgb255Of } from './typecolors.js';
+import { loadGraphTier } from './loadgraph.js';
 
 const metrics = new Metrics();
 const container = document.getElementById('graph');
@@ -29,29 +29,21 @@ async function run(graph) {
       container.appendChild(canvas);
     }
 
-    metrics.stage(`fetching ${graph}.layout.json …`);
-    const t0 = performance.now();
-    const res = await fetch(`data/${graph}.layout.json`);
-    if (!res.ok) throw new Error(`fetch ${graph}.layout.json → ${res.status}`);
-    const json = await res.json();
-    const tFetch = performance.now() - t0;
+    metrics.stage(`fetching ${graph} …`);
+    const d = await loadGraphTier(graph);
+    const tFetch = d.tFetch;
 
     metrics.stage('building binary attributes …');
     const t1 = performance.now();
-    const nodes = json.nodes;
-    const edges = json.edges; // flat int index pairs [s0,t0,s1,t1,…]
-    const N = nodes.length, E = edges.length / 2;
-    const pos = new Float32Array(N * 2);
-    const col = new Uint8Array(N * 3);
+    const edges = d.edges; // flat int index pairs [s0,t0,s1,t1,…]
+    const N = d.n, E = edges.length / 2;
+    const pos = d.pos;
+    const col = d.colRGB;
     const rad = new Float32Array(N);
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
     for (let i = 0; i < N; i++) {
-      const n = nodes[i];
-      const x = n.x, y = n.y;
-      pos[2 * i] = x; pos[2 * i + 1] = y;
-      const c = rgb255Of(n.t);
-      col[3 * i] = c[0]; col[3 * i + 1] = c[1]; col[3 * i + 2] = c[2];
-      rad[i] = Math.max(1.5, Math.sqrt(n.d || 1));
+      const x = pos[2 * i], y = pos[2 * i + 1];
+      rad[i] = Math.max(1.5, Math.sqrt(d.deg[i] || 1));
       if (x < minX) minX = x; if (x > maxX) maxX = x;
       if (y < minY) minY = y; if (y > maxY) maxY = y;
     }
