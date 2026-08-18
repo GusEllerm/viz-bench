@@ -58,10 +58,19 @@ const tools = onlyTool ? TOOLS.filter((t) => t.key === onlyTool) : TOOLS;
 
 async function runCell(browser, ds, tool, prov) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 });
-  page.setDefaultTimeout(120000);
+  // Load budget scales with the tier: object-building engines (graphology / helios dicts /
+  // duckdb prep) legitimately need minutes to ingest 16.5M edges — a fixed 2-minute wait would
+  // quarantine them for slowness rather than measure them. A renderer that OOM-crashes surfaces
+  // as a page crash/closed-target error and is quarantined with that message (a finding, not a
+  // hang): 'crash' verdicts are how "cannot ingest this tier in a browser" gets recorded.
+  const LOAD_MS = /cit_patents|_xl$/.test(ds) ? 15 * 60 * 1000 : 120000;
+  page.setDefaultTimeout(LOAD_MS);
+  let crashed = null;
+  page.on('crash', () => { crashed = 'renderer crashed (likely out of memory)'; });
   try {
     await page.goto(`${BASE}/${tool.page}?g=${ds}${tool.q}`, { waitUntil: 'load' });
-    await page.waitForFunction(() => window.__bench && (window.__bench.ready || window.__bench.error), null, { timeout: 120000 });
+    await page.waitForFunction(() => window.__bench && (window.__bench.ready || window.__bench.error), null, { timeout: LOAD_MS });
+    if (crashed) throw new Error(crashed);
     const appErr = await page.evaluate(() => window.__bench.error || null);
     if (appErr) throw new Error('app: ' + appErr);
     // wrapper engine ready: 2.5+ exposes zoom on the wrapper; 2.3 attached the engine at _cosmos async
@@ -168,9 +177,10 @@ async function runCell(browser, ds, tool, prov) {
     });
   } catch (e) {
     // quarantined record: failed before/while gating — ok:false, carries the error
+    const msg = crashed || (/Target (page|crashed)|closed|detached/i.test(e.message) ? 'renderer crashed during load (likely out of memory): ' + e.message : e.message);
     return makeRecord({
       domain: 'graph', tool: tool.key, engine: { library: tool.engine }, dataset: { name: ds },
-      protocol: { driver: 'pan', cameraState: 'overview' }, gateResults: {}, provenance: prov, error: e.message,
+      protocol: { driver: 'pan', cameraState: 'overview' }, gateResults: {}, provenance: prov, error: msg,
     });
   } finally {
     await page.close().catch(() => {});

@@ -44,6 +44,7 @@ try {
     const rate = ((st.f - last) / 5).toFixed(1);
     last = st.f;
     process.stdout.write(`\r  ${st.f}/${iters} iters — ${rate} it/s — ${((Date.now() - t0) / 1000).toFixed(0)}s   `);
+    writeFileSync(join(HERE, 'raw/layout-status.txt'), `${tier} ${st.f}/${iters} iters, ${rate} it/s, ${((Date.now() - t0) / 1000).toFixed(0)}s elapsed\n`); // readable mid-run
   }
   console.log('\nreading back…');
   const total = await page.evaluate(() => window.__layout.result.length);

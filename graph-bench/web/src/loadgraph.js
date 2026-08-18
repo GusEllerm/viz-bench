@@ -18,6 +18,7 @@ export async function loadGraphTier(name) {
     }
   } catch (e) { /* fall through to the JSON tier */ }
 
+  showLegend('cat');
   const res = await fetch(`data/${name}.layout.json`);
   if (!res.ok) throw new Error(`fetch ${name}.layout.json → ${res.status}`);
   const json = await res.json();
@@ -38,7 +39,14 @@ export async function loadGraphTier(name) {
   };
 }
 
+function showLegend(kind) {
+  const cat = document.getElementById('legend-cat'), deg = document.getElementById('legend-deg');
+  if (cat) cat.style.display = kind === 'deg' ? 'none' : '';
+  if (deg) deg.style.display = kind === 'deg' ? '' : 'none';
+}
+
 async function loadBinary(meta, t0) {
+  showLegend('deg');
   const get = (f, what) => fetch(`data/${f}`).then((r) => { if (!r.ok) throw new Error(`fetch ${f} → ${r.status}${what ? ` (${what})` : ''}`); return r.arrayBuffer(); });
   const [eb, cb, pb] = await Promise.all([
     get(meta.files.edges), get(meta.files.col),

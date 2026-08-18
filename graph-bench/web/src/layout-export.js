@@ -24,9 +24,19 @@ async function run() {
     $('m-edges').textContent = meta.edges.toLocaleString();
 
     const links = new Float32Array(edgesU32); // node indices < 2^22 — exact in f32
-    const rand = mulberry32(1234);
-    const pos = new Float32Array(n * 2);
-    for (let i = 0; i < n; i++) { pos[i * 2] = rand() * 4096; pos[i * 2 + 1] = rand() * 4096; }
+    // ?init=1 → start from the spectral embedding (<tier>.init.f32, prep/spectral_init.py) so the
+    // sim only has to refine locally; otherwise a seeded random scatter.
+    let pos;
+    if (q.get('init') === '1') {
+      const ib = await (await fetch(`data/${tier}.init.f32`)).arrayBuffer();
+      pos = new Float32Array(ib);
+      if (pos.length !== n * 2) throw new Error(`init.f32 length ${pos.length} ≠ n*2 ${n * 2}`);
+      $('m-stage').textContent = 'spectral init loaded';
+    } else {
+      const rand = mulberry32(1234);
+      pos = new Float32Array(n * 2);
+      for (let i = 0; i < n; i++) { pos[i * 2] = rand() * 4096; pos[i * 2 + 1] = rand() * 4096; }
+    }
 
     $('m-stage').textContent = 'starting GPU sim…';
     const graph = new Graph($('graph'), {
