@@ -18,7 +18,7 @@ const OUT = join(HERE, 'results/layout-matrix.json');
 const RUNS = [
   { engine: 'fa2', label: 'graphology FA2 (CPU)', scales: [10000, 100000, 500000] },
   { engine: 'helios', label: 'Helios-Web (native)', scales: [10000, 100000, 500000, 1000000] },
-  { engine: 'cosmos', label: 'cosmos.gl (GPU)', scales: [10000, 100000, 500000, 1000000] },
+  { engine: 'cosmos', label: 'cosmos.gl (GPU)', scales: [10000, 100000, 500000, 1000000, 4000000] }, // 4M ≈ the cit_patents tier's node count
 ];
 
 const onlyEngine = process.argv[2]; // optional: re-run a single engine

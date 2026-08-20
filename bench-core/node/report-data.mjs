@@ -107,6 +107,27 @@ export function collectLayout() {
   return out;
 }
 
+// ---- failures (quarantined cells) ----
+// A quarantined cell is itself a result: "this engine could not open this dataset" is the
+// finding at the top tiers. Only a CONTROLLED WORD is published — never the error text, which
+// can carry paths/renderer strings (the leak test would reject it, and rightly).
+export const FAILURE_KEYS = ['domain', 'tool', 'dataset', 'reason'];
+export function collectFailures(rawInteractive) {
+  const out = [];
+  for (const r of rawInteractive) {
+    if (r.ok) continue;
+    const err = String(r.error || '');
+    const gates = (r.gateFailures || []).join(' ');
+    let reason = null;
+    if (/crash|out of memory|oom/i.test(err)) reason = 'crashed';
+    else if (/timeout|exceeded/i.test(err)) reason = 'timeout';
+    else if (err || gates) reason = 'quarantined';
+    if (!reason) continue;
+    out.push({ domain: r.domain, tool: r.tool, dataset: r.dataset?.name ?? null, reason });
+  }
+  return out;
+}
+
 // ---- capabilities (feature registry) ----
 export const CAP_PUBLIC_KEYS = [
   'schemaVersion', 'feature', 'featureLabel', 'category', 'library', 'support', 'evidence',
@@ -192,5 +213,6 @@ export function collect() {
   }
   const capabilities = collectCapabilities();
   const layout = collectLayout();
-  return { public: pub, capabilities, layout, secrets };
+  const failures = collectFailures(interactive);
+  return { public: pub, capabilities, layout, failures, secrets };
 }

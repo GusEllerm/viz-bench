@@ -56,7 +56,7 @@ function renderHero(sec, pub) {
   return `<p class="lead">${sec.lead}</p>\n<div class="verdict">${cards}</div>${trust}`;
 }
 
-function renderMatrix(sec, pub) {
+function renderMatrix(sec, pub, ctxFailures) {
   const rl = ROW_LABELS[sec.domain], cl = COL_LABELS[sec.domain];
   const F = sec.field || 'fps'; // 'fps' = interactive (pan) | 'fpsCont' = continuous render
   const colMax = {};
@@ -65,7 +65,12 @@ function renderMatrix(sec, pub) {
   const body = sec.rows.map((t) => {
     const cells = sec.cols.map((c) => {
       const r = find(pub, { domain: sec.domain, tool: t, dataset: c });
-      if (!r || r[F] == null) return '<td>—</td>';
+      if (!r || r[F] == null) {
+        // a quarantined cell is a result, not a blank: show WHY it has no number
+        const f = (ctxFailures || []).find((x) => x.domain === sec.domain && x.tool === t && x.dataset === c);
+        if (f) return `<td class="r" title="${esc(f.reason)}">✕ ${esc(f.reason === 'crashed' ? 'out of memory' : f.reason)}</td>`;
+        return '<td>—</td>';
+      }
       const win = r[F] === colMax[c] ? ' win' : '';
       return `<td class="${band(r[F])}${win}">${fmtVal(r[F], 'fps')}</td>`;
     }).join('');
@@ -209,7 +214,7 @@ function renderLayoutChart(sec, layout, chartSpecs) {
 function renderSection(sec, ctx, chartSpecs, base) {
   switch (sec.type) {
     case 'hero': return renderHero(sec, ctx.pub);
-    case 'matrix': return renderMatrix(sec, ctx.pub);
+    case 'matrix': return renderMatrix(sec, ctx.pub, ctx.failures);
     case 'chart': return renderChart(sec, ctx.pub, chartSpecs);
     case 'takeaways': return renderTakeaways(sec, ctx.pub);
     case 'navcards': return renderNavCards(sec);
@@ -258,10 +263,10 @@ ${body}
 }
 
 // ---- build ----
-const { public: pub, capabilities, layout, secrets } = collect();
-console.log(`report-build: ${pub.length} gated records · ${capabilities.length} capabilities · ${layout.length} layout runs · ${secrets.size} secrets on the denylist`);
+const { public: pub, capabilities, layout, failures, secrets } = collect();
+console.log(`report-build: ${pub.length} gated records · ${capabilities.length} capabilities · ${layout.length} layout runs · ${failures.length} quarantined cells · ${secrets.size} secrets on the denylist`);
 
-const ctx = { pub, capabilities, layout };
+const ctx = { pub, capabilities, layout, failures };
 const pages = PAGES.map((page) => {
   const html = assemblePage(page, ctx, '');
   leakTest(html, secrets); // throws → build aborts, nothing written

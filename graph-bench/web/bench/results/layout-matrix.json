@@ -75,8 +75,8 @@
     "nodes": 10000,
     "edges": 20000,
     "itersPerSec": 120,
-    "iters": 360,
-    "seconds": 3,
+    "iters": 361,
+    "seconds": 3.01,
     "software": false
   },
   {
@@ -84,9 +84,9 @@
     "label": "cosmos.gl (GPU)",
     "nodes": 100000,
     "edges": 200000,
-    "itersPerSec": 38.6,
-    "iters": 116,
-    "seconds": 3,
+    "itersPerSec": 39.7,
+    "iters": 120,
+    "seconds": 3.02,
     "software": false
   },
   {
@@ -94,9 +94,9 @@
     "label": "cosmos.gl (GPU)",
     "nodes": 500000,
     "edges": 1000000,
-    "itersPerSec": 9.7,
-    "iters": 29,
-    "seconds": 3,
+    "itersPerSec": 10.3,
+    "iters": 31,
+    "seconds": 3.01,
     "software": false
   },
   {
@@ -104,9 +104,19 @@
     "label": "cosmos.gl (GPU)",
     "nodes": 1000000,
     "edges": 2000000,
-    "itersPerSec": 5.2,
-    "iters": 16,
-    "seconds": 3.05,
+    "itersPerSec": 5.7,
+    "iters": 18,
+    "seconds": 3.17,
+    "software": false
+  },
+  {
+    "engine": "cosmos",
+    "label": "cosmos.gl (GPU)",
+    "nodes": 4000000,
+    "edges": 8000000,
+    "itersPerSec": 1.2,
+    "iters": 4,
+    "seconds": 3.38,
     "software": false
   }
 ]
