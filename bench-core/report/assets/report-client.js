@@ -39,9 +39,11 @@
 
   const metaLabel = (label, val, m, unit = 'fps') => {
     const bits = [`${val} ${unit}`];
+    if (m && m.p50 != null) bits.push(`median frame ${m.p50} ms`);
     if (m && m.p95 != null) bits.push(`p95 ${m.p95} ms`);
+    if (m && m.max != null) bits.push(`slowest ${m.max >= 1000 ? (m.max / 1000).toFixed(1) + ' s' : m.max + ' ms'}`);
     if (m && m.gates) bits.push('gates ' + (m.gates === 'pass' ? '✓' : m.gates));
-    if (val >= 115) bits.push('vsync-capped');
+    if (unit === 'fps' && val >= 115) bits.push('vsync-capped');
     return `${label}: ${bits.join(' · ')}`;
   };
 
@@ -62,7 +64,8 @@
       options: {
         responsive: true, maintainAspectRatio: false, _refLine: spec.refLine,
         scales: {
-          y: { beginAtZero: true, max: spec.yMax || 130, title: { display: !!spec.yLabel, text: spec.yLabel }, grid: { color: COL.line } },
+          // yMax null → auto-scale to the data (the memory chart's range is GB, not fps)
+          y: { beginAtZero: true, ...(spec.yMax === null ? {} : { max: spec.yMax || 130 }), title: { display: !!spec.yLabel, text: spec.yLabel }, grid: { color: COL.line } },
           x: { grid: { display: false } },
         },
         plugins: {
@@ -90,10 +93,10 @@
         responsive: true, maintainAspectRatio: false, parsing: false, _refLine: spec.refLine,
         scales: {
           x: {
-            type: 'logarithmic', min: 80000, max: 6e7,
+            type: 'logarithmic', min: spec.xMin || 80000, max: spec.xMax || 6e7,
             title: { display: !!spec.xLabel, text: spec.xLabel }, grid: { color: COL.line },
-            afterBuildTicks: (a) => { a.ticks = LOG_TICKS.map((value) => ({ value })); },
-            ticks: { callback: (v) => LOG_LABEL[v] || '' },
+            afterBuildTicks: (a) => { a.ticks = (spec.ticks || LOG_TICKS).map((value) => ({ value })); },
+            ticks: { callback: (v) => (spec.tickLabels || LOG_LABEL)[v] || '' },
           },
           // y max: explicit spec.yMax, else scale to the data (Datoviz's vsync-unlocked build
           // reads ~150-180 at light tiers — a fixed 130 clipped its line off the top).
@@ -101,7 +104,7 @@
         },
         plugins: {
           legend: { position: 'bottom', labels: { boxWidth: 12, usePointStyle: true } },
-          tooltip: { callbacks: { label: (c) => metaLabel(c.dataset.label, c.parsed.y, c.dataset._meta && c.dataset._meta[c.dataIndex]) } },
+          tooltip: { callbacks: { label: (c) => metaLabel(c.dataset.label, c.parsed.y, c.dataset._meta && c.dataset._meta[c.dataIndex], spec.unit) } },
         },
       },
     });

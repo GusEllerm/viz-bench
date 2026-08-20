@@ -84,24 +84,39 @@ function renderChart(sec, pub, chartSpecs) {
   let spec;
   if (sec.chart === 'bars') {
     const cl = COL_LABELS[sec.domain];
-    const F = sec.field || 'fps', P = F === 'fpsCont' ? 'p95Cont' : 'p95';
+    const F = sec.field || 'fps';
+    const cont = F === 'fpsCont';
+    const P = cont ? 'p95Cont' : 'p95', P50 = cont ? 'p50Cont' : 'p50', MX = cont ? 'maxmsCont' : 'maxms';
+    const isFps = F === 'fps' || F === 'fpsCont';
     spec = {
-      id: sec.id, kind: 'bars', yMax: 130, refLine: 60, yLabel: 'fps',
+      id: sec.id, kind: 'bars',
+      yMax: sec.yMax !== undefined ? sec.yMax : (isFps ? 130 : null),
+      refLine: sec.refLine !== undefined ? sec.refLine : (isFps ? 60 : undefined),
+      yLabel: sec.yLabel || (isFps ? 'fps' : ''), unit: sec.unit || (isFps ? 'fps' : ''),
       categories: sec.cols.map((c) => cl[c] || c),
       series: sec.rows.map((t) => ({
         label: rl[t] || t,
         color: SERIES_COLORS[t],
         values: sec.cols.map((c) => round1(find(pub, { domain: sec.domain, tool: t, dataset: c })?.[F])),
-        meta: sec.cols.map((c) => { const r = find(pub, { domain: sec.domain, tool: t, dataset: c }); return r ? { p95: r[P], gates: r.gatesPass ? 'pass' : 'fail' } : null; }),
+        meta: sec.cols.map((c) => { const r = find(pub, { domain: sec.domain, tool: t, dataset: c }); return r ? (isFps ? { p50: r[P50], p95: r[P], max: r[MX], gates: r.gatesPass ? 'pass' : 'fail' } : { gates: r.gatesPass ? 'pass' : 'fail' }) : null; }),
       })),
     };
   } else {
+    // x is the scale axis: points for clouds, edges for graphs (sec.xField)
+    const XF = sec.xField || 'points';
+    const YF = sec.field || 'fps';
+    const cont = YF === 'fpsCont';
     spec = {
-      id: sec.id, kind: 'logline', refLine: 60, xLabel: 'points (log)', yLabel: 'fps', // no yMax: the client scales to the data (Datoviz's uncapped present reads ~150-180)
+      id: sec.id, kind: 'logline', refLine: 60, unit: 'fps',
+      xLabel: sec.xLabel || 'points (log)', yLabel: 'fps', // no yMax: the client scales to the data
+      ...(sec.ticks ? { ticks: sec.ticks, tickLabels: sec.tickLabels, xMin: sec.xMin, xMax: sec.xMax } : {}),
       series: sec.series.map((t) => ({
         label: rl[t] || t,
         color: SERIES_COLORS[t],
-        points: sec.clouds.map((c) => { const r = find(pub, { domain: sec.domain, tool: t, dataset: c }); return r ? { x: r.scale?.points, y: round1(r.fps), p95: r.p95, gates: r.gatesPass ? 'pass' : 'fail' } : null; }).filter(Boolean),
+        points: sec.clouds.map((c) => {
+          const r = find(pub, { domain: sec.domain, tool: t, dataset: c });
+          return r ? { x: r.scale?.[XF], y: round1(r[YF]), p50: r[cont ? 'p50Cont' : 'p50'], p95: r[cont ? 'p95Cont' : 'p95'], max: r[cont ? 'maxmsCont' : 'maxms'], gates: r.gatesPass ? 'pass' : 'fail' } : null;
+        }).filter((p) => p && p.x != null && p.y != null),
       })),
     };
   }

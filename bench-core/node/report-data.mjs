@@ -36,7 +36,7 @@ export function collectRaw() {
 // ---- sanitize (strict allow-list) ----
 export const PUBLIC_KEYS = [
   'domain', 'tool', 'library', 'version', 'dataset', 'scale', 'primitives',
-  'fps', 'p50', 'p95', 'fpsCont', 'p95Cont', 'memMB', 'cameraState', 'driver', 'motion', 'surface', 'gatesPass', 'gateSummary',
+  'fps', 'p50', 'p95', 'maxms', 'fpsCont', 'p50Cont', 'p95Cont', 'maxmsCont', 'memMB', 'cameraState', 'driver', 'motion', 'surface', 'gatesPass', 'gateSummary',
 ];
 const verdictWord = (v) => (v == null ? null : String(v).split(':')[0].trim()); // "pass: ANGLE…" → "pass"
 
@@ -51,8 +51,11 @@ function sanitizeOne(r) {
     fps: r.metrics?.fps ?? null,
     p50: r.metrics?.p50ms ?? null,
     p95: r.metrics?.p95ms ?? null,
+    maxms: r.metrics?.maxms ?? null,       // slowest single frame — reveals stalls p95 can miss
     fpsCont: r.metrics?.fpsCont ?? null,   // continuous render-throughput (force-repaint every frame)
+    p50Cont: r.metrics?.p50Cont ?? null,
     p95Cont: r.metrics?.p95Cont ?? null,
+    maxmsCont: r.metrics?.maxmsCont ?? null,
     cameraState: r.protocol?.cameraState ?? null,
     driver: r.protocol?.driver ?? null,
     motion: r.protocol?.motion ?? null,

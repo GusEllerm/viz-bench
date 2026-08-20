@@ -169,7 +169,9 @@ async function runCell(browser, ds, tool, prov) {
       scale: engineCounts,
       coverage: { engine: engineCounts, edgePolicy: tool.edgePolicy, ok: coverage.pass },
       protocol: { driver: 'pan', cameraState: camState, motion: 'coalesced-pan', durationMs: 5000, pixelRatio: 2, headed: true },
-      metrics: { fps: m.fps, frames: m.frames, p50ms: m.p50ms, p95ms: m.p95ms, memMB, fpsCont: mCont.fps, p95Cont: mCont.p95ms },
+      // maxms is the STALL statistic: p95 can miss a handful of multi-second freezes entirely
+      // (at 16.5M edges one engine showed p50 8.3 ms with a mean of 2.9 fps — three long stalls).
+      metrics: { fps: m.fps, frames: m.frames, p50ms: m.p50ms, p95ms: m.p95ms, maxms: m.maxms, memMB, fpsCont: mCont.fps, p50Cont: mCont.p50ms, p95Cont: mCont.p95ms, maxmsCont: mCont.maxms },
       presentation: { surface: 'onscreen', method: presentation.method, presented: presentation.pass, detail: presentation.detail },
       gpu: { renderer, software },
       gateResults: { gpu, coverage, presentation, cameraState, inputHonesty },
